@@ -1,7 +1,7 @@
-print("RT WEATHER SYSTEM: Loading TTP Weather system; Fixed by parker02311/Redon Tech!")
+print("Redon Tech Weather System: Loading...")
 
-local ToolBar = plugin:CreateToolbar("RT Weather Systems")
-local Button = ToolBar:CreateButton("234354676654", "Install / Update Weather Systems", "http://www.roblox.com/asset/?id=319050289", "Weather Systems")
+local ToolBar = plugin:CreateToolbar("Redon Tech")
+local Button = ToolBar:CreateButton("234354676654", "Install / Update Weather System", "http://www.roblox.com/asset/?id=319050289", "Weather System")
 local Mouse = plugin:GetMouse()
 
 local GUI = script.SetupGUI:Clone()
@@ -22,9 +22,8 @@ local GUIIsVisible = false
 local IncludeGUI = true
 
 if game.ReplicatedStorage:FindFirstChild("LoadLibrary") then
-	print("RT WEATHER SYSTEM: Already in the game!")
 else
-	print("RT WEATHER SYSTEM: Adding Load Libary!")
+	print("Redon Tech Weather System: Adding prerequisites.")
 --[[	InsertService = game.InsertService
 	model = InsertService:LoadAsset(4702211567)]]
 	model = script.Model:Clone()
@@ -45,18 +44,15 @@ else
 	end
 	
 	Model:Destroy() --Destroy the model afterwards
-	print("RT WEATHER SYSTEM: I just inserted LoadLibrary! DO NOT REMOVE IT OR THE PLUGIN WILL FAIL!!")
+	print("Redon Tech Weather System: Prerequisites loaded. Do not delete ReplicatedStorage/LoadLibary.")
 end
 
 wait(1)
 
-
-local RbxUtility = require(game:GetService("ReplicatedStorage"):WaitForChild("LoadLibrary"):WaitForChild("RbxUtility"))
-local RbxStamper = require(game:GetService("ReplicatedStorage"):WaitForChild("LoadLibrary"):WaitForChild("RbxStamper"))
 local RbxGui = require(game:GetService("ReplicatedStorage"):WaitForChild("LoadLibrary"):WaitForChild("RbxGui"))
 
 
-print("RT WEATHER SYSTEM: Loaded")
+print("Redon Tech Weather System: Loaded")
 
 function IsWithinObject(Parent, Mouse)
 	if (Mouse.X >= Parent.AbsolutePosition.X and Mouse.X <= Parent.AbsolutePosition.X + Parent.AbsoluteSize.X) and

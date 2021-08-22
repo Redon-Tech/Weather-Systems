@@ -26,9 +26,7 @@ else Cloud.Value.Parent = camera end
 Precip.Value = Parts.Precip:Clone()
 Precip.Value.Name = "Precip"..player.Name
 Precip.Value.Position = camera.CoordinateFrame.p + Vector3.new(0, 50, 0)
-if game.Workspace.FilteringEnabled == true then
-	Precip.Value.Parent = game.Workspace
-else Precip.Value.Parent = camera end
+Precip.Value.Parent = game.Workspace
 
 if Current.Weather.Value == "Drizzle" or
 	Current.Weather.Value == "Showers" or

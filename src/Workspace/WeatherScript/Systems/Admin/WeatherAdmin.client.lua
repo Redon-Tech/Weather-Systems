@@ -26,8 +26,6 @@ local Weather = {
 }
 
 
-local RbxUtility = require(game:GetService("ReplicatedStorage"):WaitForChild("LoadLibrary"):WaitForChild("RbxUtility"))
-local RbxStamper = require(game:GetService("ReplicatedStorage"):WaitForChild("LoadLibrary"):WaitForChild("RbxStamper"))
 local RbxGui = require(game:GetService("ReplicatedStorage"):WaitForChild("LoadLibrary"):WaitForChild("RbxGui"))
 
 local GUI = script.Parent.Frame
