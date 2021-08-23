@@ -1,8 +1,9 @@
 wait(1)
 local player = game.Players.LocalPlayer
 
-local Main = script.Parent.Main
-local Small = script.Parent.Small
+--local Main = script.Parent.Main
+--local Small = script.Parent.Small
+local New = script.Parent.New
 
 local WeatherFolder = game.ReplicatedStorage:WaitForChild("WeatherResources").Weather
 local DayBegin = WeatherFolder.Day.DayBegin.Value
@@ -61,29 +62,29 @@ function GetCurrentWeather()
 	local Time = game.Lighting:GetMinutesAfterMidnight()
 	local CurrentWeather = Current.Weather.Value
 	local CurrentID, Alert
-	
+
 	if Time > DayBegin and Time < NightBegin then
 		CurrentID = Images[CurrentWeather]
 	else
 		if Images[CurrentWeather.." Night"] then CurrentID = Images[CurrentWeather.." Night"]
 		else CurrentID = Images[CurrentWeather] end
 	end
-	
+
 	if CurrentWeather == "Strong Thunderstorms" or CurrentWeather == "Heavy Rain" or CurrentWeather == "Heavy Rain / Snow" or CurrentWeather == "Heavy Snow" then
 		Alert = true
 	else Alert = false end
-	
-	Small.CurrentWeather.Image = "rbxassetid://"..CurrentID
-	if Alert == true then Small.CurrentWeather.Alert.Image = "rbxassetid://210639854" else Small.CurrentWeather.Alert.Image = "" end
-	Main.CurrentWeather.Image = "rbxassetid://"..CurrentID
-	if Alert == true then Main.CurrentWeather.Alert.Image = "rbxassetid://210639854" else Main.CurrentWeather.Alert.Image = "" end
-	
+
+	New.CurrentWeather.Image = "rbxassetid://"..CurrentID
+	if Alert == true then New.CurrentWeather.Alert.Image = "rbxassetid://210639854" else New.CurrentWeather.Alert.Image = "" end
+	--Main.CurrentWeather.Image = "rbxassetid://"..CurrentID
+	--if Alert == true then Main.CurrentWeather.Alert.Image = "rbxassetid://210639854" else Main.CurrentWeather.Alert.Image = "" end
+
 	if not Settings.UseMetric.Value then
-		Small.CurrentTemp.Text = Current.Temperature.Value.."*"
-		Main.CurrentTemp.Text = Current.Temperature.Value.."*"
+		New.CurrentTemp.Text = Current.Temperature.Value.."*"
+		--Main.CurrentTemp.Text = Current.Temperature.Value.."*"
 	else
-		Small.CurrentTemp.Text = math.floor((Current.Temperature.Value - 32) * (5/9)).."*"
-		Main.CurrentTemp.Text = math.floor((Current.Temperature.Value - 32) * (5/9)).."*"
+		New.CurrentTemp.Text = math.floor((Current.Temperature.Value - 32) * (5/9)).."*"
+		--Main.CurrentTemp.Text = math.floor((Current.Temperature.Value - 32) * (5/9)).."*"
 	end
 
 
@@ -92,25 +93,25 @@ end
 function GetForecastImage(Forecast, target)
 	local Time = game.Lighting:GetMinutesAfterMidnight()
 	local CurrentID, Alert
-	
+
 	if Time > DayBegin and Time < NightBegin then
 		CurrentID = Images[Forecast]
 	else
 		if Images[Forecast.." Night"] then CurrentID = Images[Forecast.." Night"]
 		else CurrentID = Images[Forecast] end
 	end
-	
+
 	if Forecast == "Strong Thunderstorms" or Forecast == "Heavy Rain" or Forecast == "Heavy Rain / Snow" or Forecast == "Heavy Snow" then
 		Alert = true
 	else Alert = false end
-	
+
 	target.Image = "rbxassetid://"..CurrentID
 	if Alert == true then target.Alert.Image = "rbxassetid://210639854" else target.Alert.Image = "" end
 end
 
 function UpdateWeather()
-	
-	local Time = game.Lighting:GetMinutesAfterMidnight()
+
+	--[[local Time = game.Lighting:GetMinutesAfterMidnight()
 	if Time > DayBegin and Time < NightBegin then
 		Main.Forecast.Text = ForecastDay.Description.Value
 		GetForecastImage(ForecastDay.Weather.Value, Main.TodaysWeather)
@@ -125,18 +126,18 @@ function UpdateWeather()
 	else
 		Main.ForecastHigh.Text = math.floor((ForecastDay.Temperature.Value - 32) * (5/9)).."C"
 		Main.ForecastLow.Text = math.floor((ForecastNight.Temperature.Value - 32) * (5/9)).."C"
-	end
-		
+	end]]
+
 end
 
-script.Parent.Date.Text = Current.Parent.Day.Value
+New.Date.Text = Current.Parent.Day.Value
 
-Current.Parent.Day.Changed:connect(function(New) script.Parent.Date.Text = New end)
-Current.Temperature.Changed:connect(GetCurrentWeather)
-Current.Weather.Changed:connect(GetCurrentWeather)
-game.Lighting.Changed:connect(function(Property) if Property == "TimeOfDay" then UpdateWeather() end end)
+Current.Parent.Day.Changed:Connect(function(Date) New.Date.Text = Date end)
+Current.Temperature.Changed:Connect(GetCurrentWeather)
+Current.Weather.Changed:Connect(GetCurrentWeather)
+game.Lighting.Changed:Connect(function(Property) if Property == "TimeOfDay" then UpdateWeather() end end)
 
-Small.Open.MouseButton1Click:connect(function()
+--[[Small.Open.MouseButton1Click:connect(function()
 	Small.Visible = false
 	Main.Visible = true
 end)
@@ -144,7 +145,7 @@ end)
 Main.Close.MouseButton1Click:connect(function()
 	Small.Visible = true
 	Main.Visible = false
-end)
+end)]]
 
 GetCurrentWeather()
 UpdateWeather()

@@ -1,7 +1,14 @@
 local Settings = game.ReplicatedStorage:WaitForChild("WeatherResources"):WaitForChild("Settings")
 
-if Settings.EnableForecast.Value and Settings.LockTime.Value == "" then script.Weather.Small.Visible = true else script.Weather.Date.Position = UDim2.new(0.5, -43, 0, 0) end
-if Settings.EnableDate.Value and Settings.LockTime.Value == "" and Settings.LockMonth.Value == "" then script.Weather.Date.Visible = true end
+--if Settings.EnableForecast.Value and Settings.LockTime.Value == "" then script.Weather.Small.Visible = true else script.Weather.Date.Position = UDim2.new(0.5, -43, 0, 0) end
+--if Settings.EnableDate.Value and Settings.LockTime.Value == "" and Settings.LockMonth.Value == "" then script.Weather.Date.Visible = true end
+if Settings.EnableForecast.Value == false then
+	script.Weather.New.CurrentWeather.Visible = false
+	script.Weather.New.CurrentTemp.Visible = false
+end
+if Settings.EnableDate.Value == false then
+	script.Weather.New.Date.Visible = false
+end
 script.Weather.WeatherGUI.Disabled = false
 script.Weather.Parent = game.StarterGui
 
@@ -70,8 +77,8 @@ Day.DayBegin.Value = DayBegin
 Day.NightBegin.Value = NightBegin
 
 local PartsFolder = Resources:WaitForChild("Parts")
-local LargeCloud = PartsFolder.Cloud
-LargeCloud.Parent = game.Workspace
+--local LargeCloud = PartsFolder.Cloud
+--LargeCloud.Parent = game.Workspace
 
 local SoundsFolder = Resources:WaitForChild("Sounds")
 local Ambience = SoundsFolder.Ambience
@@ -291,7 +298,7 @@ Current.Weather.Changed:connect(function(NewWeather)
 	if NewWeather == "Showers" or NewWeather == "Rain" or NewWeather == "Heavy Rain" or NewWeather == "Thunderstorms" or NewWeather == "Strong Thunderstorms" then
 		
 		local TweenClouds = coroutine.wrap(function()
-			ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
+			--ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
 		end)
 		
 		local TweenSounds = coroutine.wrap(function()
@@ -328,7 +335,7 @@ Current.Weather.Changed:connect(function(NewWeather)
 	elseif NewWeather == "Flurries" or NewWeather == "Snow Showers" or NewWeather == "Snow" or NewWeather == "Heavy Snow" then
 		
 		local TweenClouds = coroutine.wrap(function()
-			ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
+			--ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
 		end)
 		
 		local TweenSounds = coroutine.wrap(function()
@@ -357,7 +364,7 @@ Current.Weather.Changed:connect(function(NewWeather)
 	elseif NewWeather == "Rain / Snow Showers" or NewWeather == "Rain / Snow" or NewWeather == "Heavy Rain / Snow" then
 		
 		local TweenClouds = coroutine.wrap(function()
-			ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
+			--ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
 		end)
 
 		local TweenSounds = coroutine.wrap(function()
@@ -393,7 +400,7 @@ Current.Weather.Changed:connect(function(NewWeather)
 	elseif NewWeather == "Sunny" or NewWeather == "Clear" then
 		
 		local TweenClouds = coroutine.wrap(function()
-			ModuleFunctions["TweenCloud"](1, 1, SmallClouds:GetChildren(), {LargeCloud}, 20)
+			--ModuleFunctions["TweenCloud"](1, 1, SmallClouds:GetChildren(), {LargeCloud}, 20)
 		end)
 		
 		local TweenSounds = coroutine.wrap(function()
@@ -418,7 +425,7 @@ Current.Weather.Changed:connect(function(NewWeather)
 	elseif NewWeather == "Partly Cloudy" or NewWeather == "Mostly Cloudy" then
 		
 		local TweenClouds = coroutine.wrap(function()
-			ModuleFunctions["TweenCloud"](0, 1, SmallClouds:GetChildren(), {LargeCloud}, 20)
+			--ModuleFunctions["TweenCloud"](0, 1, SmallClouds:GetChildren(), {LargeCloud}, 20)
 		end)
 		
 		local TweenSounds = coroutine.wrap(function()
@@ -443,7 +450,7 @@ Current.Weather.Changed:connect(function(NewWeather)
 	elseif NewWeather == "Cloudy" or NewWeather == "Drizzle" or NewWeather == "Freezing Drizzle" then
 		
 		local TweenClouds = coroutine.wrap(function()
-			ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
+			--ModuleFunctions["TweenCloud"](1, 0, SmallClouds:GetChildren(), {LargeCloud}, 20)
 		end)
 		
 		local TweenSounds = coroutine.wrap(function()
@@ -534,15 +541,15 @@ end)
 	end
 end)]]
 
-game.ReplicatedStorage.WeatherFunction.OnServerInvoke:Connect(function(plr)
+game.ReplicatedStorage.WeatherFunction.OnServerInvoke = function(plr)
 	if game.ServerStorage.TTPPluginAdmins:FindFirstChild(plr.Name) or plr.UserId == game.CreatorId then
 		return true
 	else
 		return false
 	end
-end)
+end
 
-Settings.CustomWeather.Changed:connect(function(Value)
+Settings.CustomWeather.Changed:Connect(function(Value)
 	if Value ~= "" then Current.Weather.Value = Value end
 end)
 

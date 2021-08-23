@@ -1,5 +1,14 @@
 function CreateClouds()
-	local SmallClouds = script.Parent.Parent.Parts.SmallClouds
+	local Model = Instance.new("Model")
+	Model.Name = "SmallClouds"
+	Model.Parent = game.Workspace
+	local Part = Instance.new("Part")
+	Part.Name = "Cloud"
+	Part.Size = Vector3.new(0.1,0.1,0.1)
+	Part.Position = Vector3.new(0, -100, 0)
+	Part.Anchored = true
+	Part.Parent = Model
+	--[[local SmallClouds = script.Parent.Parent.Parts.SmallClouds
 	SmallClouds.Parent = game.Workspace
 	
 	local WorkspaceSize = game.Workspace:GetExtentsSize()
@@ -23,7 +32,7 @@ function CreateClouds()
 				NewCloud.Position = Vector3.new(NewCloud.Position.X, 1000, i * 3500)
 			end
 		end
-	end
+	end]]
 end
 
 return CreateClouds
