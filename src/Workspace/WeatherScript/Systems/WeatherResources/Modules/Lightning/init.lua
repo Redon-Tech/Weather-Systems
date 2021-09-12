@@ -15,7 +15,7 @@ function CreateLightning()
 	function GetPosition()
 		local Players = game.Players:GetPlayers()
 		local Player = Players[math.random(1, #game.Players:GetPlayers())]
-		if Player.Character:FindFirstChild("Torso") then return Player.Character.Torso.Position else GetPosition() end
+		if Player.Character:FindFirstChild("Torso") then return Player.Character.Torso.Position elseif Player.Character:FindFirstChild("UpperTorso") then return Player.Character.UpperTorso.Position else GetPosition() end
 	end
 
 	local Position = GetPosition()

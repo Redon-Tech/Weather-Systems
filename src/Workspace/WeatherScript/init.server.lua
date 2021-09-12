@@ -21,35 +21,13 @@ if game.ReplicatedStorage:FindFirstChild("WeatherResources") then WeatherResourc
 local GUIIsVisible = false
 local IncludeGUI = true
 
-if game.ReplicatedStorage:FindFirstChild("LoadLibrary") then
-else
-	print("Redon Tech Weather System: Adding prerequisites.")
---[[	InsertService = game.InsertService
-	model = InsertService:LoadAsset(4702211567)]]
-	model = script.Model:Clone()
-	wait(1)
-	model.Name = "model"
-	model.Parent = workspace
-	Model =  workspace:WaitForChild("model") --Model you want to destroy
-	
-	for _, Child in pairs(Model:GetChildren()) do
-	    Child.Parent = Model.Parent --Move the children up one parent
-	end
-	
-	Model:Destroy() --Destroy the model afterwards
-	Model = workspace.Prerequisitespas --Model you want to destroy
-	
-	for _, Child in pairs(Model:GetChildren()) do
-	    Child.Parent = game.ReplicatedStorage --Move the children up one parent
-	end
-	
-	Model:Destroy() --Destroy the model afterwards
-	print("Redon Tech Weather System: Prerequisites loaded. Do not delete ReplicatedStorage/LoadLibary.")
+if game.ReplicatedStorage:FindFirstChild("LoadLibrary") and not game.ServerScriptService:FindFirstChild("WeatherManager") then
+	print("Redon Tech Weather System: If this game doesn't have the weather system installed you may remove \"Load Libary\" from Replicated Storage.")
 end
 
 wait(1)
 
-local RbxGui = require(game:GetService("ReplicatedStorage"):WaitForChild("LoadLibrary"):WaitForChild("RbxGui"))
+local RbxGui = require(script.RbxGui)
 
 
 print("Redon Tech Weather System: Loaded")
@@ -182,6 +160,7 @@ Main.Install.MouseButton1Click:connect(function()
 	Systems.PrecipManager:Clone().Parent = game.StarterPlayer.StarterPlayerScripts
 	game.StarterPlayer.StarterPlayerScripts.PrecipManager.Disabled = false
 	Systems.WeatherResources:Clone().Parent = game.ReplicatedStorage
+	Systems.LoadLibrary:Clone().Parent = game.ReplicatedStorage
 	Systems.Admin:Clone().Parent = game.StarterGui
 	game.StarterGui.Admin.WeatherAdmin.Disabled = false
 	Systems.WeatherFunction:Clone().Parent = game.ReplicatedStorage

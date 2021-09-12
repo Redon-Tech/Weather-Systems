@@ -151,34 +151,21 @@ function Precipitate()
 	Current.Weather.Value == "Rain / Snow" or
 	Current.Weather.Value == "Heavy Rain / Snow" or
 	Current.Weather.Value == "Cloudy" then
-		if Clouds.Cover == 1 then
-		else
-			local TI = TweenInfo.new(5)
-			local Tween = TweenService:Create(Clouds, TI, {Cover = 1, Density = 1})
-			Tween:Play()
-		end
-		--repeat wait() until Cloud.Value ~= nil
-		--if Cloud.Value.Transparency > 0 then
-		--	for i = Cloud.Value.Transparency, 0, -.01 do
-		--		Cloud.Value.Transparency = i
-		--		wait()
-		--		Cloud.Value.Transparency = 0
-		--	end
-		--end
+		local TI = TweenInfo.new(5)
+		local Tween = TweenService:Create(Clouds, TI, {Cover = 1, Density = 1})
+		Tween:Play()
+	elseif Current.Weather.Value == "Partly Cloudy" then
+		local TI = TweenInfo.new(5)
+		local Tween = TweenService:Create(Clouds, TI, {Cover = 0.3, Density = 0.5})
+		Tween:Play()
+	elseif Current.Weather.Value == "Mostly Cloudy" then
+		local TI = TweenInfo.new(5)
+		local Tween = TweenService:Create(Clouds, TI, {Cover = 0.5, Density = 0.5})
+		Tween:Play()
 	else
-		if Clouds.Cover == 1 then
-			local TI = TweenInfo.new(5)
-			local Tween = TweenService:Create(Clouds, TI, {Cover = 0.3, Density = 0.5})
-			Tween:Play()
-		end
-		--repeat wait() until Cloud.Value ~= nil
-		--if Cloud.Value.Transparency < 1 then
-		--	for i = Cloud.Value.Transparency, 1, .01 do
-		--		Cloud.Value.Transparency = i
-		--		wait()
-		--	end
-		--	Cloud.Value.Transparency = 1
-		--end
+		local TI = TweenInfo.new(5)
+		local Tween = TweenService:Create(Clouds, TI, {Cover = 0, Density = 0})
+		Tween:Play()
 	end
 	
 	SetPrecip()
