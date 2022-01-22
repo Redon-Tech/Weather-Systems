@@ -1,5 +1,5 @@
 local allowed = game.ReplicatedStorage.WeatherFunction:InvokeServer()
-if allowed == false then
+if allowed == false or not allowed then
 	script.Parent:Destroy()
 end
 
@@ -22,7 +22,7 @@ local Weather = {
 	"Heavy Rain / Snow",
 	"Heavy Snow",
 	"Thunderstorms",
-	"Strong Thunderstorms"	
+	"Strong Thunderstorms"
 }
 
 

@@ -21,8 +21,10 @@ if workspace.Terrain:FindFirstChild("Clouds") then
 else
 	Clouds = Instance.new("Clouds")
 end
-local Precip = player:WaitForChild("Weather").Precip
+-- local Precip = player:WaitForChild("Weather").Precip
 local RainModule = require(Weather.Modules.PrecipitationHandlers.Rain)
+local SnowModule = require(Weather.Modules.PrecipitationHandlers.Snow)
+local HailModule = require(Weather.Modules.PrecipitationHandlers.Hail)
 
 --Cloud.Value = Parts.PlayerCloud:Clone()
 --Cloud.Value.Name = "PlayerCloud"..player.Name
@@ -32,10 +34,10 @@ Clouds.Cover = 0.3
 Clouds.Density = 0.5
 Clouds.Parent = workspace.Terrain
 
-Precip.Value = Parts.Precip:Clone()
-Precip.Value.Name = "Precip"..player.Name
-Precip.Value.Position = camera.CFrame.Position + Vector3.new(0, 50, 0)
-Precip.Value.Parent = game.Workspace
+-- Precip.Value = Parts.Precip:Clone()
+-- Precip.Value.Name = "Precip"..player.Name
+-- Precip.Value.Position = camera.CFrame.Position + Vector3.new(0, 50, 0)
+-- Precip.Value.Parent = game.Workspace
 
 --[[if Current.Weather.Value == "Drizzle" or
 	Current.Weather.Value == "Showers" or
@@ -61,76 +63,77 @@ function SetPrecip()
 		--Precip.Value.Rain.Rate = 100
 		RainModule:SetIntensityRatio(0.100)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = false
+		HailModule:Disable()
+		SnowModule:Disable()
 	elseif Current.Weather.Value == "Showers" then
 		RainModule:SetIntensityRatio(0.200)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = false
+		HailModule:Disable()
+		SnowModule:Disable()
 	elseif Current.Weather.Value == "Rain" then
 		RainModule:SetIntensityRatio(0.300)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = false
+		HailModule:Disable()
+		SnowModule:Disable()
 	elseif Current.Weather.Value == "Heavy Rain" or Current.Weather.Value == "Thunderstorms" then
 		RainModule:SetIntensityRatio(0.400)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = false
+		HailModule:Disable()
+		SnowModule:Disable()
 	elseif Current.Weather.Value == "Strong Thunderstorms" then
 		RainModule:SetIntensityRatio(0.500)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = true
-		Precip.Value.Snow.Enabled = false
+		HailModule:SetIntensityRatio(0.250)
+		HailModule:Enable()
+		SnowModule:Disable()
 	elseif Current.Weather.Value == "Flurries" then
 		RainModule:Disable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 100
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.100)
+		SnowModule:Enable()
 	elseif Current.Weather.Value == "Snow Showers" then
 		RainModule:Disable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 200
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.200)
+		SnowModule:Enable()
 	elseif Current.Weather.Value == "Snow" then
 		RainModule:Disable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 300
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.300)
+		SnowModule:Enable()
 	elseif Current.Weather.Value == "Heavy Snow" then
 		RainModule:Disable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 400
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.400)
+		SnowModule:Enable()
 	elseif Current.Weather.Value == "Freezing Drizzle" then
 		RainModule:SetIntensityRatio(0.100)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 100
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.100)
+		SnowModule:Enable()
 	elseif Current.Weather.Value == "Rain / Snow Showers" then
 		RainModule:SetIntensityRatio(0.200)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 200
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.200)
+		SnowModule:Enable()
 	elseif Current.Weather.Value == "Rain / Snow" then
 		RainModule:SetIntensityRatio(0.300)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 300
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.300)
+		SnowModule:Enable()
 	elseif Current.Weather.Value == "Heavy Rain / Snow" then
 		RainModule:SetIntensityRatio(0.400)
 		RainModule:Enable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = true
-		Precip.Value.Snow.Rate = 400
+		HailModule:Disable()
+		SnowModule:SetIntensityRatio(0.400)
+		SnowModule:Enable()
 	else
 		RainModule:Disable()
-		Precip.Value.Hail.Enabled = false
-		Precip.Value.Snow.Enabled = false
+		HailModule:Disable()
+		SnowModule:Disable()
 	end
 end
 
@@ -205,12 +208,23 @@ game.Workspace.ChildAdded:Connect(function(child)
 	end
 end)
 
-game:GetService("RunService"):BindToRenderStep("Precipitation", Enum.RenderPriority.Camera.Value, function()
-	local CFrame = camera.CFrame
-	--Cloud.Value.Position = CFrame.Position
-	if player.Character:FindFirstChild("Torso") then
-		Precip.Value.Position = CFrame.Position + Vector3.new(CFrame.LookVector.x * 50 + player.Character.Torso.Velocity.x, 75, CFrame.LookVector.z * 50 + player.Character.Torso.Velocity.z)
-	else
-		Precip.Value.Position = CFrame.Position + Vector3.new(CFrame.LookVector.x * 50, 75, CFrame.LookVector.z * 50)
+game.Workspace.Terrain.ChildRemoved:Connect(function(child)
+	if child == Clouds then
+		local c = child:Clone()
+		c.Parent = game.Workspace.Terrain
+		Clouds = c
+		-- Just incase
+		SetPrecip()
+		Precipitate()
 	end
 end)
+
+-- game:GetService("RunService"):BindToRenderStep("Precipitation", Enum.RenderPriority.Camera.Value, function()
+-- 	local CFrame = camera.CFrame
+-- 	--Cloud.Value.Position = CFrame.Position
+-- 	if player.Character:FindFirstChild("Torso") then
+-- 		Precip.Value.Position = CFrame.Position + Vector3.new(CFrame.LookVector.x * 50 + player.Character.Torso.Velocity.x, 75, CFrame.LookVector.z * 50 + player.Character.Torso.Velocity.z)
+-- 	else
+-- 		Precip.Value.Position = CFrame.Position + Vector3.new(CFrame.LookVector.x * 50, 75, CFrame.LookVector.z * 50)
+-- 	end
+-- end)

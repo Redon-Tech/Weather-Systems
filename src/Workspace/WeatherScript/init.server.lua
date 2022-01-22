@@ -27,7 +27,7 @@ end
 
 wait(1)
 
-local RbxGui = require(script.RbxGui)
+local RbxGui = require(script.Systems.LoadLibrary.RbxGui)
 
 
 print("Redon Tech Weather System: Loaded")
@@ -112,7 +112,7 @@ function IsSetUp()
 	if game.ReplicatedStorage:FindFirstChild("WeatherResources") and
 		game.ServerScriptService:FindFirstChild("WeatherManager") and
 		game.StarterPack:FindFirstChild("PlayerSetup") and
-		game.StarterPlayer.StarterPlayerScripts:FindFirstChild("PrecipManager") and
+		(game.StarterPlayer.StarterPlayerScripts:FindFirstChild("PrecipManager") or game.StarterPlayer.StarterCharacterScripts:FindFirstChild("PrecipManager")) and
 		game.ServerStorage:FindFirstChild("TTPPluginAdmins") and
 		game.StarterGui:FindFirstChild("Admin") then
 		return true
@@ -149,18 +149,25 @@ Main.Install.MouseButton1Click:connect(function()
 	Uninstall(game.StarterGui)
 	Uninstall(game.StarterPack)
 	Uninstall(game.ServerStorage)
-	Uninstall(game.StarterPlayer.StarterPlayerScripts)
+	Uninstall(game.StarterPlayer.StarterPlayerScripts) -- Just incase of old systems
+	Uninstall(game.StarterPlayer.StarterCharacterScripts)
 	
 	local Systems = script.Systems
+	-- Player Setup
 	Systems.PlayerSetup:Clone().Parent = game.StarterPack
 	game.StarterPack.PlayerSetup.Disabled = false
+	-- Weather Manager
 	Systems.WeatherManager:Clone().Parent = game.ServerScriptService
 	game.ServerScriptService.WeatherManager.Disabled = false
 	game.ServerScriptService.WeatherManager.DaylightManager.Disabled = false
-	Systems.PrecipManager:Clone().Parent = game.StarterPlayer.StarterPlayerScripts
-	game.StarterPlayer.StarterPlayerScripts.PrecipManager.Disabled = false
+	-- Precip Manager
+	Systems.PrecipManager:Clone().Parent = game.StarterPlayer.StarterCharacterScripts
+	game.StarterPlayer.StarterCharacterScripts.PrecipManager.Disabled = false
+	-- Weather Resources
 	Systems.WeatherResources:Clone().Parent = game.ReplicatedStorage
+	-- Load Library
 	Systems.LoadLibrary:Clone().Parent = game.ReplicatedStorage
+	-- Admin
 	Systems.Admin:Clone().Parent = game.StarterGui
 	game.StarterGui.Admin.WeatherAdmin.Disabled = false
 	Systems.WeatherFunction:Clone().Parent = game.ReplicatedStorage
@@ -303,7 +310,8 @@ UninstallConfirm.Uninstall.MouseButton1Click:connect(function()
 	Uninstall(game.ReplicatedStorage)
 	Uninstall(game.StarterGui)
 	Uninstall(game.StarterPack)
-	Uninstall(game.StarterPlayer.StarterPlayerScripts)
+	Uninstall(game.StarterPlayer.StarterPlayerScripts) -- Just incase of old systems
+	Uninstall(game.StarterPlayer.StarterCharacterScripts)
 	
 	Main.Visible = true
 	UninstallConfirm.Visible = false
