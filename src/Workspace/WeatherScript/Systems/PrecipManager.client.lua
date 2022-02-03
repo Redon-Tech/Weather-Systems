@@ -138,6 +138,10 @@ function SetPrecip()
 end
 
 function Precipitate()
+	if not Clouds then -- Just double check to make sure clouds exist if not then create them
+		Clouds = Instance.new("Clouds")
+		Clouds.Parent = workspace.Terrain
+	end
 	wait(1)
 	if Current.Weather.Value == "Drizzle" or
 	Current.Weather.Value == "Showers" or
@@ -209,7 +213,7 @@ game.Workspace.ChildAdded:Connect(function(child)
 end)
 
 game.Workspace.Terrain.ChildRemoved:Connect(function(child)
-	if child == Clouds then
+	if child == Clouds and player.Character.Humanoid.Health > 0 then -- The health part is to prevent ACS from screwing with this and causing the game to crash
 		local c = child:Clone()
 		c.Parent = game.Workspace.Terrain
 		Clouds = c
