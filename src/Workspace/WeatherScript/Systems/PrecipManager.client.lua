@@ -185,6 +185,18 @@ RainModule:SetCollisionMode(
 		return p.Transparency <= 0.97
 	end
 )
+SnowModule:SetCollisionMode(
+	RainModule.CollisionMode.Function,
+	function(p)
+		return p.Transparency <= 0.97
+	end
+)
+HailModule:SetCollisionMode(
+	RainModule.CollisionMode.Function,
+	function(p)
+		return p.Transparency <= 0.97
+	end
+)
 
 SetPrecip()
 

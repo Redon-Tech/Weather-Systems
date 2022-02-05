@@ -122,7 +122,7 @@ local RAIN_TRANSPARENCY_T2 = 1
 
 local RAIN_SCANHEIGHT = 1000								-- How many studs to scan up from camera position to determine whether occluded
 
-local RAIN_EMITTER_DIM_DEFAULT = 40							-- Size of emitter block to the side/up
+local RAIN_EMITTER_DIM_DEFAULT = 100							-- Size of emitter block to the side/up
 local RAIN_EMITTER_DIM_MAXFORWARD = 100						-- Size of emitter block forwards when looking at the horizon
 local RAIN_EMITTER_UP_MODIFIER = 20							-- Maximum vertical displacement of emitter (when looking fully up/down)
 
@@ -133,18 +133,18 @@ local RAIN_SOUND_FADEOUT_TIME = 1
 
 local RAIN_STRAIGHT_ASSET = "rbxassetid://99851851"			-- Some properties of the straight rain particle effect
 local RAIN_STRAIGHT_ALPHA_LOW = 0.7							-- Minimum particle transparency for the straight rain emitter
-local RAIN_STRAIGHT_SIZE = NumberSequence.new(1)
-local RAIN_STRAIGHT_LIFETIME = NumberRange.new(1.5)
-local RAIN_STRAIGHT_MAX_RATE = 500							-- Maximum rate for the straight rain emitter
-local RAIN_STRAIGHT_MAX_SPEED = 40							-- Maximum speed for the straight rain emitter
+local RAIN_STRAIGHT_SIZE = NumberSequence.new(0.5)
+local RAIN_STRAIGHT_LIFETIME = NumberRange.new(0.7)
+local RAIN_STRAIGHT_MAX_RATE = 300							-- Maximum rate for the straight rain emitter
+local RAIN_STRAIGHT_MAX_SPEED = 130							-- Maximum speed for the straight rain emitter
 
 local RAIN_TOPDOWN_ASSET = "rbxassetid://99851851"			-- Some properties of the top-down rain particle effect
 local RAIN_TOPDOWN_ALPHA_LOW = 0.7							-- Minimum particle transparency for the top-down rain emitter
-local RAIN_TOPDOWN_SIZE = NumberSequence.new(1)			
-local RAIN_TOPDOWN_LIFETIME = NumberRange.new(1.5)
+local RAIN_TOPDOWN_SIZE = NumberSequence.new(0.5)			
+local RAIN_TOPDOWN_LIFETIME = NumberRange.new(0.7)
 local RAIN_TOPDOWN_ROTATION = NumberRange.new(0,360)
-local RAIN_TOPDOWN_MAX_RATE = 500							-- Maximum rate for the top-down rain emitter
-local RAIN_TOPDOWN_MAX_SPEED = 40							-- Maximum speed for the top-down rain emitter
+local RAIN_TOPDOWN_MAX_RATE = 300							-- Maximum rate for the top-down rain emitter
+local RAIN_TOPDOWN_MAX_SPEED = 130							-- Maximum speed for the top-down rain emitter
 
 local RAIN_SPLASH_ASSET = "rbxassetid://0"					-- Some properties of the splash particle effect
 local RAIN_SPLASH_ALPHA_LOW = 0.6							-- Minimum particle transparency for the splash emitters

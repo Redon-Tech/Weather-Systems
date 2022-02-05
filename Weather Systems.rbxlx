@@ -12,6 +12,11 @@
 			<double name="DistributedGameTime">0</double>
 			<bool name="ExplicitAutoJoints">true</bool>
 			<float name="FallenPartsDestroyHeight">-500</float>
+			<Vector3 name="GlobalWind">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
 			<float name="Gravity">196.199997</float>
 			<token name="HumanoidOnlySetCollisionsOnStateChange">0</token>
 			<token name="InterpolationThrottling">0</token>
@@ -74,27 +79,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>36.9423523</X>
-					<Y>19.3640862</Y>
-					<Z>23.3201694</Z>
-					<R00>-0.304335952</R00>
-					<R01>-0.251715124</R01>
-					<R02>0.918705225</R02>
+					<X>-1.4136436</X>
+					<Y>53.0776978</Y>
+					<Z>-7.82741451</Z>
+					<R00>-0.991875052</R00>
+					<R01>-0.0970776528</R01>
+					<R02>0.0822183564</R02>
 					<R10>-0</R10>
-					<R11>0.964454353</R11>
-					<R12>0.264249861</R12>
-					<R20>-0.952564776</R20>
-					<R21>0.0804207325</R21>
-					<R22>-0.293518126</R22>
+					<R11>0.64628911</R11>
+					<R12>0.763092697</R12>
+					<R20>-0.127216071</R20>
+					<R21>0.756892622</R21>
+					<R22>-0.641038001</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>35.1049423</X>
-					<Y>18.8355865</Y>
-					<Z>23.9072056</Z>
+					<X>-1.57808018</X>
+					<Y>51.5515137</Y>
+					<Z>-6.54533958</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -4027,6 +4032,10 @@ function SetPrecip()
 end
 
 function Precipitate()
+	if not Clouds then -- Just double check to make sure clouds exist if not then create them
+		Clouds = Instance.new("Clouds")
+		Clouds.Parent = workspace.Terrain
+	end
 	wait(1)
 	if Current.Weather.Value == "Drizzle" or
 	Current.Weather.Value == "Showers" or
@@ -4070,6 +4079,18 @@ RainModule:SetCollisionMode(
 		return p.Transparency <= 0.97
 	end
 )
+SnowModule:SetCollisionMode(
+	RainModule.CollisionMode.Function,
+	function(p)
+		return p.Transparency <= 0.97
+	end
+)
+HailModule:SetCollisionMode(
+	RainModule.CollisionMode.Function,
+	function(p)
+		return p.Transparency <= 0.97
+	end
+)
 
 SetPrecip()
 
@@ -4098,7 +4119,7 @@ game.Workspace.ChildAdded:Connect(function(child)
 end)
 
 game.Workspace.Terrain.ChildRemoved:Connect(function(child)
-	if child == Clouds then
+	if child == Clouds and player.Character.Humanoid.Health > 0 then -- The health part is to prevent ACS from screwing with this and causing the game to crash
 		local c = child:Clone()
 		c.Parent = game.Workspace.Terrain
 		Clouds = c
@@ -4116,7 +4137,8 @@ end)
 -- 	else
 -- 		Precip.Value.Position = CFrame.Position + Vector3.new(CFrame.LookVector.x * 50, 75, CFrame.LookVector.z * 50)
 -- 	end
--- end)]]></ProtectedString>
+-- end)
+]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<UniqueId name="UniqueId">7e22d0a86d163b7101fd1f1800019df1</UniqueId>
@@ -5873,7 +5895,7 @@ local RAIN_TRANSPARENCY_T2 = 1
 
 local RAIN_SCANHEIGHT = 1000								-- How many studs to scan up from camera position to determine whether occluded
 
-local RAIN_EMITTER_DIM_DEFAULT = 40							-- Size of emitter block to the side/up
+local RAIN_EMITTER_DIM_DEFAULT = 100							-- Size of emitter block to the side/up
 local RAIN_EMITTER_DIM_MAXFORWARD = 100						-- Size of emitter block forwards when looking at the horizon
 local RAIN_EMITTER_UP_MODIFIER = 20							-- Maximum vertical displacement of emitter (when looking fully up/down)
 
@@ -5885,14 +5907,14 @@ local RAIN_SOUND_FADEOUT_TIME = 1
 local RAIN_STRAIGHT_ASSET = "rbxassetid://29510111"			-- Some properties of the straight rain particle effect
 local RAIN_STRAIGHT_ALPHA_LOW = 0.7							-- Minimum particle transparency for the straight rain emitter
 local RAIN_STRAIGHT_SIZE = NumberSequence.new(1)
-local RAIN_STRAIGHT_LIFETIME = NumberRange.new(1.5)
+local RAIN_STRAIGHT_LIFETIME = NumberRange.new(0.7)
 local RAIN_STRAIGHT_MAX_RATE = 500							-- Maximum rate for the straight rain emitter
 local RAIN_STRAIGHT_MAX_SPEED = 40							-- Maximum speed for the straight rain emitter
 
 local RAIN_TOPDOWN_ASSET = "rbxassetid://29510111"			-- Some properties of the top-down rain particle effect
 local RAIN_TOPDOWN_ALPHA_LOW = 0.7							-- Minimum particle transparency for the top-down rain emitter
 local RAIN_TOPDOWN_SIZE = NumberSequence.new(1)			
-local RAIN_TOPDOWN_LIFETIME = NumberRange.new(1.5)
+local RAIN_TOPDOWN_LIFETIME = NumberRange.new(0.7)
 local RAIN_TOPDOWN_ROTATION = NumberRange.new(0,360)
 local RAIN_TOPDOWN_MAX_RATE = 500							-- Maximum rate for the top-down rain emitter
 local RAIN_TOPDOWN_MAX_SPEED = 40							-- Maximum speed for the top-down rain emitter
@@ -6938,7 +6960,7 @@ local RAIN_TRANSPARENCY_T2 = 1
 
 local RAIN_SCANHEIGHT = 1000								-- How many studs to scan up from camera position to determine whether occluded
 
-local RAIN_EMITTER_DIM_DEFAULT = 40							-- Size of emitter block to the side/up
+local RAIN_EMITTER_DIM_DEFAULT = 100							-- Size of emitter block to the side/up
 local RAIN_EMITTER_DIM_MAXFORWARD = 100						-- Size of emitter block forwards when looking at the horizon
 local RAIN_EMITTER_UP_MODIFIER = 20							-- Maximum vertical displacement of emitter (when looking fully up/down)
 
@@ -6949,18 +6971,18 @@ local RAIN_SOUND_FADEOUT_TIME = 1
 
 local RAIN_STRAIGHT_ASSET = "rbxassetid://99851851"			-- Some properties of the straight rain particle effect
 local RAIN_STRAIGHT_ALPHA_LOW = 0.7							-- Minimum particle transparency for the straight rain emitter
-local RAIN_STRAIGHT_SIZE = NumberSequence.new(1)
-local RAIN_STRAIGHT_LIFETIME = NumberRange.new(1.5)
-local RAIN_STRAIGHT_MAX_RATE = 500							-- Maximum rate for the straight rain emitter
-local RAIN_STRAIGHT_MAX_SPEED = 40							-- Maximum speed for the straight rain emitter
+local RAIN_STRAIGHT_SIZE = NumberSequence.new(0.5)
+local RAIN_STRAIGHT_LIFETIME = NumberRange.new(0.7)
+local RAIN_STRAIGHT_MAX_RATE = 300							-- Maximum rate for the straight rain emitter
+local RAIN_STRAIGHT_MAX_SPEED = 130							-- Maximum speed for the straight rain emitter
 
 local RAIN_TOPDOWN_ASSET = "rbxassetid://99851851"			-- Some properties of the top-down rain particle effect
 local RAIN_TOPDOWN_ALPHA_LOW = 0.7							-- Minimum particle transparency for the top-down rain emitter
-local RAIN_TOPDOWN_SIZE = NumberSequence.new(1)			
-local RAIN_TOPDOWN_LIFETIME = NumberRange.new(1.5)
+local RAIN_TOPDOWN_SIZE = NumberSequence.new(0.5)			
+local RAIN_TOPDOWN_LIFETIME = NumberRange.new(0.7)
 local RAIN_TOPDOWN_ROTATION = NumberRange.new(0,360)
-local RAIN_TOPDOWN_MAX_RATE = 500							-- Maximum rate for the top-down rain emitter
-local RAIN_TOPDOWN_MAX_SPEED = 40							-- Maximum speed for the top-down rain emitter
+local RAIN_TOPDOWN_MAX_RATE = 300							-- Maximum rate for the top-down rain emitter
+local RAIN_TOPDOWN_MAX_SPEED = 130							-- Maximum speed for the top-down rain emitter
 
 local RAIN_SPLASH_ASSET = "rbxassetid://0"					-- Some properties of the splash particle effect
 local RAIN_SPLASH_ALPHA_LOW = 0.6							-- Minimum particle transparency for the splash emitters
