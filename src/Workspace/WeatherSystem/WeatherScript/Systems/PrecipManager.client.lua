@@ -58,82 +58,96 @@ Clouds.Parent = workspace.Terrain
 else Cloud.Value.Transparency = 1 end]]
 	
 function SetPrecip()
-	if Current.Weather.Value == "Drizzle" then
-		--Precip.Value.Rain.Enabled = true
-		--Precip.Value.Rain.Rate = 100
-		RainModule:SetIntensityRatio(0.100)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:Disable()
-	elseif Current.Weather.Value == "Showers" then
-		RainModule:SetIntensityRatio(0.200)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:Disable()
-	elseif Current.Weather.Value == "Rain" then
-		RainModule:SetIntensityRatio(0.300)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:Disable()
-	elseif Current.Weather.Value == "Heavy Rain" or Current.Weather.Value == "Thunderstorms" then
-		RainModule:SetIntensityRatio(0.400)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:Disable()
-	elseif Current.Weather.Value == "Strong Thunderstorms" then
-		RainModule:SetIntensityRatio(0.500)
-		RainModule:Enable()
-		HailModule:SetIntensityRatio(0.250)
-		HailModule:Enable()
-		SnowModule:Disable()
-	elseif Current.Weather.Value == "Flurries" then
-		RainModule:Disable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.100)
-		SnowModule:Enable()
-	elseif Current.Weather.Value == "Snow Showers" then
-		RainModule:Disable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.200)
-		SnowModule:Enable()
-	elseif Current.Weather.Value == "Snow" then
-		RainModule:Disable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.300)
-		SnowModule:Enable()
-	elseif Current.Weather.Value == "Heavy Snow" then
-		RainModule:Disable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.400)
-		SnowModule:Enable()
-	elseif Current.Weather.Value == "Freezing Drizzle" then
-		RainModule:SetIntensityRatio(0.100)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.100)
-		SnowModule:Enable()
-	elseif Current.Weather.Value == "Rain / Snow Showers" then
-		RainModule:SetIntensityRatio(0.200)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.200)
-		SnowModule:Enable()
-	elseif Current.Weather.Value == "Rain / Snow" then
-		RainModule:SetIntensityRatio(0.300)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.300)
-		SnowModule:Enable()
-	elseif Current.Weather.Value == "Heavy Rain / Snow" then
-		RainModule:SetIntensityRatio(0.400)
-		RainModule:Enable()
-		HailModule:Disable()
-		SnowModule:SetIntensityRatio(0.400)
-		SnowModule:Enable()
-	else
-		RainModule:Disable()
-		HailModule:Disable()
-		SnowModule:Disable()
+	local succes, message = pcall(function()
+		if Current.Weather.Value == "Drizzle" then
+			--Precip.Value.Rain.Enabled = true
+			--Precip.Value.Rain.Rate = 100
+			RainModule:SetIntensityRatio(0.100)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:Disable()
+		elseif Current.Weather.Value == "Showers" then
+			RainModule:SetIntensityRatio(0.200)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:Disable()
+		elseif Current.Weather.Value == "Rain" then
+			RainModule:SetIntensityRatio(0.300)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:Disable()
+		elseif Current.Weather.Value == "Heavy Rain" or Current.Weather.Value == "Thunderstorms" then
+			RainModule:SetIntensityRatio(0.400)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:Disable()
+		elseif Current.Weather.Value == "Strong Thunderstorms" then
+			RainModule:SetIntensityRatio(0.500)
+			RainModule:Enable()
+			HailModule:SetIntensityRatio(0.250)
+			HailModule:Enable()
+			SnowModule:Disable()
+		elseif Current.Weather.Value == "Flurries" then
+			RainModule:Disable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.100)
+			SnowModule:Enable()
+		elseif Current.Weather.Value == "Snow Showers" then
+			RainModule:Disable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.200)
+			SnowModule:Enable()
+		elseif Current.Weather.Value == "Snow" then
+			RainModule:Disable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.300)
+			SnowModule:Enable()
+		elseif Current.Weather.Value == "Heavy Snow" then
+			RainModule:Disable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.400)
+			SnowModule:Enable()
+		elseif Current.Weather.Value == "Freezing Drizzle" then
+			RainModule:SetIntensityRatio(0.100)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.100)
+			SnowModule:Enable()
+		elseif Current.Weather.Value == "Rain / Snow Showers" then
+			RainModule:SetIntensityRatio(0.200)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.200)
+			SnowModule:Enable()
+		elseif Current.Weather.Value == "Rain / Snow" then
+			RainModule:SetIntensityRatio(0.300)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.300)
+			SnowModule:Enable()
+		elseif Current.Weather.Value == "Heavy Rain / Snow" then
+			RainModule:SetIntensityRatio(0.400)
+			RainModule:Enable()
+			HailModule:Disable()
+			SnowModule:SetIntensityRatio(0.400)
+			SnowModule:Enable()
+		else
+			RainModule:Disable()
+			HailModule:Disable()
+			SnowModule:Disable()
+		end
+	end)
+
+	if not succes then -- Reload modulese because of ACS (most likely cause)
+		warn("REDON TECH WEATHER SYSTEM HAS RELOADED ITS RAIN MODULES THIS MAY CAUSE LAG PLEASE **REMOVE ACS** TO PREVENT THIS ISSUE | Error: ", message)
+		local original = Weather.Modules.PrecipitationHandlers
+		local clone = original:Clone()
+		original:Destroy()
+		clone.Parent = Weather.Modules
+		
+		RainModule = require(clone.Rain)
+		SnowModule = require(clone.Snow)
+		HailModule = require(clone.Hail)
 	end
 end
 
@@ -225,10 +239,14 @@ game.Workspace.ChildAdded:Connect(function(child)
 end)
 
 game.Workspace.Terrain.ChildRemoved:Connect(function(child)
-	if child == Clouds and player.Character.Humanoid.Health > 0 then -- The health part is to prevent ACS from screwing with this and causing the game to crash
-		local c = child:Clone()
-		c.Parent = game.Workspace.Terrain
-		Clouds = c
+	if child == Clouds then -- The health part is to prevent ACS from screwing with this and causing the game to crash
+		if player.Character.Humanoid.Health > 0 then
+			repeat
+				wait(1)
+			until player.Character.Humanoid.Health < 0
+		end
+		Clouds = Instance.new(Clouds)
+		Clouds.Parent = workspace.Terrain
 		-- Just incase
 		SetPrecip()
 		Precipitate()
@@ -244,3 +262,5 @@ end)
 -- 		Precip.Value.Position = CFrame.Position + Vector3.new(CFrame.LookVector.x * 50, 75, CFrame.LookVector.z * 50)
 -- 	end
 -- end)
+
+SetPrecip()
