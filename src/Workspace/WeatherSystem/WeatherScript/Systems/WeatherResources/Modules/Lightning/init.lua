@@ -57,6 +57,7 @@ function CreateLightning()
 			local Explosion = Instance.new("Explosion")
 			Explosion.BlastRadius = 50
 			Explosion.BlastPressure = 20000000000
+			Explosion.ExplosionType = Enum.ExplosionType.NoCrater
 			Explosion.Position = Pos
 			Explosion.Parent = LightningModel
 		end
