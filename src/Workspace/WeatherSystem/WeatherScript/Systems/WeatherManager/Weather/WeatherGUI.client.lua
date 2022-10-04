@@ -80,10 +80,10 @@ function GetCurrentWeather()
 	--if Alert == true then Main.CurrentWeather.Alert.Image = "rbxassetid://210639854" else Main.CurrentWeather.Alert.Image = "" end
 
 	if not Settings.UseMetric.Value then
-		New.CurrentTemp.Text = Current.Temperature.Value.."*"
+		New.CurrentTemp.Text = Current.Temperature.Value.."*F"
 		--Main.CurrentTemp.Text = Current.Temperature.Value.."*"
 	else
-		New.CurrentTemp.Text = math.floor((Current.Temperature.Value - 32) * (5/9)).."*"
+		New.CurrentTemp.Text = math.floor((Current.Temperature.Value - 32) * (5/9)).."*C"
 		--Main.CurrentTemp.Text = math.floor((Current.Temperature.Value - 32) * (5/9)).."*"
 	end
 

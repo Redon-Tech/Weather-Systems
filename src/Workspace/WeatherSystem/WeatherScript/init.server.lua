@@ -1,7 +1,37 @@
+if game:GetService("RunService"):IsRunning() then return end
 print("Redon Tech Weather System: Loading...")
 
-local ToolBar = plugin:CreateToolbar("Redon Tech")
-local Button = ToolBar:CreateButton("234354676654", "Install / Update Weather System", "http://www.roblox.com/asset/?id=319050289", "Weather System")
+-- local ToolBar = plugin:CreateToolbar("Redon Tech")
+-- local Button = ToolBar:CreateButton("234354676654", "Install / Update Weather System", "http://www.roblox.com/asset/?id=319050289", "Weather System")
+local Is_RBXM = plugin.Name:find(".rbxm") ~= nil
+local function getName(name: string)
+	if Is_RBXM then
+		name ..= " (RBXM)"
+	end
+	return name
+end
+
+local Plugin_Name = getName("Weather System")
+local Plugin_Description = "Install / Update Weather System"
+local Plugin_Icon = "rbxassetid://234354676654"
+local Button_Name = getName("Weather System")
+
+if _G.RTPlugins and typeof(_G.RTPlugins) == "table" then
+	if _G.RTPlugins.Buttons[Plugin_Name] then
+		Button = _G.RTPlugins.Buttons[Plugin_Name]
+	else
+		_G.RTPlugins.Buttons[Plugin_Name] = _G.RTPlugins.ToolBar:CreateButton(Button_Name, Plugin_Description, Plugin_Icon)
+		Button = _G.RTPlugins.Buttons[Plugin_Name]
+	end
+else
+	_G.RTPlugins = {
+		ToolBar = plugin:CreateToolbar("Redon Tech Plugins"),
+		Buttons = {}
+	}
+
+	_G.RTPlugins.Buttons[Plugin_Name] = _G.RTPlugins.ToolBar:CreateButton(Button_Name, Plugin_Description, Plugin_Icon)
+	Button = _G.RTPlugins.Buttons[Plugin_Name]
+end
 local Mouse = plugin:GetMouse()
 
 local GUI = script.SetupGUI:Clone()
@@ -221,13 +251,13 @@ Main.Climate.MouseButton1Click:connect(function()
 		
 		for _, Month in pairs(Climate.AverageTemps:GetChildren()) do
 			if Month.Name ~= "Title" then
-				if WeatherResources.Settings.UseMetric.Value then
-					Month.High.Text = math.floor((5/9) * (WeatherResources.Settings.AverageTemps[Month.Name].MaxValue - 32))
-					Month.Low.Text = math.floor((5/9) * (WeatherResources.Settings.AverageTemps[Month.Name].MinValue - 32))
-				else
-					Month.High.Text = WeatherResources.Settings.AverageTemps[Month.Name].MaxValue
-					Month.Low.Text = WeatherResources.Settings.AverageTemps[Month.Name].MinValue
-				end
+				-- if WeatherResources.Settings.UseMetric.Value then
+				-- 	Month.High.Text = math.floor((5/9) * (WeatherResources.Settings.AverageTemps[Month.Name].MaxValue - 32))
+				-- 	Month.Low.Text = math.floor((5/9) * (WeatherResources.Settings.AverageTemps[Month.Name].MinValue - 32))
+				-- else
+				Month.High.Text = WeatherResources.Settings.AverageTemps[Month.Name].MaxValue
+				Month.Low.Text = WeatherResources.Settings.AverageTemps[Month.Name].MinValue
+				-- end
 			end
 		end
 		
