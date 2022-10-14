@@ -1,0 +1,7 @@
+[package]
+name = "redon-tech/Weather-Systems"
+version = "2.0.0-alpha.1"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]

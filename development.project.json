@@ -5,7 +5,9 @@
     "Workspace": {
       "$className": "Workspace",
       "$ignoreUnknownInstances": true,
-      "$path": "src/Workspace"
+      "WeatherSystem": {
+        "$path": "src"
+      }
     }
   }
 }
