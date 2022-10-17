@@ -17,10 +17,10 @@ local function getName(name: string)
 	return name
 end
 
-local Plugin_Name = getName("Weather Syste,")
+local Plugin_Name = getName("Weather System")
 local Plugin_Description = "Easily add dynamic weather to your game!"
 local Plugin_Icon = "rbxassetid://234354676654"
-local Widget_Name = getName("Weather System")
+local Widget_Name = getName("WeatherSys")
 local Button_Name = getName("Weather Sys Menu")
 
 
@@ -45,7 +45,11 @@ end
 -- UI Setup --
 --------------------------------------------------------------------------------
 
-
+local Config = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 1280, 720)
+-- TODO: Change this default size to reflect the default menu
+local GUI = plugin:CreateDockWidgetPluginGui(Widget_Name, Config)
+GUI.Title = Plugin_Name
+GUI.Name = Widget_Name
 
 --------------------------------------------------------------------------------
 -- Plugin Functions --
