@@ -13,7 +13,7 @@ end
 
 local Plugin_Name = getName("Weather System")
 local Plugin_Description = "Install / Update Weather System"
-local Plugin_Icon = "rbxassetid://234354676654"
+local Plugin_Icon = "http://www.roblox.com/asset/?id=319050289"
 local Button_Name = getName("Weather System")
 
 if _G.RTPlugins and typeof(_G.RTPlugins) == "table" then

@@ -82,27 +82,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-1.4525044</X>
-					<Y>53.1729431</Y>
-					<Z>-7.70947027</Z>
-					<R00>-0.994232297</R00>
-					<R01>-0.086948052</R01>
-					<R02>0.0627878681</R02>
+					<X>298.688629</X>
+					<Y>204.784348</Y>
+					<Z>21.6617317</Z>
+					<R00>0.0519949943</R00>
+					<R01>-0.622513473</R01>
+					<R02>0.780879974</R02>
 					<R10>3.7252903e-09</R10>
-					<R11>0.585441887</R11>
-					<R12>0.810714424</R12>
-					<R20>-0.107248679</R20>
-					<R21>0.806038439</R21>
-					<R22>-0.582065165</R22>
+					<R11>0.781937659</R11>
+					<R12>0.62335664</R12>
+					<R20>-0.998647332</R20>
+					<R21>-0.0324114226</R21>
+					<R22>0.040656846</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-1.57808018</X>
-					<Y>51.5515137</Y>
-					<Z>-6.54533958</Z>
+					<X>297.126862</X>
+					<Y>203.537628</Y>
+					<Z>21.5804176</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -358,7 +358,7 @@ end
 
 local Plugin_Name = getName("Weather System")
 local Plugin_Description = "Install / Update Weather System"
-local Plugin_Icon = "rbxassetid://234354676654"
+local Plugin_Icon = "http://www.roblox.com/asset/?id=319050289"
 local Button_Name = getName("Weather System")
 
 if _G.RTPlugins and typeof(_G.RTPlugins) == "table" then
@@ -36183,7 +36183,7 @@ return TweenHighlight
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">7e22d0a86d163b7101fd1f1800019f51</UniqueId>
 			</Properties>
-			<Item class="LocalScript" referent="RBX93B10EA5F5BD4BB582A31BF0C1E96C7D">
+			<Item class="LocalScript" referent="RBXFB5AB72DA10142918039408A218A07C5">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
@@ -36191,7 +36191,7 @@ return TweenHighlight
 					<string name="Name">PrecipManager</string>
 					<string name="OriginalScriptGuid"></string>
 					<token name="RunContext">0</token>
-					<string name="ScriptGuid">{98D0F747-FE8A-4865-B288-5ABF18F429E9}</string>
+					<string name="ScriptGuid">{F5FE6AA8-D8B5-4C0C-A3CE-3AB8F155AB38}</string>
 					<ProtectedString name="Source"><![CDATA[wait(1)
 math.randomseed(tick())
 
@@ -36460,15 +36460,15 @@ end)
 SetPrecip()]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4277</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555653</UniqueId>
 				</Properties>
-				<Item class="StringValue" referent="RBX8CD96B27A1D24C00831F0890ED5E2E17">
+				<Item class="StringValue" referent="RBX28459A8CAE17461E912BFF4F304740DB">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">TTPPluginIdentifier</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4278</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555654</UniqueId>
 						<string name="Value">Weather</string>
 					</Properties>
 				</Item>
@@ -36483,7 +36483,7 @@ SetPrecip()]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">7e22d0a86d163b7101fd1f1800019d37</UniqueId>
 		</Properties>
-		<Item class="Script" referent="RBX67CC8774EC24467992A767C952003B2B">
+		<Item class="Script" referent="RBX579C45D981B24F43B0965D2EFA171658">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Disabled">false</bool>
@@ -36491,7 +36491,7 @@ SetPrecip()]]></ProtectedString>
 				<string name="Name">PlayerSetup</string>
 				<string name="OriginalScriptGuid"></string>
 				<token name="RunContext">0</token>
-				<string name="ScriptGuid">{0F4742DC-D1B7-480D-950E-8FE55E64AAFC}</string>
+				<string name="ScriptGuid">{1A3EDEB3-A998-4188-A8FD-B5918DC41EBA}</string>
 				<ProtectedString name="Source"><![CDATA[local objects = script:GetChildren()
 for i = 1, #objects do
 	if not script.Parent.Parent:FindFirstChild(objects[i].Name) then
@@ -36501,46 +36501,46 @@ for i = 1, #objects do
 end]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">696ead81a462fced034d22a1004c424c</UniqueId>
+				<UniqueId name="UniqueId">696ead81a462fced034d22a100555627</UniqueId>
 			</Properties>
-			<Item class="Folder" referent="RBX4168AE744E974766AC10FF219F8818F0">
+			<Item class="Folder" referent="RBX002F24881C24498FBC7BD4D4AAC329D4">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Weather</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c424d</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555628</UniqueId>
 				</Properties>
-				<Item class="ObjectValue" referent="RBX859C4BE1B5CB4EB9880932169B690057">
+				<Item class="ObjectValue" referent="RBXF5336F51F94B4041BE5301B5C889B2DE">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">Cloud</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c424e</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555629</UniqueId>
 						<Ref name="Value">null</Ref>
 					</Properties>
 				</Item>
-				<Item class="ObjectValue" referent="RBXA604FA86352642568B384A813CBEBEB3">
+				<Item class="ObjectValue" referent="RBX363DC57A7B964B9AA2EE14ABD09712C2">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">Precip</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c424f</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055562a</UniqueId>
 						<Ref name="Value">null</Ref>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Folder" referent="RBX320F9E65D04D4F04A378483E4F37104E">
+			<Item class="Folder" referent="RBXFEB79CE90C3B4CA7915A366D11207DDE">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Sounds</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4250</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a10055562b</UniqueId>
 				</Properties>
-				<Item class="Sound" referent="RBX944BA1C47CE444F282B266AEB917F12B">
+				<Item class="Sound" referent="RBX57BC24E0DE674B059C2F2807C3D77A21">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<float name="EmitterSize">10</float>
@@ -36555,12 +36555,12 @@ end]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<double name="TimePosition">0</double>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4251</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055562c</UniqueId>
 						<float name="Volume">0</float>
 						<float name="xmlRead_MaxDistance_3">10000</float>
 					</Properties>
 				</Item>
-				<Item class="Sound" referent="RBX777C6422EF1640088874B23F35654A4C">
+				<Item class="Sound" referent="RBX327FE38EC4D14814B073E7DE4586E0DE">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<float name="EmitterSize">10</float>
@@ -36575,19 +36575,19 @@ end]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<double name="TimePosition">0</double>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4252</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055562d</UniqueId>
 						<float name="Volume">0</float>
 						<float name="xmlRead_MaxDistance_3">10000</float>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="StringValue" referent="RBX19B666DD3479467DBA63FEC6D023278A">
+			<Item class="StringValue" referent="RBX336C5A8524774C148BBA2E1D8D67C46B">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">TTPPluginIdentifier</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4253</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a10055562e</UniqueId>
 					<string name="Value">Weather</string>
 				</Properties>
 			</Item>
@@ -36605,7 +36605,7 @@ end]]></ProtectedString>
 			<UniqueId name="UniqueId">7e22d0a86d163b7101fd1f1800019d38</UniqueId>
 			<token name="VirtualCursorMode">0</token>
 		</Properties>
-		<Item class="ScreenGui" referent="RBXC19852EC37C24B82A2675F9C7422789D">
+		<Item class="ScreenGui" referent="RBX483F129431464A8DB1ECEED9C0EDDD58">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
@@ -36622,10 +36622,10 @@ end]]></ProtectedString>
 				<bool name="SelectionGroup">false</bool>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d1</UniqueId>
+				<UniqueId name="UniqueId">696ead81a462fced034d22a1005556ad</UniqueId>
 				<token name="ZIndexBehavior">0</token>
 			</Properties>
-			<Item class="Frame" referent="RBXC7DC52E92C5D4C588781CEE3CBDA789C">
+			<Item class="Frame" referent="RBX6E5B7CB743E1470CB4FEC4B2254C9266">
 				<Properties>
 					<bool name="Active">false</bool>
 					<Vector2 name="AnchorPoint">
@@ -36682,11 +36682,11 @@ end]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d2</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a1005556ae</UniqueId>
 					<bool name="Visible">false</bool>
 					<int name="ZIndex">1</int>
 				</Properties>
-				<Item class="TextLabel" referent="RBXF41DC85456864DC9B229BAF2AA92ADF7">
+				<Item class="TextLabel" referent="RBX8F6BA6DB633D490099998D1263B25EDF">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -36771,12 +36771,12 @@ end]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d3</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a1005556af</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">10</int>
 					</Properties>
 				</Item>
-				<Item class="TextButton" referent="RBX154F7FB8E87D4DCCB3220869F58B7929">
+				<Item class="TextButton" referent="RBX9B50EBDCA6C94310A957F23423B20DC9">
 					<Properties>
 						<bool name="Active">true</bool>
 						<Vector2 name="AnchorPoint">
@@ -36865,11 +36865,11 @@ end]]></ProtectedString>
 						<bool name="TextWrapped">true</bool>
 						<token name="TextXAlignment">1</token>
 						<token name="TextYAlignment">1</token>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d4</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b0</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="TextLabel" referent="RBX98DCF25543184EA0B0881E380EFBD03B">
+					<Item class="TextLabel" referent="RBX3CFEC28E8F6C43A3B559811B8042E68D">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -36954,13 +36954,13 @@ end]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d5</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b1</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="TextLabel" referent="RBXD55A54B8665C4E84A74C6AF711750B5F">
+				<Item class="TextLabel" referent="RBXA10E02A312C34561AE4B74AA1454BAC5">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -37045,12 +37045,12 @@ end]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d6</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b2</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">10</int>
 					</Properties>
 				</Item>
-				<Item class="TextButton" referent="RBXA3EF9B383830486C9949D6F7F920FFE6">
+				<Item class="TextButton" referent="RBXC2E6E06CC33F421EAD2FBD771AF97CC9">
 					<Properties>
 						<bool name="Active">true</bool>
 						<Vector2 name="AnchorPoint">
@@ -37139,11 +37139,11 @@ end]]></ProtectedString>
 						<bool name="TextWrapped">true</bool>
 						<token name="TextXAlignment">1</token>
 						<token name="TextYAlignment">1</token>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d7</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b3</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="TextLabel" referent="RBX9CA0C5D89BD14BCE8D178D6B36C04EF8">
+					<Item class="TextLabel" referent="RBXAEBC72D2794843C08AEC80F1129027DD">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -37228,13 +37228,13 @@ end]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d8</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b4</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="TextBox" referent="RBXB44B4909262C4AE6AB9D81D280039ACB">
+				<Item class="TextBox" referent="RBX5C60BB91DD4F403BBD0582656345BF25">
 					<Properties>
 						<bool name="Active">true</bool>
 						<Vector2 name="AnchorPoint">
@@ -37329,11 +37329,11 @@ end]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42d9</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b5</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="TextLabel" referent="RBX47C114F7D9A6419892B142E7229F31D5">
+					<Item class="TextLabel" referent="RBXB9CD869DDC63471D92375B290D2195F9">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -37418,13 +37418,13 @@ end]]></ProtectedString>
 							<bool name="TextWrapped">true</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42da</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b6</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="TextButton" referent="RBX5C99E9A4171B4A08B8BC7B65547F57AA">
+				<Item class="TextButton" referent="RBXCB679EECCC0240A184E2289A3C61BA17">
 					<Properties>
 						<bool name="Active">true</bool>
 						<Vector2 name="AnchorPoint">
@@ -37513,11 +37513,11 @@ end]]></ProtectedString>
 						<bool name="TextWrapped">true</bool>
 						<token name="TextXAlignment">1</token>
 						<token name="TextYAlignment">1</token>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42db</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b7</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="TextLabel" referent="RBX46A09A33FF7D4B298E300F33AECC39FE">
+					<Item class="TextLabel" referent="RBX3538833E983540828637A52987508DE9">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -37602,14 +37602,14 @@ end]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42dc</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b8</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
 					</Item>
 				</Item>
 			</Item>
-			<Item class="LocalScript" referent="RBX541CED10F50840579702767C555DC0D4">
+			<Item class="LocalScript" referent="RBXEC4C47DCC3D14D529C591AE5E6687C29">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
@@ -37617,7 +37617,7 @@ end]]></ProtectedString>
 					<string name="Name">WeatherAdmin</string>
 					<string name="OriginalScriptGuid"></string>
 					<token name="RunContext">0</token>
-					<string name="ScriptGuid">{F822051E-4FA8-4B5F-B357-FF85D70E2D7E}</string>
+					<string name="ScriptGuid">{6617859B-4A15-4CDB-8A7D-12CEF9570C1E}</string>
 					<ProtectedString name="Source"><![CDATA[local allowed = game.ReplicatedStorage.WeatherFunction:InvokeServer()
 if allowed == false or not allowed then
 	script.Parent:Destroy()
@@ -37679,16 +37679,16 @@ game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(Key)
 end)]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42dd</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a1005556b9</UniqueId>
 				</Properties>
 			</Item>
-			<Item class="StringValue" referent="RBXF94F2DF3DA9347369A7FB0E64AF2A64D">
+			<Item class="StringValue" referent="RBX3B29FF5CD62C4EE39ACF8B74375D90D9">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">TTPPluginIdentifier</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42de</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a1005556ba</UniqueId>
 					<string name="Value">Weather</string>
 				</Properties>
 			</Item>
@@ -37861,7 +37861,7 @@ end)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">7e22d0a86d163b7101fd1f1800019d5f</UniqueId>
 		</Properties>
-		<Item class="Script" referent="RBX4AC5F839461446F79D47535A62C0638D">
+		<Item class="Script" referent="RBX380E3C0BE7E84A93AADE79BA81873147">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Disabled">false</bool>
@@ -37869,7 +37869,7 @@ end)]]></ProtectedString>
 				<string name="Name">WeatherManager</string>
 				<string name="OriginalScriptGuid"></string>
 				<token name="RunContext">0</token>
-				<string name="ScriptGuid">{65592EC8-F7A6-400C-9333-0B61FDA93B1B}</string>
+				<string name="ScriptGuid">{6176A3C7-7925-47C6-9E15-3384F92DAEAE}</string>
 				<ProtectedString name="Source"><![CDATA[local Settings = game.ReplicatedStorage:WaitForChild("WeatherResources"):WaitForChild("Settings")
 
 --if Settings.EnableForecast.Value and Settings.LockTime.Value == "" then script.Weather.Small.Visible = true else script.Weather.Date.Position = UDim2.new(0.5, -43, 0, 0) end
@@ -38519,9 +38519,9 @@ end
 ]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4255</UniqueId>
+				<UniqueId name="UniqueId">696ead81a462fced034d22a100555630</UniqueId>
 			</Properties>
-			<Item class="Script" referent="RBX4C5F5A4FF71A45B5B87754C7B5B75C95">
+			<Item class="Script" referent="RBXC8AA632F08DE4E32B232A4EE4DC1C172">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
@@ -38529,7 +38529,7 @@ end
 					<string name="Name">DaylightManager</string>
 					<string name="OriginalScriptGuid"></string>
 					<token name="RunContext">0</token>
-					<string name="ScriptGuid">{C8A6C145-8041-4CE1-BC08-6ED531FC3777}</string>
+					<string name="ScriptGuid">{665E8203-89E8-447B-9CEE-F3F5C581F03C}</string>
 					<ProtectedString name="Source"><![CDATA[wait(1)
 
 local Settings = game.ReplicatedStorage:WaitForChild("WeatherResources"):WaitForChild("Settings")
@@ -38650,20 +38650,20 @@ end
 ]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4256</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555631</UniqueId>
 				</Properties>
 			</Item>
-			<Item class="StringValue" referent="RBX52C970701FF44137A5D42A0E7CA8A979">
+			<Item class="StringValue" referent="RBX7A095E0522CA41638923BB97B6DC3CFE">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">TTPPluginIdentifier</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4257</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555632</UniqueId>
 					<string name="Value">Weather</string>
 				</Properties>
 			</Item>
-			<Item class="ScreenGui" referent="RBXF023CE0CDA3649C1AB17446C9212E1F8">
+			<Item class="ScreenGui" referent="RBXAD71E05D90C04A819F1AFE7D2D08125C">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
@@ -38680,10 +38680,10 @@ end
 					<bool name="SelectionGroup">false</bool>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4258</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555633</UniqueId>
 					<token name="ZIndexBehavior">0</token>
 				</Properties>
-				<Item class="LocalScript" referent="RBX4324F45878D14D12AF539D80BBC6FC39">
+				<Item class="LocalScript" referent="RBXA56EAFBFAD164B9391A39121E0E0CFC7">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<bool name="Disabled">true</bool>
@@ -38691,7 +38691,7 @@ end
 						<string name="Name">WeatherGUI</string>
 						<string name="OriginalScriptGuid"></string>
 						<token name="RunContext">0</token>
-						<string name="ScriptGuid">{BD5ACA11-93B5-46BF-A69A-A8525F908019}</string>
+						<string name="ScriptGuid">{4818FA64-C6FA-4E1F-ABC0-165922BCAE7F}</string>
 						<ProtectedString name="Source"><![CDATA[wait(1)
 local player = game.Players.LocalPlayer
 
@@ -38845,10 +38845,10 @@ GetCurrentWeather()
 UpdateWeather()]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4259</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555634</UniqueId>
 					</Properties>
 				</Item>
-				<Item class="Frame" referent="RBX99E272C438D64FB7B202F0BB101AF228">
+				<Item class="Frame" referent="RBX2D34EC4834B0420BB7EE0BAAC748B252">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -38905,11 +38905,11 @@ UpdateWeather()]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c425a</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555635</UniqueId>
 						<bool name="Visible">false</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="TextLabel" referent="RBX6A294E5349B84935B245AF6810EC71E4">
+					<Item class="TextLabel" referent="RBXAF09E629297B4C35A7F874FF3B916479">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -38994,12 +38994,12 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c425b</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555636</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">4</int>
 						</Properties>
 					</Item>
-					<Item class="ImageLabel" referent="RBX745A628E5F534B5B9D094882A79DD608">
+					<Item class="ImageLabel" referent="RBX74FA9BFFA035444697C51F29A19A80D0">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -39089,11 +39089,11 @@ UpdateWeather()]]></ProtectedString>
 								<YS>1</YS>
 								<YO>0</YO>
 							</UDim2>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c425c</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555637</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
-						<Item class="ImageLabel" referent="RBX958FA192DE564348AC73DF4310ABF1E4">
+						<Item class="ImageLabel" referent="RBX42CB55CA02C44960B02680FD6E6F82FE">
 							<Properties>
 								<bool name="Active">false</bool>
 								<Vector2 name="AnchorPoint">
@@ -39183,13 +39183,13 @@ UpdateWeather()]]></ProtectedString>
 									<YS>1</YS>
 									<YO>0</YO>
 								</UDim2>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c425d</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a100555638</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
 					</Item>
-					<Item class="TextLabel" referent="RBX731B5ADB117E4D2F81E377396D494CEA">
+					<Item class="TextLabel" referent="RBXC1871BE222DA4CBDA06EA579B9112097">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -39274,12 +39274,12 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">true</bool>
 							<token name="TextXAlignment">0</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c425e</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555639</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">4</int>
 						</Properties>
 					</Item>
-					<Item class="Frame" referent="RBX8E95BCA99AD84C7887D7DD600F2BC5AE">
+					<Item class="Frame" referent="RBX5DAA06C5EB8B45508AADAA0F0E7C4AB2">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -39336,12 +39336,12 @@ UpdateWeather()]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c425f</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055563a</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
 					</Item>
-					<Item class="ImageLabel" referent="RBX123BD039A5B349BFB3EA68A5ABC037DE">
+					<Item class="ImageLabel" referent="RBX6D5BBDBA44C047379FCD9A7A93603EE1">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -39431,11 +39431,11 @@ UpdateWeather()]]></ProtectedString>
 								<YS>1</YS>
 								<YO>0</YO>
 							</UDim2>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4260</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055563b</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
-						<Item class="ImageLabel" referent="RBXD650168B2CDF4291A6BD88E438745C1E">
+						<Item class="ImageLabel" referent="RBX06CEFA47CA72415DAC2970FB23B44A5E">
 							<Properties>
 								<bool name="Active">false</bool>
 								<Vector2 name="AnchorPoint">
@@ -39525,13 +39525,13 @@ UpdateWeather()]]></ProtectedString>
 									<YS>1</YS>
 									<YO>0</YO>
 								</UDim2>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4261</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a10055563c</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
 					</Item>
-					<Item class="TextLabel" referent="RBXD5F4E92C29194B4D865A3E9B4A43C8DA">
+					<Item class="TextLabel" referent="RBXC49CFC80C63F4F109B5471BE0F3A3F56">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -39616,12 +39616,12 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">true</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4262</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055563d</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">4</int>
 						</Properties>
 					</Item>
-					<Item class="Frame" referent="RBXE30C4B28BD0144EE9A3187D51F68EF87">
+					<Item class="Frame" referent="RBX8AA04510544A484FB648B5BBF68F6149">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -39678,12 +39678,12 @@ UpdateWeather()]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4263</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055563e</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
 					</Item>
-					<Item class="TextLabel" referent="RBX8A73AFFB70074730852C881BA13B5652">
+					<Item class="TextLabel" referent="RBX2F70B35CBA29472FBCA076633BB3A688">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -39768,12 +39768,12 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">true</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4264</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055563f</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">4</int>
 						</Properties>
 					</Item>
-					<Item class="TextButton" referent="RBX8DC33DF4B10E450592628EB566F7D9E6">
+					<Item class="TextButton" referent="RBX4C444EEABA1C44FA90396172FD815572">
 						<Properties>
 							<bool name="Active">true</bool>
 							<Vector2 name="AnchorPoint">
@@ -39862,11 +39862,11 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4265</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555640</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">2</int>
 						</Properties>
-						<Item class="Frame" referent="RBXD18848E5E3514D4F888B18C6705F6D7A">
+						<Item class="Frame" referent="RBX308EDCBCCE504A62B2F8D95388683186">
 							<Properties>
 								<bool name="Active">true</bool>
 								<Vector2 name="AnchorPoint">
@@ -39923,14 +39923,14 @@ UpdateWeather()]]></ProtectedString>
 								<int64 name="SourceAssetId">-1</int64>
 								<token name="Style">0</token>
 								<BinaryString name="Tags"></BinaryString>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4266</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a100555641</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
 					</Item>
 				</Item>
-				<Item class="Frame" referent="RBXBD26CC694C144A7C9EE3FDDC32CA60A3">
+				<Item class="Frame" referent="RBX14EBCBB319A941C28AE528A5296C9008">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -39987,11 +39987,11 @@ UpdateWeather()]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4267</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555642</UniqueId>
 						<bool name="Visible">false</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="TextButton" referent="RBXC22449DC364E47B4A447F90EE2F3D150">
+					<Item class="TextButton" referent="RBXAF2690896C444EB8ADB2B22301BAEF5B">
 						<Properties>
 							<bool name="Active">true</bool>
 							<Vector2 name="AnchorPoint">
@@ -40080,11 +40080,11 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4268</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555643</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">2</int>
 						</Properties>
-						<Item class="Frame" referent="RBXF0DBB8E9FA38400D8D49A01B355FC639">
+						<Item class="Frame" referent="RBXE05A09ABD4F24722A871EDEE1CD3D9B0">
 							<Properties>
 								<bool name="Active">false</bool>
 								<Vector2 name="AnchorPoint">
@@ -40141,13 +40141,13 @@ UpdateWeather()]]></ProtectedString>
 								<int64 name="SourceAssetId">-1</int64>
 								<token name="Style">0</token>
 								<BinaryString name="Tags"></BinaryString>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4269</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a100555644</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
 					</Item>
-					<Item class="ImageLabel" referent="RBXF120DCD9FBA1490DAF4B92DD2D97BE51">
+					<Item class="ImageLabel" referent="RBXF18EF572EB3145DA9ACF0BC883CB443F">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -40237,11 +40237,11 @@ UpdateWeather()]]></ProtectedString>
 								<YS>1</YS>
 								<YO>0</YO>
 							</UDim2>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c426a</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555645</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
-						<Item class="ImageLabel" referent="RBX6E412764E7DB4489BD91A5D3AFA49193">
+						<Item class="ImageLabel" referent="RBXD0660296A8F540C797180F3B666EA6D5">
 							<Properties>
 								<bool name="Active">false</bool>
 								<Vector2 name="AnchorPoint">
@@ -40331,13 +40331,13 @@ UpdateWeather()]]></ProtectedString>
 									<YS>1</YS>
 									<YO>0</YO>
 								</UDim2>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c426b</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a100555646</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
 					</Item>
-					<Item class="TextLabel" referent="RBXEAB823F4882B46A0882B07B2BE9FD574">
+					<Item class="TextLabel" referent="RBX4B9DBD9F30D44875A2BC9304A8F2AD0F">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -40422,13 +40422,13 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c426c</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555647</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">4</int>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="TextLabel" referent="RBX2B226B9F77A74720B766CBE1433EC746">
+				<Item class="TextLabel" referent="RBX1EC1DBBDF66343409A6765271B80AE40">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -40513,22 +40513,22 @@ UpdateWeather()]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c426d</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555648</UniqueId>
 						<bool name="Visible">false</bool>
 						<int name="ZIndex">5</int>
 					</Properties>
 				</Item>
-				<Item class="StringValue" referent="RBX0B8C706E88BF4E38930C8B8F9699DA6A">
+				<Item class="StringValue" referent="RBX0B428B508E7540BC93E22063D1100534">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">TTPPluginIdentifier</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c426e</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555649</UniqueId>
 						<string name="Value">Weather</string>
 					</Properties>
 				</Item>
-				<Item class="Frame" referent="RBXB704728392614849B40C36152D489936">
+				<Item class="Frame" referent="RBX8BFC26149E4A43D886A3892D9A8E9CE4">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -40576,20 +40576,20 @@ UpdateWeather()]]></ProtectedString>
 						<Ref name="SelectionImageObject">null</Ref>
 						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
-							<XS>0</XS>
-							<XO>171</XO>
-							<YS>0</YS>
-							<YO>36</YO>
+							<XS>0.143216074</XS>
+							<XO>0</XO>
+							<YS>0.0544629358</YS>
+							<YO>0</YO>
 						</UDim2>
 						<token name="SizeConstraint">0</token>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c426f</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055564a</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">999999998</int>
 					</Properties>
-					<Item class="ImageLabel" referent="RBXC18246C10D5A4FDDBD92A83D1C90362C">
+					<Item class="ImageLabel" referent="RBXF41C748FC646440592731B75198A20A1">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -40679,11 +40679,11 @@ UpdateWeather()]]></ProtectedString>
 								<YS>1</YS>
 								<YO>0</YO>
 							</UDim2>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4270</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055564b</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">999999999</int>
 						</Properties>
-						<Item class="ImageLabel" referent="RBXADFAC31E0D5748A892C37547DCFD400F">
+						<Item class="ImageLabel" referent="RBX0A090FFEF0304945A76B1E2595039933">
 							<Properties>
 								<bool name="Active">false</bool>
 								<Vector2 name="AnchorPoint">
@@ -40773,13 +40773,13 @@ UpdateWeather()]]></ProtectedString>
 									<YS>1</YS>
 									<YO>0</YO>
 								</UDim2>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4271</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a10055564c</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
 					</Item>
-					<Item class="TextLabel" referent="RBX6ABD5E5CBAF149DDB37E60A5473CBAC3">
+					<Item class="TextLabel" referent="RBX906B100CDC19481DADB71F39D82A3CFA">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -40864,12 +40864,12 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4272</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055564d</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">999999999</int>
 						</Properties>
 					</Item>
-					<Item class="TextLabel" referent="RBXFE504AA548BB48218F4AC6F008016399">
+					<Item class="TextLabel" referent="RBX1CB708F5F0ED4F8FB17883F002A12E2C">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -40954,9 +40954,21 @@ UpdateWeather()]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">0</token>
 							<token name="TextYAlignment">1</token>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4273</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055564e</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">999999999</int>
+						</Properties>
+					</Item>
+					<Item class="UIAspectRatioConstraint" referent="RBX037BDDD844184CE7A685B8BD634063B7">
+						<Properties>
+							<float name="AspectRatio">4.74999952</float>
+							<token name="AspectType">0</token>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<token name="DominantAxis">0</token>
+							<string name="Name">UIAspectRatioConstraint</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055564f</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -41007,29 +41019,29 @@ UpdateWeather()]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">7e22d0a86d163b7101fd1f1800019d61</UniqueId>
 		</Properties>
-		<Item class="Folder" referent="RBX1B1365E77F3C48E1BB9707698469870F">
+		<Item class="Folder" referent="RBX2DD7A93F705F4475A606EE0A4C3719C6">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">WeatherResources</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">696ead81a462fced034d22a1004c427a</UniqueId>
+				<UniqueId name="UniqueId">696ead81a462fced034d22a100555656</UniqueId>
 			</Properties>
-			<Item class="Folder" referent="RBXFF60BBA63D854F48B07BF2EF0DC38071">
+			<Item class="Folder" referent="RBX4A515E567D90450DA543698D530C7653">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Modules</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c427b</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555657</UniqueId>
 				</Properties>
-				<Item class="ModuleScript" referent="RBX38741344A32741F5A29F04670C7E23B2">
+				<Item class="ModuleScript" referent="RBX415D6FC384CB43899926B5E524A8D242">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">Lightning</string>
 						<string name="OriginalScriptGuid"></string>
-						<string name="ScriptGuid">{87A1EE14-8DD7-4B3A-82EE-7E3181E68DB9}</string>
+						<string name="ScriptGuid">{9CDF1AD2-F26E-4A82-8A25-17BC70B174B7}</string>
 						<ProtectedString name="Source"><![CDATA[function CreateLightning()
 	
 	repeat wait() until #game.Players:GetPlayers() > 0
@@ -41112,9 +41124,9 @@ end
 return CreateLightning]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c427c</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555658</UniqueId>
 					</Properties>
-					<Item class="Script" referent="RBXF1CC1D733D0D466188B54BD1775C1766">
+					<Item class="Script" referent="RBXD1E5A9F28E424CB2A9CD62C0B97B3BC6">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<bool name="Disabled">true</bool>
@@ -41122,7 +41134,7 @@ return CreateLightning]]></ProtectedString>
 							<string name="Name">LightningScript</string>
 							<string name="OriginalScriptGuid"></string>
 							<token name="RunContext">0</token>
-							<string name="ScriptGuid">{86DCC09B-A28B-466A-9769-50D561AA6D65}</string>
+							<string name="ScriptGuid">{19C279B4-4CC6-42DE-B95E-A04B5B6806DC}</string>
 							<ProtectedString name="Source"><![CDATA[sp = script.Parent
 frames = 10
 bright = game.Lighting.Brightness
@@ -41147,17 +41159,17 @@ sp:remove()
 ]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c427d</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555659</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="ModuleScript" referent="RBX342855F0FCCC480296ED41DFFFA250CC">
+				<Item class="ModuleScript" referent="RBX450D7AE5F4E3477B8754004160A668E4">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">GetWeather</string>
 						<string name="OriginalScriptGuid"></string>
-						<string name="ScriptGuid">{AE6D6AE7-5EC7-4D73-BC47-95FAEB8964FB}</string>
+						<string name="ScriptGuid">{33B5793C-7759-487A-9213-A004A3A8466D}</string>
 						<ProtectedString name="Source"><![CDATA[local Convert = {}
 
 function Convert.Number(String)
@@ -41219,16 +41231,16 @@ end
 return Convert]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c427e</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055565a</UniqueId>
 					</Properties>
 				</Item>
-				<Item class="ModuleScript" referent="RBXFBF92DA1924D4E4FAA315BA534561C5B">
+				<Item class="ModuleScript" referent="RBX34646BD2306444338F6F94CDC20674BE">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">Cloud</string>
 						<string name="OriginalScriptGuid"></string>
-						<string name="ScriptGuid">{C10F27C9-71C8-404C-B2B8-F1DC3BA1D65B}</string>
+						<string name="ScriptGuid">{47E054B0-E4F0-44CE-922F-88A3C4173268}</string>
 						<ProtectedString name="Source"><![CDATA[--((current - target) / 2) + target + (((current - target) / 2) * math.cos((currenttime * math.pi) / lengthoftime))
 
 function CloudVisiblity(TargetSmall, TargetLarge, Small, Large, Time)
@@ -41246,16 +41258,16 @@ end
 return CloudVisiblity]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c427f</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055565b</UniqueId>
 					</Properties>
 				</Item>
-				<Item class="ModuleScript" referent="RBX5625535F5AC64E01BCC261483334E18B">
+				<Item class="ModuleScript" referent="RBXE06A834285E245DA886F4C0D06ECF26C">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">CreateClouds</string>
 						<string name="OriginalScriptGuid"></string>
-						<string name="ScriptGuid">{EFB1AE2F-58CA-4ECD-83A5-8A5C1E126216}</string>
+						<string name="ScriptGuid">{49CC5278-FD4C-4C7F-9505-56E4B6AFA035}</string>
 						<ProtectedString name="Source"><![CDATA[function CreateClouds()
 	local Model = Instance.new("Model")
 	Model.Name = "SmallClouds"
@@ -41296,16 +41308,16 @@ end
 return CreateClouds]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4280</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055565c</UniqueId>
 					</Properties>
 				</Item>
-				<Item class="ModuleScript" referent="RBXF609A42C8CC545B4897A245A3520ACA9">
+				<Item class="ModuleScript" referent="RBXF7AD3771CFD941D581476E5C7FF97AA5">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">GetDescription</string>
 						<string name="OriginalScriptGuid"></string>
-						<string name="ScriptGuid">{10C0FC4E-BFC7-4973-B1E1-1E11F4A977ED}</string>
+						<string name="ScriptGuid">{60DBF8D0-5BED-41D5-9D62-A3387024277A}</string>
 						<ProtectedString name="Source"><![CDATA[local Settings = game.ReplicatedStorage:WaitForChild("WeatherResources"):WaitForChild("Settings")
 
 function Description(Time, Weather, Chance, Temperature)
@@ -41516,16 +41528,16 @@ end
 return Description]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4281</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055565d</UniqueId>
 					</Properties>
 				</Item>
-				<Item class="ModuleScript" referent="RBXF9883ED1798E4B84A84EB8DB147FA2C3">
+				<Item class="ModuleScript" referent="RBX974F548162674700A146E6B3DD2F668D">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">SetLights</string>
 						<string name="OriginalScriptGuid"></string>
-						<string name="ScriptGuid">{2DAD1E37-56A2-470F-A2D3-8860966FA432}</string>
+						<string name="ScriptGuid">{9D4DA704-6BA2-451A-AC91-6905B53F5CD5}</string>
 						<ProtectedString name="Source"><![CDATA[function SetLights(Bool, Lights, Gantries)
 	for _, Light in pairs(Lights) do
 		for _, Part in pairs(Light:GetChildren()) do
@@ -41548,24 +41560,24 @@ end
 return SetLights]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4282</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055565e</UniqueId>
 					</Properties>
 				</Item>
-				<Item class="Folder" referent="RBX3ADCE553C1554C91A0273E333F8091AE">
+				<Item class="Folder" referent="RBXC9FADBC58A3C426D82C6A508D06780BF">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">PrecipitationHandlers</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4283</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055565f</UniqueId>
 					</Properties>
-					<Item class="ModuleScript" referent="RBX7CC6F677CF8143F6A39BD7630455B5D0">
+					<Item class="ModuleScript" referent="RBXFDE26E0A8FA242C88D3B3DB072A60CE6">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Rain</string>
 							<string name="OriginalScriptGuid"></string>
-							<string name="ScriptGuid">{94E54C75-041F-4263-98D8-18B2FD8327DF}</string>
+							<string name="ScriptGuid">{620610F3-2757-4D84-9EDB-E593CC395CEA}</string>
 							<ProtectedString name="Source"><![CDATA[--[[
 	
 	Rain module v1.0 by buildthomas (July 2018)
@@ -42625,16 +42637,16 @@ end
 return Rain]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4284</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555660</UniqueId>
 						</Properties>
 					</Item>
-					<Item class="ModuleScript" referent="RBX5A702F1B868B4636B1062DC796C95E14">
+					<Item class="ModuleScript" referent="RBX8FEE4851FB2D49859CA8B13A102A7892">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Snow</string>
 							<string name="OriginalScriptGuid"></string>
-							<string name="ScriptGuid">{17437D28-A8D0-4D8D-9A96-34AADE702197}</string>
+							<string name="ScriptGuid">{FAD5E528-9752-4AF2-9F33-F1B301D34353}</string>
 							<ProtectedString name="Source"><![CDATA[--[[
 	
 	Rain module v1.0 by buildthomas (July 2018)
@@ -43691,16 +43703,16 @@ end
 return Rain]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4285</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555661</UniqueId>
 						</Properties>
 					</Item>
-					<Item class="ModuleScript" referent="RBX6F82944BE1A34A7289B253FB9E7212CE">
+					<Item class="ModuleScript" referent="RBX7708394D97CB45359C8098C19E7052AF">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Hail</string>
 							<string name="OriginalScriptGuid"></string>
-							<string name="ScriptGuid">{2673C9B0-4AC0-4291-8B9D-AF5BBF00D900}</string>
+							<string name="ScriptGuid">{2DF7D2DF-B40B-448E-BB73-07D66AB46F6E}</string>
 							<ProtectedString name="Source"><![CDATA[--[[
 	
 	Rain module v1.0 by buildthomas (July 2018)
@@ -44757,20 +44769,20 @@ end
 return Rain]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4286</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555662</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
 			</Item>
-			<Item class="Folder" referent="RBXACA044881C7F4BA7BBFDE02F712E66A8">
+			<Item class="Folder" referent="RBX2AFE5962F3E240FA98BD14C9EA33ED26">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Parts</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4287</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555663</UniqueId>
 				</Properties>
-				<Item class="Part" referent="RBXDBF0743510AB48E0B94EFF68D48D0BE1">
+				<Item class="Part" referent="RBX616A813D8D354780A6EC228115B669AE">
 					<Properties>
 						<bool name="Anchored">true</bool>
 						<BinaryString name="AttributesSerialize"></BinaryString>
@@ -44851,7 +44863,7 @@ return Rain]]></ProtectedString>
 						<token name="TopSurface">0</token>
 						<token name="TopSurfaceInput">0</token>
 						<float name="Transparency">0</float>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4288</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555664</UniqueId>
 						<Vector3 name="Velocity">
 							<X>0</X>
 							<Y>0</Y>
@@ -44866,7 +44878,7 @@ return Rain]]></ProtectedString>
 						</Vector3>
 					</Properties>
 				</Item>
-				<Item class="Part" referent="RBXF6ACD13B200345DC87DD79C878404E76">
+				<Item class="Part" referent="RBX13A902E22B4D4F38BE8076AAE1D42C38">
 					<Properties>
 						<bool name="Anchored">true</bool>
 						<BinaryString name="AttributesSerialize"></BinaryString>
@@ -44947,7 +44959,7 @@ return Rain]]></ProtectedString>
 						<token name="TopSurface">0</token>
 						<token name="TopSurfaceInput">0</token>
 						<float name="Transparency">1</float>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4289</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555665</UniqueId>
 						<Vector3 name="Velocity">
 							<X>0</X>
 							<Y>0</Y>
@@ -44961,7 +44973,7 @@ return Rain]]></ProtectedString>
 							<Z>250</Z>
 						</Vector3>
 					</Properties>
-					<Item class="ParticleEmitter" referent="RBXB30D3DA016394907BB122CB5B97DED31">
+					<Item class="ParticleEmitter" referent="RBXEC699B1A5AC044278DD254A3FD6383E4">
 						<Properties>
 							<Vector3 name="Acceleration">
 								<X>0</X>
@@ -45004,12 +45016,12 @@ return Rain]]></ProtectedString>
 							<Content name="Texture"><url>rbxassetid://99851851</url></Content>
 							<float name="TimeScale">1</float>
 							<NumberSequence name="Transparency">0 1 0 0.0972569 0 0 1 0 0 </NumberSequence>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c428a</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555666</UniqueId>
 							<float name="VelocityInheritance">0</float>
 							<float name="ZOffset">5</float>
 						</Properties>
 					</Item>
-					<Item class="ParticleEmitter" referent="RBX4143B482A9284C4BA128ED7DDD6C258C">
+					<Item class="ParticleEmitter" referent="RBXC4124F87FCD643018DF34938EBBB1737">
 						<Properties>
 							<Vector3 name="Acceleration">
 								<X>0</X>
@@ -45052,12 +45064,12 @@ return Rain]]></ProtectedString>
 							<Content name="Texture"><url>rbxassetid://242096290</url></Content>
 							<float name="TimeScale">1</float>
 							<NumberSequence name="Transparency">0 1 0 0.0131579 0.25625 0 1 0.25 0 </NumberSequence>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c428b</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555667</UniqueId>
 							<float name="VelocityInheritance">0</float>
 							<float name="ZOffset">3</float>
 						</Properties>
 					</Item>
-					<Item class="ParticleEmitter" referent="RBXF5A3B1A846AA444AA09A236BA533FDC8">
+					<Item class="ParticleEmitter" referent="RBX1963A44AD8254174902A648F1C6A6050">
 						<Properties>
 							<Vector3 name="Acceleration">
 								<X>0</X>
@@ -45100,22 +45112,22 @@ return Rain]]></ProtectedString>
 							<Content name="Texture"><url>rbxassetid://29510111</url></Content>
 							<float name="TimeScale">1</float>
 							<NumberSequence name="Transparency">0 1 0 0.0835411 0 0 1 0 0 </NumberSequence>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c428c</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555668</UniqueId>
 							<float name="VelocityInheritance">0</float>
 							<float name="ZOffset">4</float>
 						</Properties>
 					</Item>
 				</Item>
 			</Item>
-			<Item class="Folder" referent="RBX4C0E6B82E2944F2B8ED00D06A611A15A">
+			<Item class="Folder" referent="RBX3E00D49A07CD4035A803395FE9E53F53">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Sounds</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c428d</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555669</UniqueId>
 				</Properties>
-				<Item class="Sound" referent="RBX08B26AE5161A474CA5179E36F3543E1B">
+				<Item class="Sound" referent="RBX54BD4EBC855641449A8486BB51F3EF56">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<float name="EmitterSize">10</float>
@@ -45130,12 +45142,12 @@ return Rain]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<double name="TimePosition">0</double>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c428e</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055566a</UniqueId>
 						<float name="Volume">1</float>
 						<float name="xmlRead_MaxDistance_3">10000</float>
 					</Properties>
 				</Item>
-				<Item class="Sound" referent="RBX55A6B53C8E6C4395B531F86AB65BDDC2">
+				<Item class="Sound" referent="RBX45330D37E8DE43BAAEE50C88308568DC">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<float name="EmitterSize">10</float>
@@ -45150,12 +45162,12 @@ return Rain]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<double name="TimePosition">0</double>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c428f</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055566b</UniqueId>
 						<float name="Volume">0</float>
 						<float name="xmlRead_MaxDistance_3">10000</float>
 					</Properties>
 				</Item>
-				<Item class="Sound" referent="RBX9F09355D471C4956BB89B5578B2646D3">
+				<Item class="Sound" referent="RBX7DA993C2C5DF4BD19F8706C069377ED0">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<float name="EmitterSize">10</float>
@@ -45170,224 +45182,224 @@ return Rain]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<double name="TimePosition">0</double>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4290</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055566c</UniqueId>
 						<float name="Volume">0</float>
 						<float name="xmlRead_MaxDistance_3">10000</float>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Folder" referent="RBX9C44BD8406374CD69E74C79C9DF91E25">
+			<Item class="Folder" referent="RBX2A60CDAF9FD740618F6357602C4B5E0B">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Weather</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4291</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a10055566d</UniqueId>
 				</Properties>
-				<Item class="StringValue" referent="RBXB5BCEC61C9084743A03D5291CF304AA6">
+				<Item class="StringValue" referent="RBX543A6C153AFC4570AB2D6BE47CD7F197">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">Day</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4292</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055566e</UniqueId>
 						<string name="Value"></string>
 					</Properties>
-					<Item class="IntValue" referent="RBX8807A8770F8E4FEEAC254730F641B0A3">
+					<Item class="IntValue" referent="RBXB9FE0B4E8B0E40E2B2F672C62EE5D8A9">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">DayBegin</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4293</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055566f</UniqueId>
 							<int64 name="Value">0</int64>
 						</Properties>
 					</Item>
-					<Item class="IntValue" referent="RBXEF94630DCE624994969A7C1D69284A1A">
+					<Item class="IntValue" referent="RBXE21D06E8712949F4B2CB087C2E86C90A">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">NightBegin</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4294</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555670</UniqueId>
 							<int64 name="Value">0</int64>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="Folder" referent="RBXE913B65C849446B5BA9CF1E1ACC8D5CB">
+				<Item class="Folder" referent="RBXAC80836D73224BBD86DEEFDB701E6BAE">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">Current</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4295</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555671</UniqueId>
 					</Properties>
-					<Item class="IntValue" referent="RBXEAF9BEF85719443BA1D570DA047DEDCE">
+					<Item class="IntValue" referent="RBX6F56E6758FAE4897BCAC06C887CFAA17">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Temperature</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4296</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555672</UniqueId>
 							<int64 name="Value">0</int64>
 						</Properties>
 					</Item>
-					<Item class="StringValue" referent="RBXD4A7DF08D67D459EAECDF7A27934195E">
+					<Item class="StringValue" referent="RBXB45EEAB4AEE24CAAA64C0B0710F9EBD2">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Weather</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4297</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555673</UniqueId>
 							<string name="Value">Sunny</string>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="Folder" referent="RBXE4CE2E9D07C947CCA1BBA3FA9A30C485">
+				<Item class="Folder" referent="RBXE6213399960D430390490E3E11A4C08B">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">ForecastNight</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4298</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555674</UniqueId>
 					</Properties>
-					<Item class="IntValue" referent="RBXE04B57DC70DE4EFE93E20FF8F5F39F7D">
+					<Item class="IntValue" referent="RBXFBA181D75A3A45118C77EAAF8637DE1D">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Temperature</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4299</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555675</UniqueId>
 							<int64 name="Value">0</int64>
 						</Properties>
 					</Item>
-					<Item class="StringValue" referent="RBXC236BEAA52804E4FB57A6982C0ABBEC4">
+					<Item class="StringValue" referent="RBXFED097C009CA4AFAB689F22270659D8C">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Weather</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c429a</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555676</UniqueId>
 							<string name="Value">Sunny</string>
 						</Properties>
-						<Item class="IntValue" referent="RBX42A8E00DE0CC40A6BC3340B73FA703F3">
+						<Item class="IntValue" referent="RBXF33598EEE39D4C409CBD42020B7B22F7">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<string name="Name">Chance</string>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c429b</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a100555677</UniqueId>
 								<int64 name="Value">0</int64>
 							</Properties>
 						</Item>
 					</Item>
-					<Item class="StringValue" referent="RBXA9CC3267EB80456294C30A189C00E5CB">
+					<Item class="StringValue" referent="RBXA29E5D3C48F74507B5EF4E6E105887C7">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Description</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c429c</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555678</UniqueId>
 							<string name="Value">Abundant sunshine. Winds NNW at 5-15 mph. Chance of precipitation 0%.</string>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="Folder" referent="RBX915A811CFEE340739284A28694BBAF5E">
+				<Item class="Folder" referent="RBXDFBD54D5640048BD8E7220FCFB9C4D4D">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">ForecastDay</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c429d</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555679</UniqueId>
 					</Properties>
-					<Item class="IntValue" referent="RBXC0CD156C30804C48850C83597D5D415C">
+					<Item class="IntValue" referent="RBXAACB9CB742304E1187821048CECC267D">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Temperature</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c429e</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055567a</UniqueId>
 							<int64 name="Value">0</int64>
 						</Properties>
 					</Item>
-					<Item class="StringValue" referent="RBX18D9085D81BB419484A3B595506608AC">
+					<Item class="StringValue" referent="RBX960C45F99F6F44969A2C84A6AA414440">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Weather</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c429f</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055567b</UniqueId>
 							<string name="Value">Sunny</string>
 						</Properties>
-						<Item class="IntValue" referent="RBXAB27F2D6127744168DD559E8121C4862">
+						<Item class="IntValue" referent="RBXA120C4FB2520452E97FCFEB39C1203D0">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<string name="Name">Chance</string>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
-								<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42a0</UniqueId>
+								<UniqueId name="UniqueId">696ead81a462fced034d22a10055567c</UniqueId>
 								<int64 name="Value">0</int64>
 							</Properties>
 						</Item>
 					</Item>
-					<Item class="StringValue" referent="RBX15800F80B2E4479181F914F20F87D6B9">
+					<Item class="StringValue" referent="RBXA0B1744C9CB04024963EE2C3B1A3FADA">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Description</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42a1</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055567d</UniqueId>
 							<string name="Value">Abundant sunshine. Winds NNW at 5-15 mph. Chance of precipitation 0%.</string>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="Folder" referent="RBXD39284C1575C4747B0FF83D78A3F61A7">
+				<Item class="Folder" referent="RBX26FD3EB49EA948DA8DACC0EE7D766BB8">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">Monthly</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42a2</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055567e</UniqueId>
 					</Properties>
-					<Item class="NumberValue" referent="RBXD428BF65D7AD4C1CABE0C5EEB25F43D2">
+					<Item class="NumberValue" referent="RBXF3F41159698B47CCA297227CE9199BC7">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Precipitation</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42a3</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055567f</UniqueId>
 							<double name="Value">0</double>
 						</Properties>
 					</Item>
 				</Item>
 			</Item>
-			<Item class="StringValue" referent="RBX99AD97D3B60E4BA7894A9213A6CC5D61">
+			<Item class="StringValue" referent="RBXC819488A49EA4EAA80E3931F46CCFB7A">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">TTPPluginIdentifier</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42a4</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555680</UniqueId>
 					<string name="Value">Weather</string>
 				</Properties>
 			</Item>
-			<Item class="Folder" referent="RBX2F4370A6BFF44EDBB90FE92C536295B1">
+			<Item class="Folder" referent="RBX9C0341465745465A85FC9B60518C48AE">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Settings</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c422e</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a100555609</UniqueId>
 				</Properties>
-				<Item class="Folder" referent="RBX7E138A87E5BA421E94001B29A055AD95">
+				<Item class="Folder" referent="RBXD86D7674EA034DF999403DE941C5CC0A">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">AverageTemps</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c422f</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055560a</UniqueId>
 					</Properties>
-					<Item class="DoubleConstrainedValue" referent="RBXDB1B794A497642B8A048AB2E22FD1FC7">
+					<Item class="DoubleConstrainedValue" referent="RBX1CAC5399E4624391B9837063C53C3860">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">55</double>
@@ -45395,11 +45407,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">November</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4230</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055560b</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBXAF95B0ADA312409AB2BA6469FF01E9A4">
+					<Item class="DoubleConstrainedValue" referent="RBX931636B30D2C48D8A601A819CCC84D5D">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">69</double>
@@ -45407,11 +45419,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">October</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4231</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055560c</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX644B90910DAA4FCABC19F5AA44E2BABB">
+					<Item class="DoubleConstrainedValue" referent="RBX3166B4A9B54341418F65E36652FBB487">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">42</double>
@@ -45419,11 +45431,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">December</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4232</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055560d</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX4811A7F1AE54460EA1B1D2728F7AB2C0">
+					<Item class="DoubleConstrainedValue" referent="RBX1B6DE87E98DC4515BE69F8B1B71245EB">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">90</double>
@@ -45431,11 +45443,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">July</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4233</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055560e</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX7DC3D0E51C4043C2A09F27DA8DB51A3A">
+					<Item class="DoubleConstrainedValue" referent="RBXFF6BB9B47AFC47D4844C606D7655366C">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">85</double>
@@ -45443,11 +45455,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">June</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4234</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055560f</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX4BC15ED53BFF49A7B0858D5A62DBCF60">
+					<Item class="DoubleConstrainedValue" referent="RBX935B5B9D81074B6A95C931971E06DE73">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">87</double>
@@ -45455,11 +45467,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">August</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4235</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555610</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX336C5377A66F44C882815AA7D72B7CED">
+					<Item class="DoubleConstrainedValue" referent="RBXF699617F37214E459D9307869840A1B7">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">67</double>
@@ -45467,11 +45479,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">April</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4236</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555611</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX7C05AA68F4CD415BAFD53111A36CEF85">
+					<Item class="DoubleConstrainedValue" referent="RBX9B3EB83A7148474FB39FAAAFC77EE714">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">40</double>
@@ -45479,11 +45491,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">February</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4237</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555612</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBXA6E83DC7196D4E54B82FCE84518F8F99">
+					<Item class="DoubleConstrainedValue" referent="RBXE046599C1FA9450594885AD4990A60A9">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">32</double>
@@ -45491,11 +45503,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">January</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4238</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555613</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBXA24DA8A49A65482DA59FDF22608D21F0">
+					<Item class="DoubleConstrainedValue" referent="RBXC4966AC0BEE44BB8A08987D53E89F389">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">55</double>
@@ -45503,11 +45515,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">March</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4239</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555614</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX26CE77D43B5E45DDA1229A3B26D5FA9D">
+					<Item class="DoubleConstrainedValue" referent="RBXC6E966EF20CD41AFB25DEF45291FEA85">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">76</double>
@@ -45515,11 +45527,11 @@ return Rain]]></ProtectedString>
 							<string name="Name">May</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c423a</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555615</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
-					<Item class="DoubleConstrainedValue" referent="RBX633BBC70FD98402AA166771B81C56FB1">
+					<Item class="DoubleConstrainedValue" referent="RBX52BEE4289C7F43219D079475552B71C8">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<double name="MaxValue">80</double>
@@ -45527,121 +45539,121 @@ return Rain]]></ProtectedString>
 							<string name="Name">September</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c423b</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555616</UniqueId>
 							<double name="value">0</double>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="Folder" referent="RBX46EBFF3C976F46A98429E370B3A5F1DF">
+				<Item class="Folder" referent="RBX65272E2F4ABF413E8CF6DE72A3F765D9">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">AveragePrecip</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c423c</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555617</UniqueId>
 					</Properties>
-					<Item class="IntValue" referent="RBX5A80102259114218B64DE3A473761DE3">
+					<Item class="IntValue" referent="RBX6FC02E69019D4FAB8EC34BDD2BA4F39B">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Winter</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c423d</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555618</UniqueId>
 							<int64 name="Value">25</int64>
 						</Properties>
 					</Item>
-					<Item class="IntValue" referent="RBX84FE119733A2411AB525D85944599D86">
+					<Item class="IntValue" referent="RBXDAFD89C0602348D4836C5DCCC59E6A43">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Spring</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c423e</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a100555619</UniqueId>
 							<int64 name="Value">33</int64>
 						</Properties>
 					</Item>
-					<Item class="IntValue" referent="RBX16B93C592AA449069400B2EB2EBDF38F">
+					<Item class="IntValue" referent="RBXEE95A8799C2E40999F8E48E22242C8B6">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Summer</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c423f</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055561a</UniqueId>
 							<int64 name="Value">25</int64>
 						</Properties>
 					</Item>
-					<Item class="IntValue" referent="RBXBCE0F00D0FAF48F8A6091B20307E2D8B">
+					<Item class="IntValue" referent="RBXCC8079439F2844889D016AAB6532EB4C">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<string name="Name">Autumn</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4240</UniqueId>
+							<UniqueId name="UniqueId">696ead81a462fced034d22a10055561b</UniqueId>
 							<int64 name="Value">20</int64>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="BoolValue" referent="RBXFE4B001D1C974C788EFD2064A35664B9">
+				<Item class="BoolValue" referent="RBX191E07DDAEEA44718972C18407F37D09">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">EnableForecast</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4241</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055561c</UniqueId>
 						<bool name="Value">true</bool>
 					</Properties>
 				</Item>
-				<Item class="BoolValue" referent="RBXC0892B5D67E44601B1ED144440BA2AED">
+				<Item class="BoolValue" referent="RBXB4A7E97FA0484C07911555227F114B9B">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">UseMetric</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4242</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055561d</UniqueId>
 						<bool name="Value">true</bool>
 					</Properties>
 				</Item>
-				<Item class="BoolValue" referent="RBXB632453692DB41D384841AAF94A8ABD8">
+				<Item class="BoolValue" referent="RBX849BA79DF64446F2B4C6BDAC0A41AF37">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">EnableAdmin</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4243</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055561e</UniqueId>
 						<bool name="Value">true</bool>
 					</Properties>
 				</Item>
-				<Item class="BoolValue" referent="RBX7B062329DC5C44C9A6A32E4BB50F2091">
+				<Item class="BoolValue" referent="RBX19F67E3B44104293B9ABF39EAC52B6F6">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">EnableDate</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4244</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a10055561f</UniqueId>
 						<bool name="Value">true</bool>
 					</Properties>
 				</Item>
-				<Item class="StringValue" referent="RBXBD968C488AA445F3BDD57BCD2E1C1F66">
+				<Item class="StringValue" referent="RBX38E811A6BD3F488AB42C7FEBBDD1C9AB">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">LockTime</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4245</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555620</UniqueId>
 						<string name="Value"></string>
 					</Properties>
 				</Item>
-				<Item class="BoolValue" referent="RBXA4B42DD884DC43BBB4AA912228A7069C">
+				<Item class="BoolValue" referent="RBX44B59A0A5361433EAEFDEEC6B29237F6">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">UseWeatherBounds</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4246</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555621</UniqueId>
 						<bool name="Value">false</bool>
 					</Properties>
 				</Item>
-				<Item class="DoubleConstrainedValue" referent="RBX197D92518BFA4419A4A243707192DD06">
+				<Item class="DoubleConstrainedValue" referent="RBX74E8F684243642EB8EF6D04F46020B01">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<double name="MaxValue">9</double>
@@ -45649,66 +45661,66 @@ return Rain]]></ProtectedString>
 						<string name="Name">WeatherBounds</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4247</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555622</UniqueId>
 						<double name="value">0</double>
 					</Properties>
 				</Item>
-				<Item class="StringValue" referent="RBX097CA8C1BCCC49BC9C7873BBCF600659">
+				<Item class="StringValue" referent="RBX82E0DFFEC340496A9C7B9AC04714C562">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">LockMonth</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4248</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555623</UniqueId>
 						<string name="Value"></string>
 					</Properties>
 				</Item>
-				<Item class="StringValue" referent="RBX8711AB032D14451FA001C384039609AA">
+				<Item class="StringValue" referent="RBXE67D6F72427644FEA5E776761DA91E64">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">CustomWeather</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c4249</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555624</UniqueId>
 						<string name="Value"></string>
 					</Properties>
 				</Item>
-				<Item class="StringValue" referent="RBXBB6F34652E4B4ADDB625B8CEB22D7F37">
+				<Item class="StringValue" referent="RBX16B773E8C0EC4F128C21E679E4E979FF">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">AdminHotKey</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c424a</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555625</UniqueId>
 						<string name="Value">k</string>
 					</Properties>
 				</Item>
-				<Item class="RemoteEvent" referent="RBX3C47E072F7344A96AA7244D629600575">
+				<Item class="RemoteEvent" referent="RBX122B85393E7143C080267049A437A2E1">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">AdminEvent</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">696ead81a462fced034d22a1004c424b</UniqueId>
+						<UniqueId name="UniqueId">696ead81a462fced034d22a100555626</UniqueId>
 					</Properties>
 				</Item>
 			</Item>
 		</Item>
-		<Item class="Folder" referent="RBX26422A4B8A1F415FA60D2BA7A6C1FFB5">
+		<Item class="Folder" referent="RBXC2AC31D2CA5D4121A12E71A0CA651069">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">LoadLibrary</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42cd</UniqueId>
+				<UniqueId name="UniqueId">696ead81a462fced034d22a1005556a9</UniqueId>
 			</Properties>
-			<Item class="ModuleScript" referent="RBXA157CD9CDD9446A6BC01912F1E59A072">
+			<Item class="ModuleScript" referent="RBX2D6CF5A4D81A40D4AA7B19C5F7FEB95B">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">RbxGui</string>
 					<string name="OriginalScriptGuid"></string>
-					<string name="ScriptGuid">{87CEA490-CA8B-4204-BCC2-2D4917992F7E}</string>
+					<string name="ScriptGuid">{04580DBF-F233-4C13-B59A-525F95A7006C}</string>
 					<ProtectedString name="Source"><![CDATA[local t = {}
 
 local function ScopedConnect(parentInstance, instance, event, signalFunc, syncFunc, removeFunc)
@@ -49918,35 +49930,35 @@ return t
 ]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42ce</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a1005556aa</UniqueId>
 				</Properties>
 			</Item>
-			<Item class="StringValue" referent="RBX523770873DE445559142FB9C15B677D9">
+			<Item class="StringValue" referent="RBXB3B4DE5A145A4466939132A883DE3F63">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">TTPPluginIdentifier</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42cf</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a1005556ab</UniqueId>
 					<string name="Value">Weather</string>
 				</Properties>
 			</Item>
 		</Item>
-		<Item class="RemoteFunction" referent="RBX7903647738134C42A802D9AE1B8720BC">
+		<Item class="RemoteFunction" referent="RBX48A876A5ED4E4450B5116E32B1867332">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">WeatherFunction</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42e0</UniqueId>
+				<UniqueId name="UniqueId">696ead81a462fced034d22a1005556bc</UniqueId>
 			</Properties>
-			<Item class="StringValue" referent="RBX83107CE6BC5D46D19208F5F7273991E5">
+			<Item class="StringValue" referent="RBX9516324E4DC4485E8ACB62012C93202D">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">TTPPluginIdentifier</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">696ead81a462fced034d22a1004c42e1</UniqueId>
+					<UniqueId name="UniqueId">696ead81a462fced034d22a1005556bd</UniqueId>
 					<string name="Value">Weather</string>
 				</Properties>
 			</Item>
