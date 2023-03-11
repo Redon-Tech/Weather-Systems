@@ -19,9 +19,10 @@ end
 
 local Plugin_Name = getName("Weather System")
 local Plugin_Description = "Easily add dynamic weather to your game!"
-local Plugin_Icon = "rbxassetid://234354676654"
+local Plugin_Icon = "http://www.roblox.com/asset/?id=319050289"
 local Widget_Name = getName("WeatherSys")
 local Button_Name = getName("Weather Sys Menu")
+local Packages = script.Parent.Parent.Packages
 
 
 if _G.RTPlugins and typeof(_G.RTPlugins) == "table" then
@@ -45,12 +46,30 @@ end
 -- UI Setup --
 --------------------------------------------------------------------------------
 
-local Config = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 1280, 720)
--- TODO: Change this default size to reflect the default menu
-local GUI = plugin:CreateDockWidgetPluginGui(Widget_Name, Config)
-GUI.Title = Plugin_Name
-GUI.Name = Widget_Name
+-- local Config = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 1280, 720)
+-- -- TODO: Change this default size to reflect the default menu
+-- local GUI = plugin:CreateDockWidgetPluginGui(Widget_Name, Config)
+-- GUI.Title = Plugin_Name
+-- GUI.Name = Widget_Name
+local Roact = require(Packages.roact)
+local Main = require(script.Parent.UI.Main)
+local MainElement = Roact.createElement(Main, {
+	plugin = plugin,
+	PluginInformation = {
+		Name = Plugin_Name,
+		Description = Plugin_Description,
+		Icon = Plugin_Icon,
+		Widget_Name = Widget_Name,
+		Button_Name = Button_Name
+	},
+	Button = Button,
+})
+local GUI = Roact.mount(MainElement, nil, Widget_Name)
 
 --------------------------------------------------------------------------------
 -- Plugin Functions --
 --------------------------------------------------------------------------------
+
+plugin.Unloading:Connect(function()
+	Roact.unmount(GUI)
+end)

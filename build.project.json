@@ -1,6 +1,12 @@
 {
     "name": "Weather System",
     "tree": {
-        "$path": "src"
+        "$className": "Folder",
+        "Plugin": {
+            "$path": "src"
+        },
+        "Packages": {
+            "$path": "Packages"
+        }
     }
 }
