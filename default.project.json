@@ -1,11 +1,9 @@
 {
-  "name": "project",
+  "name": "WeatherSystem",
   "tree": {
-    "$className": "DataModel",
-    "Workspace": {
-      "$className": "Workspace",
-      "$ignoreUnknownInstances": true,
-      "$path": "src/Workspace"
+    "$className": "Folder",
+    "WeatherScript": {
+      "$path": "src"
     }
   }
 }

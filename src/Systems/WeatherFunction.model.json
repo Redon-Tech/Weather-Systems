@@ -1,0 +1,12 @@
+{
+    "ClassName": "RemoteFunction",
+    "Children": [
+        {
+            "Name": "TTPPluginIdentifier",
+            "ClassName": "StringValue",
+            "Properties": {
+                "Value": "Weather"
+            }
+        }
+    ]
+}
