@@ -4,6 +4,9 @@
     "$className": "Folder",
     "WeatherScript": {
       "$path": "src"
+    },
+    "LICENSE": {
+      "$path": "LICENSE.luau"
     }
   }
 }
