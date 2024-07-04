@@ -51,7 +51,7 @@ return function(hemisphere, upper, lower)
 				pressure += 0.03 * range
 			end
 
-			if Data.season == "Summer" then
+			if Data.season.Value == "Summer" then
 				if trend == 1 then
 					pressure += 0.07 * range
 				elseif trend == 2 then
@@ -93,7 +93,7 @@ return function(hemisphere, upper, lower)
 				pressure += 0.03 * range
 			end
 
-			if Data.season == "Winter" then
+			if Data.season.Value == "Winter" then
 				if trend == 1 then
 					pressure += 0.07 * range
 				elseif trend == 2 then

@@ -14,6 +14,7 @@ local sharedModules = Shared:WaitForChild("Modules")
 local comm = require(sharedModules:WaitForChild("comm"))
 
 local isDebug = Configuration:GetAttribute("debug")
+local truePrint = print
 local print = function(...)
 	if isDebug then
 		print(`[RTWS Server]: `, ...)
@@ -134,7 +135,7 @@ function weather:_initModule(module: ModuleScript)
 end
 
 function weather:start()
-	print("Initializing weather system")
+	truePrint(`Starting Server\n		Version: {Configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
 	setmetatable(weather, { __index = weather })
 
 	if game.Lighting:FindFirstChild("Sky") then
@@ -184,7 +185,7 @@ function weather:start()
 		self:_timeOfDay()
 	end)
 
-	print("Weather system initialized")
+	truePrint("Server Started")
 end
 
 return weather

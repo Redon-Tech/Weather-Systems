@@ -13,7 +13,7 @@ local client = {
 
 local isDebug = Configuration:GetAttribute("debug")
 local print = function(...)
-	print(`[RTWS Client]: `, ...)
+	print(`\n		[RTRS Client]:`, ...)
 end
 local warn = function(...)
 	if isDebug then
@@ -39,7 +39,7 @@ function client:_initModule(module: ModuleScript)
 end
 
 function client:start()
-	print("Starting client...")
+	print(`Starting Client\n		Version: {Configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
 	setmetatable(client, { __index = client })
 
 	local weatherEvents = comm.new("weatherEvents")
@@ -54,7 +54,7 @@ function client:start()
 	self:_initModule(dynamicWeather)
 
 	self.dynamicWeather:start()
-	print("Client started")
+	print("Client Started")
 end
 
 return client

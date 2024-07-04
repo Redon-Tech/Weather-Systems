@@ -10,9 +10,6 @@
         "ReplicatedStorage": {
             "WeatherSystem_Shared": {
                 "$path": "src/Scripts/Shared"
-            },
-            "WeatherSystem_Packages": {
-                "$path": "Packages"
             }
         },
         "StarterPlayer": {
