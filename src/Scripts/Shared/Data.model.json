@@ -1,0 +1,41 @@
+{
+    "ClassName": "Folder",
+    "Children": [
+        {
+            "ClassName": "IntValue",
+            "Name": "day"
+        },
+        {
+            "ClassName": "StringValue",
+            "Name": "month"
+        },
+        {
+            "ClassName": "StringValue",
+            "Name": "season"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "humidity"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "pressure"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "temperature"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "intensity"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "precipChance"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "randomSeed"
+        }
+    ]
+}

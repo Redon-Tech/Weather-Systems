@@ -1,0 +1,117 @@
+{
+    "name": "Weater System Testing",
+    "tree": {
+        "$className": "DataModel",
+        "ServerScriptService": {
+            "WeatherSystem_Server": {
+                "$path": "src/Scripts/Server"
+            }
+        },
+        "ReplicatedStorage": {
+            "WeatherSystem_Shared": {
+                "$path": "src/Scripts/Shared"
+            },
+            "WeatherSystem_Packages": {
+                "$path": "Packages"
+            }
+        },
+        "StarterPlayer": {
+            "StarterPlayerScripts": {
+                "WeatherSystem_Client": {
+                    "$path": "src/Scripts/Client"
+                }
+            }
+        },
+        "Workspace": {
+            "$properties": {
+                "FilteringEnabled": true
+            },
+            "Baseplate": {
+                "$className": "Part",
+                "$properties": {
+                    "Anchored": true,
+                    "Color": [
+                        0.38823,
+                        0.37254,
+                        0.38823
+                    ],
+                    "Material": "Concrete",
+                    "Locked": true,
+                    "Position": [
+                        0,
+                        -10,
+                        0
+                    ],
+                    "Size": [
+                        512,
+                        20,
+                        512
+                    ]
+                }
+            }
+        },
+        "Lighting": {
+            "$className": "Lighting",
+            "$properties": {
+                "Technology": "Future",
+                "GlobalShadows": true,
+                "Ambient": [
+                    0.27451,
+                    0.27451,
+                    0.27451
+                ],
+                "Brightness": 3,
+                "ColorShift_Bottom": [
+                    0,
+                    0,
+                    0
+                ],
+                "ColorShift_Top": [
+                    0,
+                    0,
+                    0
+                ],
+                "EnvironmentDiffuseScale": 1,
+                "EnvironmentSpecularScale": 1,
+                "OutdoorAmbient": [
+                    0.27451,
+                    0.27451,
+                    0.27451
+                ]
+            },
+            "Sky": {
+                "$className": "Sky",
+                "$properties": {
+                    "SkyboxBk": "http://www.roblox.com/asset/?id=6100050478",
+                    "SkyboxDn": "http://www.roblox.com/asset/?id=6100049801",
+                    "SkyboxFt": "http://www.roblox.com/asset/?id=6100049327",
+                    "SkyboxLf": "http://www.roblox.com/asset/?id=6100051088",
+                    "SkyboxRt": "http://www.roblox.com/asset/?id=6100051670",
+                    "SkyboxUp": "http://www.roblox.com/asset/?id=6100052590"
+                }
+            },
+            "Bloom": {
+                "$className": "BloomEffect",
+                "$properties": {
+                    "Enabled": true,
+                    "Intensity": 1,
+                    "Size": 24,
+                    "Threshold": 2
+                }
+            },
+            "SunRays": {
+                "$className": "SunRaysEffect",
+                "$properties": {
+                    "Enabled": true,
+                    "Intensity": 0.1,
+                    "Spread": 0.1
+                }
+            }
+        },
+        "SoundService": {
+            "$properties": {
+                "RespectFilteringEnabled": true
+            }
+        }
+    }
+}

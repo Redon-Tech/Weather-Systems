@@ -2,3 +2,5 @@
 *.rbxl
 *.lock
 Packages
+dontsave.*
+sourcemap.json

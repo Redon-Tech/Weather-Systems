@@ -1,0 +1,343 @@
+{
+    "ClassName": "Configuration",
+    "Properties": {
+        "Attributes": {
+            "Elevation": {
+                "Float64": 1300
+            },
+            "MapSize": {
+                "Vector2": [
+                    32000,
+                    32000
+                ]
+            },
+            "debug": {
+                "Bool": true
+            }
+        }
+    },
+    "Children": [
+        {
+            "ClassName": "Configuration",
+            "Name": "MeasurementInfo",
+            "Properties": {
+                "Attributes": {
+                    "Measurement": {
+                        "String": "Imperial"
+                    },
+                    "PressureMeasurement": {
+                        "String": "kPa"
+                    }
+                }
+            }
+        },
+        {
+            "ClassName": "Configuration",
+            "Name": "DayCycle",
+            "Properties": {
+                "Attributes": {
+                    "Enabled": {
+                        "Bool": true
+                    },
+                    "Sunrise": {
+                        "Float64": 380
+                    },
+                    "Sunset": {
+                        "Float64": 1070
+                    }
+                }
+            },
+            "Children": [
+                {
+                    "ClassName": "Configuration",
+                    "Name": "MoonPhases",
+                    "Properties": {
+                        "Attributes": {
+                            "1": {
+                                "String": "rbxassetid://12170457832"
+                            },
+                            "2": {
+                                "String": "rbxassetid://12170457052"
+                            },
+                            "3": {
+                                "String": "rbxassetid://12170458252"
+                            },
+                            "4": {
+                                "String": "rbxassetid://12170456898"
+                            },
+                            "5": {
+                                "String": "rbxassetid://12170458044"
+                            },
+                            "6": {
+                                "String": "rbxassetid://12170457254"
+                            },
+                            "7": {
+                                "String": "rbxassetid://12170457646"
+                            },
+                            "8": {
+                                "String": "rbxassetid://12170457448"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "ClassName": "Configuration",
+            "Name": "Misc",
+            "Properties": {
+                "Attributes": {
+                    "Seed": {
+                        "Int64": 0
+                    }
+                }
+            }
+        },
+        {
+            "ClassName": "Folder",
+            "Name": "ClimateData",
+            "Children": [
+                {
+                    "ClassName": "Configuration",
+                    "Name": "January",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 3
+                            },
+                            "Temperature_Low": {
+                                "Float64": -6
+                            },
+                            "Humidity": {
+                                "Float64": 76
+                            },
+                            "Pressure": {
+                                "Float64": 102.36
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "February",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 7
+                            },
+                            "Temperature_Low": {
+                                "Float64": -3
+                            },
+                            "Humidity": {
+                                "Float64": 69
+                            },
+                            "Pressure": {
+                                "Float64": 101.97
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "March",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 13
+                            },
+                            "Temperature_Low": {
+                                "Float64": 1
+                            },
+                            "Humidity": {
+                                "Float64": 56
+                            },
+                            "Pressure": {
+                                "Float64": 101.63
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "April",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 17
+                            },
+                            "Temperature_Low": {
+                                "Float64": 4
+                            },
+                            "Humidity": {
+                                "Float64": 51
+                            },
+                            "Pressure": {
+                                "Float64": 101.37
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "May",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 22
+                            },
+                            "Temperature_Low": {
+                                "Float64": 9
+                            },
+                            "Humidity": {
+                                "Float64": 46
+                            },
+                            "Pressure": {
+                                "Float64": 101.16
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "June",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 29
+                            },
+                            "Temperature_Low": {
+                                "Float64": 14
+                            },
+                            "Humidity": {
+                                "Float64": 37
+                            },
+                            "Pressure": {
+                                "Float64": 101.04
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "July",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 34
+                            },
+                            "Temperature_Low": {
+                                "Float64": 19
+                            },
+                            "Humidity": {
+                                "Float64": 32
+                            },
+                            "Pressure": {
+                                "Float64": 101.10
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "August",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 33
+                            },
+                            "Temperature_Low": {
+                                "Float64": 18
+                            },
+                            "Humidity": {
+                                "Float64": 34
+                            },
+                            "Pressure": {
+                                "Float64": 101.17
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "September",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 27
+                            },
+                            "Temperature_Low": {
+                                "Float64": 12
+                            },
+                            "Humidity": {
+                                "Float64": 41
+                            },
+                            "Pressure": {
+                                "Float64": 101.38
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "October",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 19
+                            },
+                            "Temperature_Low": {
+                                "Float64": 6
+                            },
+                            "Humidity": {
+                                "Float64": 52
+                            },
+                            "Pressure": {
+                                "Float64": 101.70
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "November",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 10
+                            },
+                            "Temperature_Low": {
+                                "Float64": -1
+                            },
+                            "Humidity": {
+                                "Float64": 65
+                            },
+                            "Pressure": {
+                                "Float64": 102.04
+                            }
+                        }
+                    }
+                },
+                {
+                    "ClassName": "Configuration",
+                    "Name": "December",
+                    "Properties": {
+                        "Attributes": {
+                            "Temperature_High": {
+                                "Float64": 4
+                            },
+                            "Temperature_Low": {
+                                "Float64": -5
+                            },
+                            "Humidity": {
+                                "Float64": 74
+                            },
+                            "Pressure": {
+                                "Float64": 102.27
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
