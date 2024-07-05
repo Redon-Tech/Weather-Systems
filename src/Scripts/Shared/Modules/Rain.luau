@@ -917,37 +917,53 @@ function Rain:SetCeiling(ceiling)
 	currentCeiling = ceiling
 end
 
-function Rain:SetStraightTexture(asset)
+-- Added size
+function Rain:SetStraightTexture(asset: string, size: NumberSequence?)
 	if typeof(asset) ~= "string" then
 		error("bad argument #1 to 'SetStraightTexture' (string expected, got " .. typeof(asset) .. ")", 2)
 	end
 
 	Emitter.RainStraight.Texture = asset
+	if size ~= nil then
+		Emitter.RainStraight.Size = size
+	end
 
 	for _, v in pairs(rainAttachments) do
 		v.RainStraight.Texture = asset
+		if size ~= nil then
+			v.RainStraight.Size = size
+		end
 	end
 end
 
-function Rain:SetTopDownTexture(asset)
+function Rain:SetTopDownTexture(asset: string, size: NumberSequence?)
 	if typeof(asset) ~= "string" then
 		error("bad argument #1 to 'SetStraightTexture' (string expected, got " .. typeof(asset) .. ")", 2)
 	end
 
 	Emitter.RainTopDown.Texture = asset
+	if size ~= nil then
+		Emitter.RainTopDown.Size = size
+	end
 
 	for _, v in pairs(rainAttachments) do
 		v.RainTopDown.Texture = asset
+		if size ~= nil then
+			v.RainTopDown.Size = size
+		end
 	end
 end
 
-function Rain:SetSplashTexture(asset)
+function Rain:SetSplashTexture(asset: string, size: NumberSequence?)
 	if typeof(asset) ~= "string" then
 		error("bad argument #1 to 'SetStraightTexture' (string expected, got " .. typeof(asset) .. ")", 2)
 	end
 
 	for _, v in pairs(splashAttachments) do
 		v.RainSplash.Texture = asset
+		if size ~= nil then
+			v.RainSplash.Size = size
+		end
 	end
 end
 
@@ -956,7 +972,14 @@ function Rain:SetSoundId(asset)
 		error("bad argument #1 to 'SetSoundId' (string expected, got " .. typeof(asset) .. ")", 2)
 	end
 
-	Sound.SoundId = asset
+	if asset == "rbxassetid://0" then
+		Sound:Stop()
+	else
+		if disabled == false and Sound.Playing == false then
+			Sound:Play()
+		end
+		Sound.SoundId = asset
+	end
 end
 
 function Rain:SetCollisionMode(mode, param)

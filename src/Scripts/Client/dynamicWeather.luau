@@ -84,6 +84,29 @@ function dynamicWeather:_loop(deltaTime: number)
 		self.cloudIntensity = math.clamp((-3 * (elevation ^ 2)) + 1, 0, 1)
 		self.precipIntensity = math.clamp((-3 * elevation) + 1, 0, 1)
 
+		-- According to the national snow and ice data center
+		-- the general rule is snow can't form above 5 degrees celsius
+		-- ground temperature, which is what we're using here
+		if Data.temperature.Value <= 4.5 and self.rainMode == "rain" then
+			self.rainMode = "snow"
+			Rain:SetSoundId("rbxassetid://0")
+			Rain:SetSplashTexture("rbxassetid://0")
+			Rain:SetStraightTexture("rbxassetid://29510111", NumberSequence.new(1))
+			Rain:SetTopDownTexture("rbxassetid://29510111", NumberSequence.new(1))
+		elseif Data.temperature.Value > 4.5 and self.rainMode == "snow" then
+			self.rainMode = "rain"
+			Rain:SetSoundId("rbxassetid://1516791621")
+			Rain:SetSplashTexture("rbxassetid://1822856633")
+			Rain:SetStraightTexture("rbxassetid://1822883048", NumberSequence.new(10))
+			Rain:SetTopDownTexture(
+				"rbxassetid://1822856633",
+				NumberSequence.new({
+					NumberSequenceKeypoint.new(0, 5.33, 2.75),
+					NumberSequenceKeypoint.new(1, 5.33, 2.75),
+				})
+			)
+		end
+
 		self.updating = false
 	end
 
@@ -134,6 +157,7 @@ function dynamicWeather:start()
 	self.currentPrecipIntensity = 0
 	self.precipIntensity = 0
 	self.rainEnabled = false
+	self.rainMode = "rain"
 	print(self.mapSize, self.mapSizeMin, self.mapSizeMax, self.lastAnimateOffset, self.animateOffset)
 
 	self:_adjustValues()
