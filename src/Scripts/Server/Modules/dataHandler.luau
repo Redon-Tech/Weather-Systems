@@ -38,28 +38,24 @@ end
 function dataHandler:_calculateNextTemperature(getCurrent: boolean?)
 	if getCurrent == true then
 		if self.isNight == true then
-			return self.seed:NextInteger(
-				self.currentClimateData:GetAttribute("Temperature_Low") - 5,
-				self.currentClimateData:GetAttribute("Temperature_Low") + 5
-			)
+			local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
+			local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+			return math.floor((self.seed:NextInteger(averageHigh - 10, averageHigh - 5) + averageLow) / 2)
 		else
-			return self.seed:NextInteger(
-				self.currentClimateData:GetAttribute("Temperature_High") - 5,
-				self.currentClimateData:GetAttribute("Temperature_High") + 5
-			)
+			local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
+			local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+			return math.ceil((self.seed:NextInteger(averageLow + 5, averageLow + 10) + averageHigh) / 2)
 		end
 	end
 
 	if self.isNight == true then
-		return self.seed:NextInteger(
-			self.currentClimateData:GetAttribute("Temperature_High") - 5,
-			self.currentClimateData:GetAttribute("Temperature_High") + 5
-		)
+		local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
+		local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+		return math.ceil((self.seed:NextInteger(averageLow + 5, averageLow + 10) + averageHigh) / 2)
 	else
-		return self.seed:NextInteger(
-			self.currentClimateData:GetAttribute("Temperature_Low") - 5,
-			self.currentClimateData:GetAttribute("Temperature_Low") + 5
-		)
+		local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
+		local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+		return math.floor((self.seed:NextInteger(averageHigh - 10, averageHigh - 5) + averageLow) / 2)
 	end
 end
 
