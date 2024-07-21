@@ -91,7 +91,7 @@
             "Properties": {
                 "Attributes": {
                     "Seed": {
-                        "Int64": 0
+                        "Float64": 0
                     }
                 }
             }

@@ -26,9 +26,10 @@ end
 
 function dynamicWeather:_loop(deltaTime)
 	self.timeElapsed += deltaTime
-	if (self.lastAnimateOffset - self.animateOffset).Magnitude > 1 then
+	if (self.lastAnimateOffset - self.animateOffset).Magnitude > 1 or self.currentWind ~= workspace.GlobalWind then
 		self.events.noiseAnimation:fireAll(self:getAnimationData())
 		self.lastAnimateOffset = self.animateOffset
+		self.currentWind = workspace.GlobalWind
 	end
 	self.animateOffset += Vector2.new(
 		(-workspace.GlobalWind.X / 100) * deltaTime,
@@ -54,7 +55,7 @@ function dynamicWeather:_loop(deltaTime)
 			self.randomSeed,
 			self.animateOffset
 		)
-		print(self.timeElapsed, randomPosition, chunk, elevation)
+		print("Lightning", self.timeElapsed, randomPosition, chunk, elevation)
 		if elevation < 0.15 then
 			local bolt = EvLightning.new(
 				randomPosition,
@@ -78,6 +79,7 @@ function dynamicWeather:start()
 	self.mapSizeMax = Vector2.new((100 + self.mapSize.X) / 2 + 1, (100 + self.mapSize.Y) / 2 + 1)
 	self.lastAnimateOffset = Vector2.new(math.random(-1000, 1000), math.random(-1000, 1000))
 	self.animateOffset = self.lastAnimateOffset - Vector2.new(1, 1)
+	self.currentWind = workspace.GlobalWind
 
 	self.comm:remoteFunction("getAnimationData", self, "getAnimationData")
 

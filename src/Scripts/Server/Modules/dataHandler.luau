@@ -1,11 +1,20 @@
-local dataHandler = {}
+local dataHandler = {
+	started = false,
+}
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local TweenService = game:GetService("TweenService")
 
 local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local Configuration = Shared:WaitForChild("Configuration")
 local Data = Shared:WaitForChild("Data")
+local GlobalData = require(Shared:WaitForChild("globalData"))
+local Modules = Shared:WaitForChild("Modules")
+local zForecaster = require(Modules:WaitForChild("zForecaster"))(
+	1, -- TODO: add hemisphere to configuration
+	Configuration:GetAttribute("HighestPressure"),
+	Configuration:GetAttribute("LowestPressure")
+)
+local utils = require(Modules:WaitForChild("utils"))
 
 local isDebug = Configuration:GetAttribute("debug")
 local print = function(...)
@@ -87,21 +96,78 @@ function dataHandler:_calculateNextHumidity(getCurrent: boolean?)
 	end
 end
 
-function dataHandler:_startLoop(
+function dataHandler:getPressureTrend()
+	local pressure = Data.pressure.Value
+	local goalPressure = Data.pressure:GetAttribute("goal")
+	if pressure < goalPressure then
+		return 1
+	elseif pressure > goalPressure then
+		return -1
+	else
+		return 0
+	end
+end
+
+function dataHandler:_calculateNextPrecipData(
+	pressure: number,
+	pressureTrend: number
+): { chance: number, intensity: number }
+	local windDirection = Vector2.new(workspace.GlobalWind.X, workspace.GlobalWind.Z)
+	local zForecast = zForecaster(pressure, utils.getWindDirection(windDirection), pressureTrend)
+	if zForecast == nil then
+		return { chance = 1, intensity = 1 }
+	end
+
+	print(zForecast, GlobalData.conditionData.names[zForecast])
+	local precipData = GlobalData.conditionData.precipIntensityAndChance[zForecast]
+	if precipData == nil then
+		return { chance = 1, intensity = 1 }
+	end
+
+	precipData.intensity = 1 - precipData.intensity
+	precipData.chance = 1 - precipData.chance
+	return precipData
+end
+
+function dataHandler:_nextData(
 	startingPressure: number,
 	startingTemperature: number,
 	startingHumidity: number,
-	pressureTrend: number?
+	pressureTrend: number,
+	startingPrecipData: { chance: number, intensity: number }
 )
 	local goalPressure = self:_calculateNextPressure(pressureTrend)
 	Data.pressure.Value = startingPressure
+	self.startingPressure = startingPressure
+	self.goalPressure = goalPressure
+	Data.pressure:SetAttribute("start", startingPressure)
+	Data.pressure:SetAttribute("goal", goalPressure)
 	local goalTemperature = self:_calculateNextTemperature()
 	Data.temperature.Value = startingTemperature
+	self.startingTemperature = startingTemperature
+	self.goalTemperature = goalTemperature
+	Data.temperature:SetAttribute("start", startingTemperature)
+	Data.temperature:SetAttribute("goal", goalTemperature)
 	local goalHumidity = self:_calculateNextHumidity()
 	Data.humidity.Value = startingHumidity
+	self.startingHumidity = startingHumidity
+	self.goalHumidity = goalHumidity
+	Data.humidity:SetAttribute("start", startingHumidity)
+	Data.humidity:SetAttribute("goal", goalHumidity)
+	local goalPrecipData = self:_calculateNextPrecipData(goalPressure, pressureTrend)
+	Data.precipChance.Value = startingPrecipData.chance
+	self.startingPrecipChance = startingPrecipData.chance
+	self.goalPrecipChance = goalPrecipData.chance
+	Data.intensity.Value = startingPrecipData.intensity
+	self.startingPrecipIntensity = startingPrecipData.intensity
+	self.goalPrecipIntensity = goalPrecipData.intensity
+	Data.precipChance:SetAttribute("start", startingPrecipData.chance)
+	Data.intensity:SetAttribute("start", startingPrecipData.intensity)
+	Data.precipChance:SetAttribute("goal", goalPrecipData.chance)
+	Data.intensity:SetAttribute("goal", goalPrecipData.intensity)
 
 	print(
-		"---/ Loop Data \\---",
+		"\n---/ Loop Data \\---",
 		"\nPressure:",
 		startingPressure,
 		goalPressure,
@@ -112,37 +178,61 @@ function dataHandler:_startLoop(
 		"\nHumidity:",
 		startingHumidity,
 		goalHumidity,
+		"\nPrecipitation:",
+		startingPrecipData.chance,
+		startingPrecipData.intensity,
+		goalPrecipData.chance,
+		goalPrecipData.intensity,
 		"\n---\\ Loop Data /---"
 	)
-	local tween = TweenService:Create(
-		Data.pressure,
-		TweenInfo.new(self.daylight.dayLength / 2, Enum.EasingStyle.Linear),
-		{ Value = goalPressure }
-	)
-	local tween2 = TweenService:Create(
-		Data.temperature,
-		TweenInfo.new(self.daylight.dayLength / 2, Enum.EasingStyle.Linear),
-		{ Value = goalTemperature }
-	)
-	tween:Play()
-	tween2:Play()
-	tween.Completed:Wait()
+end
 
-	pressureTrend = self.seed:NextInteger(-1, 1)
-	self:_startLoop(goalPressure, goalTemperature, goalHumidity, pressureTrend)
+function dataHandler:heartbeat(deltaTime: number)
+	if self.started == false then
+		return
+	end
+
+	local currentTime = (self.daylight.percentageElapsed * 2) % 1
+
+	Data.pressure.Value = utils.lerp(self.startingPressure, self.goalPressure, currentTime)
+	Data.temperature.Value = utils.lerp(self.startingTemperature, self.goalTemperature, currentTime)
+	Data.humidity.Value = utils.lerp(self.startingHumidity, self.goalHumidity, currentTime)
+	Data.precipChance.Value = utils.lerp(self.startingPrecipChance, self.goalPrecipChance, currentTime)
+	Data.intensity.Value = utils.lerp(self.startingPrecipIntensity, self.goalPrecipIntensity, currentTime)
+
+	if self.currentDataIsDayToNight == false and self.daylight.isPastHalf == true then
+		self.currentDataIsDayToNight = true
+		self:_nextData(
+			self.goalPressure,
+			self.goalTemperature,
+			self.goalHumidity,
+			dataHandler:getPressureTrend(),
+			{ chance = self.goalPrecipChance, intensity = self.goalPrecipIntensity }
+		)
+	elseif self.currentDataIsDayToNight == true and self.daylight.isPastHalf == false then
+		self.currentDataIsDayToNight = false
+		self:_nextData(
+			self.goalPressure,
+			self.goalTemperature,
+			self.goalHumidity,
+			self.seed:NextInteger(-1, 1), -- We generate a new pressure trend every day
+			{ chance = self.goalPrecipChance, intensity = self.goalPrecipIntensity }
+		)
+	end
 end
 
 function dataHandler:start()
 	print("Data Handler initializing")
-	local startingPressure = dataHandler:_calculateNextPressure()
+	local pressureTrend = self.seed:NextInteger(-1, 1)
+	local startingPressure = dataHandler:_calculateNextPressure(pressureTrend)
 	local startingTemperature = dataHandler:_calculateNextTemperature(true)
 	local startingHumidity = dataHandler:_calculateNextHumidity(true)
-	local pressureTrend = self.seed:NextInteger(-1, 1)
+	local startingPrecipData = dataHandler:_calculateNextPrecipData(startingPressure, pressureTrend)
+	self.currentDataIsDayToNight = false
 
-	task.spawn(function()
-		print("Data Handler starting loop")
-		self:_startLoop(startingPressure, startingTemperature, startingHumidity, pressureTrend)
-	end)
+	self:_nextData(startingPressure, startingTemperature, startingHumidity, pressureTrend, startingPrecipData)
+
+	self.started = true
 
 	print("Data Handler initialized")
 end

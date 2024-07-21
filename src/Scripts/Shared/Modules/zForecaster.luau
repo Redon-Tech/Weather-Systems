@@ -7,6 +7,7 @@ local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 -- local globalData = require(Shared:WaitForChild("globalData"))
 -- local Configuration = Shared:WaitForChild("Configuration")
 local Data = Shared:WaitForChild("Data")
+local GlobalData = require(Shared:WaitForChild("globalData"))
 
 return function(hemisphere, upper, lower)
 	hemisphere = hemisphere or 1
@@ -106,6 +107,13 @@ return function(hemisphere, upper, lower)
 			pressure = upper - 1
 		end
 
-		return math.floor((pressure - lower) / constant), pressure
+		local value = math.floor((pressure - lower) / constant)
+		if trend == 1 then
+			return GlobalData.conditionOptions.rising[value]
+		elseif trend == 2 then
+			return GlobalData.conditionOptions.falling[value]
+		else
+			return GlobalData.conditionOptions.steady[value]
+		end
 	end
 end
