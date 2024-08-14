@@ -1,9 +1,22 @@
 local daylight = {}
 
-local dayLength = 1 --.05 -- Minutes
 local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local Configuration = Shared:WaitForChild("Configuration")
+local DayCycle = Configuration:WaitForChild("DayCycle")
+
+local dayLength = DayCycle:GetAttribute("dayLength") or 24
+local realTime = DayCycle:GetAttribute("realTime") or false
+local realTimeTimeZone = DayCycle:GetAttribute("realTimeTimeZone") or 0
 
 dayLength *= 60 -- Convert to seconds
+if realTime == true then
+	dayLength = 1440
+end
+
 function daylight:start()
 	self.dayLength = dayLength
 
@@ -21,7 +34,7 @@ function daylight:start()
 		end
 		self.percentageElapsed = self.timeElapsed / dayLength
 
-		game.Lighting.ClockTime = (self.timeElapsed / dayLength) * 24
+		Lighting.ClockTime = (self.timeElapsed / dayLength) * 24
 		self.dataHandler:heartbeat(deltaTime)
 	end)
 end
