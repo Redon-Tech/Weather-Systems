@@ -1,0 +1,22 @@
+{
+    "className": "Configuration",
+    "properties": {
+        "Attributes": {
+            "Elevation": {
+                "Float64": 1300
+            },
+            "MapSize": {
+                "Vector2": [
+                    32000,
+                    32000
+                ]
+            },
+            "debug": {
+                "Bool": true
+            },
+            "version": {
+                "String": "2.0.0-alpha.1"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "ClassName": "Configuration",
+    "Properties": {
+        "Attributes": {
+            "Measurement": {
+                "String": "Imperial"
+            },
+            "PressureMeasurement": {
+                "String": "kPa"
+            }
+        }
+    }
+}

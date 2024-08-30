@@ -1,0 +1,10 @@
+{
+    "ClassName": "Configuration",
+    "Properties": {
+        "Attributes": {
+            "WeatherMode": {
+                "String": "dynamic"
+            }
+        }
+    }
+}

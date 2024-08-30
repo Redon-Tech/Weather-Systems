@@ -1,8 +1,8 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local Configuration = Shared:WaitForChild("Configuration")
-local MeasurementInfo = Configuration:WaitForChild("MeasurementInfo")
-local ClimateData = Configuration:WaitForChild("ClimateData")
+local measurementInfo = Configuration:WaitForChild("measurementInfo")
+local climateData = Configuration:WaitForChild("climateData")
 local globalData = require(Shared:WaitForChild("globalData"))
 
 local isDebug = Configuration:GetAttribute("debug")
@@ -29,9 +29,9 @@ function conversions:convertPressure(input: number, from: string)
 end
 
 function conversions:convertAllMonthData()
-	local from = MeasurementInfo:GetAttribute("PressureMeasurement")
+	local from = measurementInfo:GetAttribute("PressureMeasurement")
 
-	for _, month: Configuration in pairs(ClimateData:GetChildren()) do
+	for _, month: Configuration in pairs(climateData:GetChildren()) do
 		month:SetAttribute("Pressure", self:convertPressure(month:GetAttribute("Pressure"), from))
 	end
 end

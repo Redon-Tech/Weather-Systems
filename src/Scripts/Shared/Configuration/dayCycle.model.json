@@ -1,0 +1,62 @@
+{
+    "ClassName": "Configuration",
+    "Properties": {
+        "Attributes": {
+            "enabled": {
+                "Bool": true
+            },
+            "dayLength": {
+                "Float64": 1
+            },
+            "startTime": {
+                "Float64": 0.5
+            },
+            "realTime": {
+                "Bool": false
+            },
+            "realTimeZone": {
+                "Float64": 0
+            },
+            "sunrise": {
+                "Float64": 380
+            },
+            "sunset": {
+                "Float64": 1070
+            }
+        }
+    },
+    "Children": [
+        {
+            "ClassName": "Configuration",
+            "Name": "moonPhases",
+            "Properties": {
+                "Attributes": {
+                    "1": {
+                        "String": "rbxassetid://12170457832"
+                    },
+                    "2": {
+                        "String": "rbxassetid://12170457052"
+                    },
+                    "3": {
+                        "String": "rbxassetid://12170458252"
+                    },
+                    "4": {
+                        "String": "rbxassetid://12170456898"
+                    },
+                    "5": {
+                        "String": "rbxassetid://12170458044"
+                    },
+                    "6": {
+                        "String": "rbxassetid://12170457254"
+                    },
+                    "7": {
+                        "String": "rbxassetid://12170457646"
+                    },
+                    "8": {
+                        "String": "rbxassetid://12170457448"
+                    }
+                }
+            }
+        }
+    ]
+}

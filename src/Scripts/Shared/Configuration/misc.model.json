@@ -1,0 +1,10 @@
+{
+    "ClassName": "Configuration",
+    "Properties": {
+        "Attributes": {
+            "Seed": {
+                "Float64": 0
+            }
+        }
+    }
+}
