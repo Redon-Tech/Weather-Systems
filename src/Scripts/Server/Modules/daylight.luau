@@ -8,24 +8,52 @@ local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local Configuration = Shared:WaitForChild("Configuration")
 local dayCycle = Configuration:WaitForChild("dayCycle")
 
-local dayLength = DayCycle:GetAttribute("dayLength") or 24
-local realTime = DayCycle:GetAttribute("realTime") or false
-local realTimeTimeZone = DayCycle:GetAttribute("realTimeTimeZone") or 0
+local enabled = dayCycle:GetAttribute("enabled") or false
+local dayLength = dayCycle:GetAttribute("dayLength") or 24
+local startTime = dayCycle:GetAttribute("startTime") or 0
+local realTime = dayCycle:GetAttribute("realTime") or false
+local realTimeZone = dayCycle:GetAttribute("realTimeZone") or 0
+
+if startTime > dayLength then
+	startTime = dayLength / 2
+end
 
 dayLength *= 60 -- Convert to seconds
+startTime *= 60
 if realTime == true then
-	dayLength = 1440
+	dayLength = 86400
+end
+
+function daylight:getSyncedTime()
+	local currentTime = DateTime.now():ToUniversalTime()
+	local currentHour = (currentTime.Hour + realTimeZone) % 24
+	return (currentHour * 3600) + (currentTime.Minute * 60) + currentTime.Second
 end
 
 function daylight:start()
+	if enabled == false then
+		RunService.Heartbeat:Connect(function(deltaTime)
+			self.dataHandler:heartbeat(deltaTime)
+		end)
+		return
+	end
+
 	self.dayLength = dayLength
 
-	self.timeElapsed = 0
-	self.percentageElapsed = 0
+	self.timeElapsed = startTime
+	if realTime == true then
+		self.timeElapsed = self:getSyncedTime()
+	end
+
+	self.percentageElapsed = self.timeElapsed / dayLength
 	RunService.Heartbeat:Connect(function(deltaTime)
 		self.timeElapsed += deltaTime
 		if self.timeElapsed >= dayLength then
-			self.timeElapsed = 0
+			if realTime == true then
+				self.timeElapsed = self:getSyncedTime()
+			else
+				self.timeElapsed = 0
+			end
 		end
 		if self.timeElapsed >= dayLength / 2 then
 			self.isPastHalf = true
