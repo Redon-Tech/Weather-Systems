@@ -7,12 +7,12 @@ local dynamicWeather = {
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
-local Modules = Shared:WaitForChild("Modules")
-local dynamicWeatherShared = require(Modules:WaitForChild("dynamicWeatherShared"))
-local EvLightning = require(Modules:WaitForChild("EvLightning"))
-local Configuration = Shared:WaitForChild("Configuration")
-local isDebug = Configuration:GetAttribute("debug")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local modules = wsShared:WaitForChild("Modules")
+local dynamicWeatherShared = require(modules:WaitForChild("dynamicWeatherShared"))
+local EvLightning = require(modules:WaitForChild("EvLightning"))
+local configuration = wsShared:WaitForChild("Configuration")
+local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
 	if isDebug then
 		print(`[RTWS Server]: `, ...)
@@ -74,7 +74,7 @@ end
 
 function dynamicWeather:start()
 	print("Initializing Dynamic Weather")
-	self.mapSize = Configuration:GetAttribute("MapSize")
+	self.mapSize = configuration:GetAttribute("MapSize")
 	self.mapSizeMin = Vector2.new((100 - self.mapSize.X) / 2 + 1, (100 - self.mapSize.Y) / 2 + 1)
 	self.mapSizeMax = Vector2.new((100 + self.mapSize.X) / 2 + 1, (100 + self.mapSize.Y) / 2 + 1)
 	self.lastAnimateOffset = Vector2.new(math.random(-1000, 1000), math.random(-1000, 1000))

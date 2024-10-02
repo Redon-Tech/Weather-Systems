@@ -17,12 +17,11 @@ local Players = game:GetService("Players")
 local localPlayer = Players.LocalPlayer
 local Terrain = workspace:WaitForChild("Terrain")
 
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
-local Modules = Shared:WaitForChild("Modules")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local modules = wsShared:WaitForChild("Modules")
 local Rain = require(Modules:WaitForChild("Rain"))
-local dynamicWeatherShared = require(Modules:WaitForChild("dynamicWeatherShared"))
-local Configuration = Shared:WaitForChild("Configuration")
-local Data = Shared:WaitForChild("Data")
+local configuration = wsShared:WaitForChild("Configuration")
+local data = wsShared:WaitForChild("Data")
 
 local isDebug = Configuration:GetAttribute("debug")
 local print = function(...)
@@ -87,13 +86,13 @@ function dynamicWeather:_loop(deltaTime: number)
 		-- According to the national snow and ice data center
 		-- the general rule is snow can't form above 5 degrees celsius
 		-- ground temperature, which is what we're using here
-		if Data.temperature.Value <= 4.5 and self.rainMode == "rain" then
+		if data.temperature.Value <= 4.5 and self.rainMode == "rain" then
 			self.rainMode = "snow"
 			Rain:SetSoundId("rbxassetid://0")
 			Rain:SetSplashTexture("rbxassetid://0")
 			Rain:SetStraightTexture("rbxassetid://29510111", NumberSequence.new(1))
 			Rain:SetTopDownTexture("rbxassetid://29510111", NumberSequence.new(1))
-		elseif Data.temperature.Value > 4.5 and self.rainMode == "snow" then
+		elseif data.temperature.Value > 4.5 and self.rainMode == "snow" then
 			self.rainMode = "rain"
 			Rain:SetSoundId("rbxassetid://1516791621")
 			Rain:SetSplashTexture("rbxassetid://1822856633")
@@ -143,7 +142,7 @@ end
 
 function dynamicWeather:start()
 	print("Initializing Dynamic Weather")
-	self.mapSize = Configuration:GetAttribute("MapSize")
+	self.mapSize = configuration:GetAttribute("MapSize")
 	self.mapSizeMin = Vector2.new((100 - self.mapSize.X) / 2 + 1, (100 - self.mapSize.Y) / 2 + 1)
 	self.mapSizeMax = Vector2.new((100 + self.mapSize.X) / 2 + 1, (100 + self.mapSize.Y) / 2 + 1)
 	self.currentVector = Vector2.new(self.mapSizeMin.X, self.mapSizeMin.Y)
@@ -180,19 +179,19 @@ function dynamicWeather:start()
 		self.rootPart = rootPart
 	end)
 
-	Data.pressure:GetPropertyChangedSignal("Value"):Connect(function()
+	data.pressure:GetPropertyChangedSignal("Value"):Connect(function()
 		self:_adjustValues()
 	end)
-	Data.temperature:GetPropertyChangedSignal("Value"):Connect(function()
+	data.temperature:GetPropertyChangedSignal("Value"):Connect(function()
 		self:_adjustValues()
 	end)
-	Data.humidity:GetPropertyChangedSignal("Value"):Connect(function()
+	data.humidity:GetPropertyChangedSignal("Value"):Connect(function()
 		self:_adjustValues()
 	end)
-	Data.intensity:GetPropertyChangedSignal("Value"):Connect(function()
+	data.intensity:GetPropertyChangedSignal("Value"):Connect(function()
 		self:_adjustValues()
 	end)
-	Data.precipChance:GetPropertyChangedSignal("Value"):Connect(function()
+	data.precipChance:GetPropertyChangedSignal("Value"):Connect(function()
 		self:_adjustValues()
 	end)
 

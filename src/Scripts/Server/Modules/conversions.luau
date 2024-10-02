@@ -1,11 +1,11 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
-local Configuration = Shared:WaitForChild("Configuration")
-local measurementInfo = Configuration:WaitForChild("measurementInfo")
-local climateData = Configuration:WaitForChild("climateData")
-local globalData = require(Shared:WaitForChild("globalData"))
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local configuration = wsShared:WaitForChild("Configuration")
+local measurementInfo = configuration:WaitForChild("measurementInfo")
+local climateData = configuration:WaitForChild("climateData")
+local globalData = require(wsShared:WaitForChild("globalData"))
 
-local isDebug = Configuration:GetAttribute("debug")
+local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
 	if isDebug then
 		print(`[RTWS Server]: `, ...)
@@ -37,14 +37,14 @@ function conversions:convertAllMonthData()
 end
 
 function conversions:convertMapSize()
-	local mapSizeBefore = Configuration:GetAttribute("MapSize")
+	local mapSizeBefore = configuration:GetAttribute("MapSize")
 	local mapSizeAfter = Vector2.new(
 		math.clamp(math.ceil(mapSizeBefore.X / 320), 1, 101),
 		math.clamp(math.ceil(mapSizeBefore.Y / 320), 1, 101)
 	)
 
 	print(mapSizeAfter)
-	Configuration:SetAttribute("MapSize", mapSizeAfter)
+	configuration:SetAttribute("MapSize", mapSizeAfter)
 end
 
 return conversions

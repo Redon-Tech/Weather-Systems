@@ -4,9 +4,9 @@ local RunService = game:GetService("RunService")
 local Lighting = game:GetService("Lighting")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
-local Configuration = Shared:WaitForChild("Configuration")
-local dayCycle = Configuration:WaitForChild("dayCycle")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local configuration = wsShared:WaitForChild("Configuration")
+local dayCycle = configuration:WaitForChild("dayCycle")
 
 local enabled = dayCycle:GetAttribute("enabled") or false
 local dayLength = dayCycle:GetAttribute("dayLength") or 24

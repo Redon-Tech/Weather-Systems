@@ -1,9 +1,9 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
-local Configuration = Shared:WaitForChild("Configuration")
-local Data = Shared:WaitForChild("Data")
-local sharedModules = Shared:WaitForChild("Modules")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local configuration = wsShared:WaitForChild("Configuration")
+local data = wsShared:WaitForChild("Data")
+local sharedModules = wsShared:WaitForChild("Modules")
 local comm = require(sharedModules:WaitForChild("comm"))
 local dynamicWeather = script.Parent:WaitForChild("dynamicWeather")
 
@@ -11,7 +11,7 @@ local client = {
 	modules = {},
 }
 
-local isDebug = Configuration:GetAttribute("debug")
+local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
 	print(`\n		[RTRS Client]:`, ...)
 end
@@ -39,7 +39,7 @@ function client:_initModule(module: ModuleScript)
 end
 
 function client:start()
-	print(`Starting Client\n		Version: {Configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
+	print(`Starting Client\n		Version: {configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
 	setmetatable(client, { __index = client })
 
 	local weatherEvents = comm.new("weatherEvents")
@@ -48,7 +48,7 @@ function client:start()
 		noiseAnimation = weatherEvents:remoteEvent("noiseAnimation"),
 	}
 
-	self.randomSeed = Data.randomSeed.Value
+	self.randomSeed = data.randomSeed.Value
 	self.random = Random.new(self.randomSeed)
 
 	self:_initModule(dynamicWeather)
