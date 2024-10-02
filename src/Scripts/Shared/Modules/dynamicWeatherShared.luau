@@ -1,7 +1,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
-local Data = Shared:WaitForChild("Data")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local data = wsShared:WaitForChild("Data")
 
 local dynamicWeatherShared = {}
 
@@ -13,12 +13,12 @@ export type values = {
 }
 
 function dynamicWeatherShared:getValues(): values
-	local adjustedPressure = ((Data.pressure.Value - 1000) / (1028.6 - 1000)) * 100
-	local intensity = Data.intensity.Value
-	local precipChance = Data.precipChance.Value
+	local adjustedPressure = ((data.pressure.Value - 1000) / (1028.6 - 1000)) * 100
+	local intensity = data.intensity.Value
+	local precipChance = data.precipChance.Value
 	local amplitude = (
-		(Data.temperature.Value * 0.4)
-		+ (Data.humidity.Value * 0.9)
+		(data.temperature.Value * 0.4)
+		+ (data.humidity.Value * 0.9)
 		+ (adjustedPressure * 0.8)
 		+ intensity * 100
 	) * precipChance

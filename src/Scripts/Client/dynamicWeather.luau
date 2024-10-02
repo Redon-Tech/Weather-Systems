@@ -19,11 +19,11 @@ local Terrain = workspace:WaitForChild("Terrain")
 
 local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local modules = wsShared:WaitForChild("Modules")
-local Rain = require(Modules:WaitForChild("Rain"))
+local dynamicWeatherShared = require(modules:WaitForChild("dynamicWeatherShared"))
 local configuration = wsShared:WaitForChild("Configuration")
 local data = wsShared:WaitForChild("Data")
 
-local isDebug = Configuration:GetAttribute("debug")
+local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
 	if isDebug then
 		print(`[RTWS Client]: `, ...)
@@ -86,24 +86,12 @@ function dynamicWeather:_loop(deltaTime: number)
 		-- According to the national snow and ice data center
 		-- the general rule is snow can't form above 5 degrees celsius
 		-- ground temperature, which is what we're using here
-		if data.temperature.Value <= 4.5 and self.rainMode == "rain" then
+		if data.temperature.Value <= 4.5 and self.rainHandler.rainMode == "rain" then
 			self.rainMode = "snow"
-			Rain:SetSoundId("rbxassetid://0")
-			Rain:SetSplashTexture("rbxassetid://0")
-			Rain:SetStraightTexture("rbxassetid://29510111", NumberSequence.new(1))
-			Rain:SetTopDownTexture("rbxassetid://29510111", NumberSequence.new(1))
-		elseif data.temperature.Value > 4.5 and self.rainMode == "snow" then
+			self.rainHandler:setSnow()
+		elseif data.temperature.Value > 4.5 and self.rainHandler.rainMode == "snow" then
 			self.rainMode = "rain"
-			Rain:SetSoundId("rbxassetid://1516791621")
-			Rain:SetSplashTexture("rbxassetid://1822856633")
-			Rain:SetStraightTexture("rbxassetid://1822883048", NumberSequence.new(10))
-			Rain:SetTopDownTexture(
-				"rbxassetid://1822856633",
-				NumberSequence.new({
-					NumberSequenceKeypoint.new(0, 5.33, 2.75),
-					NumberSequenceKeypoint.new(1, 5.33, 2.75),
-				})
-			)
+			self.rainHandler:setRain()
 		end
 
 		self.updating = false
@@ -119,18 +107,16 @@ function dynamicWeather:_loop(deltaTime: number)
 	if self.currentPrecipIntensity ~= self.precipIntensity then
 		self.currentPrecipIntensity = self.currentPrecipIntensity
 			+ ((self.precipIntensity - self.currentPrecipIntensity) * deltaTime * 2)
-		Rain:SetIntensityRatio(self.currentPrecipIntensity)
+		self.rainHandler:setIntensity(self.currentPrecipIntensity)
 
-		if self.currentPrecipIntensity > 0.02 and self.rainEnabled == false then
+		if self.currentPrecipIntensity > 0.02 and self.rainHandler.rainEnabled == false then
 			print("Enabled Rain")
-			self.rainEnabled = true
-			Rain:Enable()
+			self.rainHandler:enable()
 		end
 	end
 
-	if self.currentPrecipIntensity < 0.02 and self.rainEnabled == true then
-		self.rainEnabled = false
-		Rain:Disable()
+	if self.currentPrecipIntensity < 0.02 and self.rainHandler.rainEnabled == true then
+		self.rainHandler:disable()
 		print("Disabled Rain")
 	end
 end
@@ -155,8 +141,6 @@ function dynamicWeather:start()
 	self.cloudIntensity = 0
 	self.currentPrecipIntensity = 0
 	self.precipIntensity = 0
-	self.rainEnabled = false
-	self.rainMode = "rain"
 	print(self.mapSize, self.mapSizeMin, self.mapSizeMax, self.lastAnimateOffset, self.animateOffset)
 
 	self:_adjustValues()

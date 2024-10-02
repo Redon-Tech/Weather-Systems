@@ -3,11 +3,9 @@
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
--- local globalData = require(Shared:WaitForChild("globalData"))
--- local Configuration = Shared:WaitForChild("Configuration")
-local Data = Shared:WaitForChild("Data")
-local GlobalData = require(Shared:WaitForChild("globalData"))
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local data = wsShared:WaitForChild("Data")
+local globalData = require(wsShared:WaitForChild("globalData"))
 
 return function(hemisphere, upper, lower)
 	hemisphere = hemisphere or 1
@@ -52,7 +50,7 @@ return function(hemisphere, upper, lower)
 				pressure += 0.03 * range
 			end
 
-			if Data.season.Value == "Summer" then
+			if data.season.Value == "Summer" then
 				if trend == 1 then
 					pressure += 0.07 * range
 				elseif trend == 2 then
@@ -94,7 +92,7 @@ return function(hemisphere, upper, lower)
 				pressure += 0.03 * range
 			end
 
-			if Data.season.Value == "Winter" then
+			if data.season.Value == "Winter" then
 				if trend == 1 then
 					pressure += 0.07 * range
 				elseif trend == 2 then
@@ -109,11 +107,11 @@ return function(hemisphere, upper, lower)
 
 		local value = math.floor((pressure - lower) / constant)
 		if trend == 1 then
-			return GlobalData.conditionOptions.rising[value]
+			return globalData.conditionOptions.rising[value]
 		elseif trend == 2 then
-			return GlobalData.conditionOptions.falling[value]
+			return globalData.conditionOptions.falling[value]
 		else
-			return GlobalData.conditionOptions.steady[value]
+			return globalData.conditionOptions.steady[value]
 		end
 	end
 end

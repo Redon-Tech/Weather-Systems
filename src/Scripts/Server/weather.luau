@@ -4,16 +4,16 @@ local weather = {
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
-local globalData = require(Shared:WaitForChild("globalData"))
-local Configuration = Shared:WaitForChild("Configuration")
-local Data = Shared:WaitForChild("Data")
-local DayCycleConfig = Configuration:WaitForChild("dayCycle")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local globalData = require(wsShared:WaitForChild("globalData"))
+local configuration = wsShared:WaitForChild("Configuration")
+local data = wsShared:WaitForChild("Data")
+local dayCycleConfig = configuration:WaitForChild("dayCycle")
 local serverModules = script.Parent:WaitForChild("Modules")
-local sharedModules = Shared:WaitForChild("Modules")
+local sharedModules = wsShared:WaitForChild("Modules")
 local comm = require(sharedModules:WaitForChild("comm"))
 
-local isDebug = Configuration:GetAttribute("debug")
+local isDebug = configuration:GetAttribute("debug")
 local truePrint = print
 local print = function(...)
 	if isDebug then
@@ -52,10 +52,10 @@ function weather:_newDay(dayNum: number)
 	end
 
 	self.day = dayNum - globalData.months[self.month.Number].MinDays
-	Data.day.Value = self.day
-	Data.month.Value = self.month.Name
-	Data.season.Value = self.season
-	self.currentClimateData = Configuration.climateData:FindFirstChild(self.month.Name)
+	data.day.Value = self.day
+	data.month.Value = self.month.Name
+	data.season.Value = self.season
+	self.currentClimateData = configuration.climateData:FindFirstChild(self.month.Name)
 	self.hasChanged = false
 
 	print(self.day, self.month.Name, self.season)
@@ -77,17 +77,18 @@ function weather:_timeOfDay()
 		if self.currentMoonPhase > 8 then
 			self.currentMoonPhase = 1
 		end
-		self.sky.MoonTextureId = DayCycleConfig:FindFirstChild("moonPhases")
+		self.sky.MoonTextureId = dayCycleConfig
+			:FindFirstChild("moonPhases")
 			:GetAttribute(tostring(self.currentMoonPhase)) or "rbxasset://sky/moon.jpg"
 	elseif
 		self.isNight == false
-		and (time >= DayCycleConfig:GetAttribute("sunset") or time <= DayCycleConfig:GetAttribute("sunrise"))
+		and (time >= dayCycleConfig:GetAttribute("sunset") or time <= dayCycleConfig:GetAttribute("sunrise"))
 	then
 		self.isNight = true
 		print("Night", self.isNight)
 	elseif
 		self.isNight == true
-		and (time >= DayCycleConfig:GetAttribute("sunrise") and time <= DayCycleConfig:GetAttribute("sunset"))
+		and (time >= dayCycleConfig:GetAttribute("sunrise") and time <= dayCycleConfig:GetAttribute("sunset"))
 	then
 		self.isNight = false
 		print("Day", self.isNight)
@@ -104,7 +105,7 @@ function weather:_initValues()
 
 	local lowestPressure = 1000
 	local highestPressure = 0
-	for _, v in pairs(Configuration.climateData:GetChildren()) do
+	for _, v in pairs(configuration.climateData:GetChildren()) do
 		if v:GetAttribute("Pressure") - 5 < lowestPressure then
 			lowestPressure = v:GetAttribute("Pressure") - 5
 		end
@@ -113,8 +114,8 @@ function weather:_initValues()
 			highestPressure = v:GetAttribute("Pressure") + 5
 		end
 	end
-	Configuration:SetAttribute("LowestPressure", lowestPressure)
-	Configuration:SetAttribute("HighestPressure", highestPressure)
+	configuration:SetAttribute("LowestPressure", lowestPressure)
+	configuration:SetAttribute("HighestPressure", highestPressure)
 end
 
 function weather:_initModule(module: ModuleScript)
@@ -135,7 +136,7 @@ function weather:_initModule(module: ModuleScript)
 end
 
 function weather:start()
-	truePrint(`Starting Server\n		Version: {Configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
+	truePrint(`Starting Server\n		Version: {configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
 	setmetatable(weather, { __index = weather })
 
 	if game.Lighting:FindFirstChild("Sky") then
@@ -162,14 +163,14 @@ function weather:start()
 	self.valuesInitialized = false
 	self.currentDay = math.random(1, 365)
 	self.currentMoonPhase = math.random(1, 8)
-	self.randomSeed = if Configuration.misc:GetAttribute("Seed") ~= 0
-		then Configuration.misc:GetAttribute("Seed")
+	self.randomSeed = if configuration.misc:GetAttribute("Seed") ~= 0
+		then configuration.misc:GetAttribute("Seed")
 		else 57814259801
 	self.randomSeed = math.random(self.randomSeed, 0)
 	print(self.randomSeed)
-	Data.randomSeed.Value = self.randomSeed
+	data.randomSeed.Value = self.randomSeed
 	self.seed = Random.new(self.randomSeed)
-	self.currentClimateData = Configuration.climateData:FindFirstChild("January")
+	self.currentClimateData = configuration.climateData:FindFirstChild("January")
 
 	for _, v in pairs(serverModules:GetChildren()) do
 		self:_initModule(v)

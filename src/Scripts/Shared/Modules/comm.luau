@@ -6,9 +6,9 @@ comm.__index = comm
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
-local shared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 
-local configuration = shared:WaitForChild("Configuration")
+local configuration = wsShared:WaitForChild("Configuration")
 local isServer = RunService:IsServer()
 
 local isDebug = configuration:GetAttribute("debug")
@@ -26,7 +26,7 @@ end
 function comm.new(namespace: string)
 	print(`Initializing Comm {namespace}`)
 	local data = {
-		_commFolder = shared:WaitForChild("commEvents"),
+		_commFolder = wsShared:WaitForChild("commEvents"),
 		namespace = namespace,
 	}
 	local self = setmetatable(data, comm)
@@ -60,7 +60,7 @@ function comm.setup()
 
 	local commFolder = Instance.new("Folder")
 	commFolder.Name = "commEvents"
-	commFolder.Parent = shared
+	commFolder.Parent = wsShared
 	print("Comm Setup Complete")
 end
 
