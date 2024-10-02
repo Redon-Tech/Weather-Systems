@@ -6,6 +6,7 @@ local data = wsShared:WaitForChild("Data")
 local sharedModules = wsShared:WaitForChild("Modules")
 local comm = require(sharedModules:WaitForChild("comm"))
 local dynamicWeather = script.Parent:WaitForChild("dynamicWeather")
+local rainHandler = script.Parent:WaitForChild("rainHandler")
 
 local client = {
 	modules = {},
@@ -52,6 +53,7 @@ function client:start()
 	self.random = Random.new(self.randomSeed)
 
 	self:_initModule(dynamicWeather)
+	self:_initModule(rainHandler)
 
 	self.dynamicWeather:start()
 	print("Client Started")

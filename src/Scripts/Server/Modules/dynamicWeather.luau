@@ -12,6 +12,8 @@ local modules = wsShared:WaitForChild("Modules")
 local dynamicWeatherShared = require(modules:WaitForChild("dynamicWeatherShared"))
 local EvLightning = require(modules:WaitForChild("EvLightning"))
 local configuration = wsShared:WaitForChild("Configuration")
+local data = wsShared:WaitForChild("Data")
+
 local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
 	if isDebug then
@@ -36,7 +38,7 @@ function dynamicWeather:_loop(deltaTime)
 		(-workspace.GlobalWind.Z / 100) * deltaTime
 	)
 
-	if self.timeElapsed >= 10 then
+	if self.timeElapsed >= 10 and data.temperature.Value > 4.5 then
 		local randomPosition = Vector3.new(
 			math.random((self.mapSizeMin.X - 50) * 640, (self.mapSizeMax.X - 50) * 640),
 			400,
