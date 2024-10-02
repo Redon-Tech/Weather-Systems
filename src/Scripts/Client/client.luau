@@ -5,12 +5,13 @@ local configuration = wsShared:WaitForChild("Configuration")
 local data = wsShared:WaitForChild("Data")
 local sharedModules = wsShared:WaitForChild("Modules")
 local comm = require(sharedModules:WaitForChild("comm"))
+local types = require(script.Parent:WaitForChild("types"))
 local dynamicWeather = script.Parent:WaitForChild("dynamicWeather")
 local rainHandler = script.Parent:WaitForChild("rainHandler")
 
 local client = {
 	modules = {},
-}
+} :: types.client
 
 local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
@@ -22,7 +23,7 @@ local warn = function(...)
 	end
 end
 
-function client:_initModule(module: ModuleScript)
+function client._initModule(self: types.client, module: ModuleScript)
 	local tbl = require(module)
 	assert(type(tbl) == "table", `invalid return from module {module.Name} (table expected, got {type(tbl)})`)
 	if table.find(self.modules, module.Name) then
@@ -39,7 +40,7 @@ function client:_initModule(module: ModuleScript)
 	assert(success, `failed to set metatable for module {module.Name}: {err}`)
 end
 
-function client:start()
+function client.start(self: types.client)
 	print(`Starting Client\n		Version: {configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
 	setmetatable(client, { __index = client })
 

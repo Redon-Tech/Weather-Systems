@@ -1,6 +1,57 @@
 -- Redon Tech Weather System
 
-local comm = {}
+export type remoteEvent = {
+	remote: RemoteEvent,
+	connect: (any, func: (...any) -> ...any) -> RBXScriptConnection,
+	fire: (Player, ...any) -> (),
+}
+
+export type remoteEventServer = remoteEvent & {
+	fireAll: (...any) -> (),
+	fireFilter: ((Player, ...any) -> boolean, ...any) -> (),
+	fireFor: ({ Player }, ...any) -> (),
+}
+
+export type bindableEvent = {
+	event: BindableEvent,
+	connect: (any, func: (...any) -> ...any) -> RBXScriptConnection,
+	fire: (...any) -> (),
+}
+
+export type commImpl = {
+	__index: commImpl,
+
+	new: (namespace: string) -> comm,
+	setup: () -> (),
+
+	folderCheck: (self: comm) -> boolean,
+	remoteFunction: (
+		self: comm,
+		name: string,
+		bindTo: { [any]: any } | (...any) -> ...any,
+		funcName: string?
+	) -> RemoteFunction,
+	invokeFunction: (self: comm, name: string, ...any) -> ...any,
+	remoteEvent: (self: comm, name: string, ...any) -> (remoteEvent | remoteEventServer)?,
+	bindableFunction: (
+		self: comm,
+		name: string,
+		bindTo: {} | (...any) -> ...any,
+		funcName: string
+	) -> BindableFunction?,
+	bindableEvent: (self: comm, name: string, ...any) -> bindableEvent?,
+}
+
+export type comm = typeof(setmetatable(
+	{} :: {
+		_commFolder: Folder,
+		folder: Folder,
+		namespace: string,
+	},
+	{} :: commImpl
+))
+
+local comm = {} :: commImpl
 comm.__index = comm
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -23,7 +74,7 @@ local warn = function(...)
 	end
 end
 
-function comm.new(namespace: string)
+function comm.new(namespace: string): comm
 	print(`Initializing Comm {namespace}`)
 	local data = {
 		_commFolder = wsShared:WaitForChild("commEvents"),
@@ -64,7 +115,7 @@ function comm.setup()
 	print("Comm Setup Complete")
 end
 
-function comm:folderCheck()
+function comm.folderCheck(self: comm): boolean
 	if self.folder == nil then
 		warn(`{self.namespace} has no folder`)
 		return false
@@ -72,7 +123,12 @@ function comm:folderCheck()
 	return true
 end
 
-function comm:remoteFunction(name: string, ...): any
+function comm.remoteFunction(
+	self: comm,
+	name: string,
+	bindTo: { [any]: any } | (...any) -> ...any,
+	funcName: string?
+): RemoteFunction?
 	if self:folderCheck() == false then
 		return
 	end
@@ -87,7 +143,6 @@ function comm:remoteFunction(name: string, ...): any
 		remote.Name = name
 		remote.Parent = self.folder
 
-		local bindTo: {} | (...any) -> ...any, funcName: string = ...
 		if typeof(bindTo) == "table" then
 			remote.OnServerInvoke = function(...)
 				return bindTo[funcName](bindTo, ...) -- the first param is bindTo to pass back in self :D
@@ -96,30 +151,31 @@ function comm:remoteFunction(name: string, ...): any
 			remote.OnServerInvoke = bindTo
 		end
 		return remote
-	else
+	end
+
+	return
+end
+
+function comm.invokeFunction(self: comm, name: string, ...): ...any
+	if self:folderCheck() == false then
+		return
+	end
+
+	if isServer == false then
 		local remote = self.folder:WaitForChild(name)
 		return remote:InvokeServer(...)
 	end
+
+	return
 end
 
-function comm:remoteEvent(
-	name: string,
-	...
-): {
-	remote: RemoteEvent,
-	connect: (any, func: (...any) -> ...any) -> RBXScriptConnection,
-	fire: (...any) -> nil,
-	fireAll: ((...any) -> nil)?,
-	fireFilter: ((...any) -> nil)?,
-	fireExcept: ((...any) -> nil)?,
-	fireFor: ((...any) -> nil)?,
-} | nil
+function comm.remoteEvent(self: comm, name: string, ...): (remoteEvent | remoteEventServer)?
 	if self:folderCheck() == false then
 		return
 	end
 
 	if isServer == true then
-		local remoteEvent = {}
+		local remoteEvent = {} :: remoteEventServer
 		remoteEvent.__index = remoteEvent
 
 		remoteEvent.remote = self.folder:FindFirstChild(name) or Instance.new("RemoteEvent")
@@ -154,7 +210,7 @@ function comm:remoteEvent(
 
 		return remoteEvent
 	else
-		local remoteEvent = {}
+		local remoteEvent = {} :: remoteEvent
 		remoteEvent.__index = remoteEvent
 
 		remoteEvent.remote = self.folder:WaitForChild(name)
@@ -171,7 +227,12 @@ function comm:remoteEvent(
 	end
 end
 
-function comm:bindableFunction(name: string, bindTo: {} | (...any) -> ...any, funcName: string): BindableFunction?
+function comm.bindableFunction(
+	self: comm,
+	name: string,
+	bindTo: {} | (...any) -> ...any,
+	funcName: string
+): BindableFunction?
 	if self:folderCheck() == false then
 		return
 	end
@@ -195,14 +256,7 @@ function comm:bindableFunction(name: string, bindTo: {} | (...any) -> ...any, fu
 	return bindableFunction
 end
 
-function comm:bindableEvent(
-	name: string,
-	...
-): {
-	event: BindableEvent,
-	connect: (any, func: (...any) -> ...any) -> RBXScriptConnection,
-	fire: (...any) -> nil,
-}?
+function comm.bindableEvent(self: comm, name: string, ...): bindableEvent?
 	if self:folderCheck() == false then
 		return
 	end

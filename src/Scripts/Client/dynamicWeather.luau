@@ -1,16 +1,3 @@
-local dynamicWeather = {
-	map = table.create(101, table.create(101, 0)),
-	lastAnimateOffset = Vector2.new(1, 1),
-	animateOffset = Vector2.new(0, 0),
-	octaves = 8,
-	lacunarity = 3,
-	persistence = 0.1,
-	amplitude = 1,
-	frequency = 2.5,
-	updateAmount = 0,
-	updating = true,
-}
-
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
@@ -22,6 +9,7 @@ local modules = wsShared:WaitForChild("Modules")
 local dynamicWeatherShared = require(modules:WaitForChild("dynamicWeatherShared"))
 local configuration = wsShared:WaitForChild("Configuration")
 local data = wsShared:WaitForChild("Data")
+local types = require(script.Parent:WaitForChild("types"))
 
 local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
@@ -29,13 +17,27 @@ local print = function(...)
 		print(`[RTWS Client]: `, ...)
 	end
 end
+
+local dynamicWeather = {
+	-- map = table.create(101, table.create(101, 0)),
+	lastAnimateOffset = Vector2.new(1, 1),
+	animateOffset = Vector2.new(0, 0),
+	octaves = 8,
+	lacunarity = 3,
+	persistence = 0.1,
+	amplitude = 1,
+	frequency = 2.5,
+	updateAmount = 0,
+	updating = true,
+} :: types.dynamicWeather
+
 -- local warn = function(...)
 -- 	if isDebug then
 -- 		warn(`[RTWS Client]: `, ...)
 -- 	end
 -- end
 
-function dynamicWeather:_adjustValues()
+function dynamicWeather._adjustValues(self: types.dynamicWeather)
 	local values = dynamicWeatherShared:getValues()
 	self.amplitude = values.amplitude
 	self.persistence = values.persistence
@@ -50,7 +52,7 @@ function dynamicWeather:_adjustValues()
 	end
 end
 
-function dynamicWeather:_loop(deltaTime: number)
+function dynamicWeather._loop(self: types.dynamicWeather, deltaTime: number)
 	self.lastAnimateOffset = self.serverLastAnimateOffset
 	self.animateOffset = self.serverAnimateOffset
 
@@ -87,10 +89,8 @@ function dynamicWeather:_loop(deltaTime: number)
 		-- the general rule is snow can't form above 5 degrees celsius
 		-- ground temperature, which is what we're using here
 		if data.temperature.Value <= 4.5 and self.rainHandler.rainMode == "rain" then
-			self.rainMode = "snow"
 			self.rainHandler:setSnow()
 		elseif data.temperature.Value > 4.5 and self.rainHandler.rainMode == "snow" then
-			self.rainMode = "rain"
 			self.rainHandler:setRain()
 		end
 
@@ -121,18 +121,18 @@ function dynamicWeather:_loop(deltaTime: number)
 	end
 end
 
-function dynamicWeather:_adjustAnimation(lastAnimateOffset: Vector2, animateOffset: Vector2)
+function dynamicWeather._adjustAnimation(self: types.dynamicWeather, lastAnimateOffset: Vector2, animateOffset: Vector2)
 	self.serverLastAnimateOffset = lastAnimateOffset
 	self.serverAnimateOffset = animateOffset
 end
 
-function dynamicWeather:start()
+function dynamicWeather.start(self: types.dynamicWeather)
 	print("Initializing Dynamic Weather")
-	self.mapSize = configuration:GetAttribute("MapSize")
-	self.mapSizeMin = Vector2.new((100 - self.mapSize.X) / 2 + 1, (100 - self.mapSize.Y) / 2 + 1)
-	self.mapSizeMax = Vector2.new((100 + self.mapSize.X) / 2 + 1, (100 + self.mapSize.Y) / 2 + 1)
-	self.currentVector = Vector2.new(self.mapSizeMin.X, self.mapSizeMin.Y)
-	local lastAnimateOffset: Vector2, animateOffset: Vector2 = self.comm:remoteFunction("getAnimationData")
+	-- self.mapSize = configuration:GetAttribute("MapSize")
+	-- self.mapSizeMin = Vector2.new((100 - self.mapSize.X) / 2 + 1, (100 - self.mapSize.Y) / 2 + 1)
+	-- self.mapSizeMax = Vector2.new((100 + self.mapSize.X) / 2 + 1, (100 + self.mapSize.Y) / 2 + 1)
+	-- self.currentVector = Vector2.new(self.mapSizeMin.X, self.mapSizeMin.Y)
+	local lastAnimateOffset: Vector2, animateOffset: Vector2 = self.comm:invokeFunction("getAnimationData")
 	self.lastAnimateOffset = lastAnimateOffset
 	self.animateOffset = animateOffset
 	self.serverLastAnimateOffset = lastAnimateOffset
@@ -141,7 +141,7 @@ function dynamicWeather:start()
 	self.cloudIntensity = 0
 	self.currentPrecipIntensity = 0
 	self.precipIntensity = 0
-	print(self.mapSize, self.mapSizeMin, self.mapSizeMax, self.lastAnimateOffset, self.animateOffset)
+	-- print(self.mapSize, self.mapSizeMin, self.mapSizeMax, self.lastAnimateOffset, self.animateOffset)
 
 	self:_adjustValues()
 

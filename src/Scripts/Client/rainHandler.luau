@@ -1,15 +1,16 @@
-local rainHandler = {
-	rainMode = "rain",
-	rainEnabled = false,
-}
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local modules = wsShared:WaitForChild("Modules")
 local rain = require(modules:WaitForChild("Rain"))
+local types = require(script.Parent:WaitForChild("types"))
 
-function rainHandler:setSnow()
+local rainHandler = {
+	rainMode = "rain",
+	rainEnabled = false,
+} :: types.rainHandler
+
+function rainHandler.setSnow(self: types.rainHandler)
 	self.rainMode = "snow"
 	rain:SetSoundId("rbxassetid://0")
 	rain:SetSplashTexture("rbxassetid://0")
@@ -17,7 +18,7 @@ function rainHandler:setSnow()
 	rain:SetTopDownTexture("rbxassetid://29510111", NumberSequence.new(1))
 end
 
-function rainHandler:setRain()
+function rainHandler.setRain(self: types.rainHandler)
 	self.rainMode = "rain"
 	rain:SetSoundId("rbxassetid://1516791621")
 	rain:SetSplashTexture("rbxassetid://1822856633")
@@ -31,16 +32,16 @@ function rainHandler:setRain()
 	)
 end
 
-function rainHandler:setIntensity(intensity: number)
+function rainHandler.setIntensity(self: types.rainHandler, intensity: number)
 	rain:SetIntensityRatio(intensity)
 end
 
-function rainHandler:enable()
+function rainHandler.enable(self: types.rainHandler)
 	self.rainEnabled = true
 	rain:Enable()
 end
 
-function rainHandler:disable()
+function rainHandler.disable(self: types.rainHandler)
 	self.rainEnabled = false
 	rain:Disable()
 end

@@ -8,6 +8,7 @@ https://openweathermap.org/current
 
 - ~~Basic dynamic weather~~
 - ~~Daycycle config~~
+- Implement Types
 - zForecaster weather
 - Realtime weather
 - Day/Night Ambience
