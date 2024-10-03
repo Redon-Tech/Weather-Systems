@@ -14,7 +14,7 @@ function utils.getWindDirection(vector: Vector2): string
 	return directions[index]
 end
 
-function utils.lerp(start: number, goal: number, alpha: number)
+function utils.lerp(start: number, goal: number, alpha: number): number
 	return start + (goal - start) * alpha
 end
 

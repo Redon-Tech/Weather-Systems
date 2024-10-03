@@ -47,7 +47,7 @@ function dynamicWeatherShared:calculateElevationAtChunk(
 	lacunarity: number,
 	randomSeed: number,
 	animateOffset: Vector2
-)
+): number
 	local elevation = 0
 
 	for i = 1, octaves do

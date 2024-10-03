@@ -7,14 +7,18 @@ local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local data = wsShared:WaitForChild("Data")
 local globalData = require(wsShared:WaitForChild("globalData"))
 
-return function(hemisphere, upper, lower)
+return function(
+	hemisphere: number,
+	upper: number,
+	lower: number
+): (pressure: number, wind: string, trend: number) -> number
 	hemisphere = hemisphere or 1
 	upper = upper or 1030
 	lower = lower or 1010
 	local range = upper - lower
 	local constant = range / 22
 
-	return function(pressure, wind, trend)
+	return function(pressure: number, wind: string, trend: number): number
 		if hemisphere == 1 then
 			if wind == "N" then
 				pressure += 0.06 * range
