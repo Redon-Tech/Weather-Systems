@@ -1,7 +1,3 @@
-local dataHandler = {
-	started = false,
-}
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
@@ -15,6 +11,7 @@ local zForecaster = require(modules:WaitForChild("zForecaster"))(
 	configuration:GetAttribute("LowestPressure")
 )
 local utils = require(modules:WaitForChild("utils"))
+local types = require(script.Parent.Parent.types)
 
 local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
@@ -28,75 +25,66 @@ end
 -- 	end
 -- end
 
-function dataHandler:_calculateNextPressure(trend: number?)
+local dataHandler = {
+	started = false,
+} :: types.dataHandler
+
+function dataHandler._calculateNextPressure(self: types.dataHandler, trend: number?)
+	local pressure = self.currentClimateData:GetAttribute("Pressure") :: number
 	if trend == -1 then
-		local min, max =
-			self.currentClimateData:GetAttribute("Pressure") - 5, self.currentClimateData:GetAttribute("Pressure")
+		local min, max = pressure - 5, pressure
 		return self.seed:NextInteger(min * 1000, max * 1000) / 1000
 	elseif trend == 1 then
-		local min, max =
-			self.currentClimateData:GetAttribute("Pressure"), self.currentClimateData:GetAttribute("Pressure") + 5
+		local min, max = pressure, pressure + 5
 		return self.seed:NextInteger(min * 1000, max * 1000) / 1000
 	else
-		local min, max =
-			self.currentClimateData:GetAttribute("Pressure") - 5, self.currentClimateData:GetAttribute("Pressure") + 5
+		local min, max = pressure - 5, pressure + 5
 		return self.seed:NextInteger(min * 1000, max * 1000) / 1000
 	end
 end
 
-function dataHandler:_calculateNextTemperature(getCurrent: boolean?)
+function dataHandler._calculateNextTemperature(self: types.dataHandler, getCurrent: boolean?)
 	if getCurrent == true then
 		if self.isNight == true then
-			local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
-			local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+			local averageHigh = self.currentClimateData:GetAttribute("Temperature_High") :: number
+			local averageLow = self.currentClimateData:GetAttribute("Temperature_Low") :: number
 			return math.floor((self.seed:NextInteger(averageHigh - 10, averageHigh - 5) + averageLow) / 2)
 		else
-			local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
-			local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+			local averageHigh = self.currentClimateData:GetAttribute("Temperature_High") :: number
+			local averageLow = self.currentClimateData:GetAttribute("Temperature_Low") :: number
 			return math.ceil((self.seed:NextInteger(averageLow + 5, averageLow + 10) + averageHigh) / 2)
 		end
 	end
 
 	if self.isNight == true then
-		local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
-		local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+		local averageHigh = self.currentClimateData:GetAttribute("Temperature_High") :: number
+		local averageLow = self.currentClimateData:GetAttribute("Temperature_Low") :: number
 		return math.ceil((self.seed:NextInteger(averageLow + 5, averageLow + 10) + averageHigh) / 2)
 	else
-		local averageHigh = self.currentClimateData:GetAttribute("Temperature_High")
-		local averageLow = self.currentClimateData:GetAttribute("Temperature_Low")
+		local averageHigh = self.currentClimateData:GetAttribute("Temperature_High") :: number
+		local averageLow = self.currentClimateData:GetAttribute("Temperature_Low") :: number
 		return math.floor((self.seed:NextInteger(averageHigh - 10, averageHigh - 5) + averageLow) / 2)
 	end
 end
 
-function dataHandler:_calculateNextHumidity(getCurrent: boolean?)
+function dataHandler._calculateNextHumidity(self: types.dataHandler, getCurrent: boolean?)
+	local humidity = self.currentClimateData:GetAttribute("Humidity") :: number
 	if getCurrent == true then
 		if self.isNight == true then
-			return self.seed:NextInteger(
-				self.currentClimateData:GetAttribute("Humidity"),
-				self.currentClimateData:GetAttribute("Humidity") + 15
-			)
+			return self.seed:NextInteger(humidity, humidity + 15)
 		else
-			return self.seed:NextInteger(
-				self.currentClimateData:GetAttribute("Humidity") - 15,
-				self.currentClimateData:GetAttribute("Humidity")
-			)
+			return self.seed:NextInteger(humidity - 15, humidity)
 		end
 	end
 
 	if self.isNight == true then
-		return self.seed:NextInteger(
-			self.currentClimateData:GetAttribute("Humidity") - 15,
-			self.currentClimateData:GetAttribute("Humidity")
-		)
+		return self.seed:NextInteger(humidity - 15, humidity)
 	else
-		return self.seed:NextInteger(
-			self.currentClimateData:GetAttribute("Humidity"),
-			self.currentClimateData:GetAttribute("Humidity") + 15
-		)
+		return self.seed:NextInteger(humidity, humidity + 15)
 	end
 end
 
-function dataHandler:getPressureTrend()
+function dataHandler.getPressureTrend(self: types.dataHandler)
 	local pressure = data.pressure.Value
 	local goalPressure = data.pressure:GetAttribute("goal")
 	if pressure < goalPressure then
@@ -108,10 +96,7 @@ function dataHandler:getPressureTrend()
 	end
 end
 
-function dataHandler:_calculateNextPrecipData(
-	pressure: number,
-	pressureTrend: number
-): { chance: number, intensity: number }
+function dataHandler._calculateNextPrecipData(self: types.dataHandler, pressure: number, pressureTrend: number)
 	local windDirection = Vector2.new(workspace.GlobalWind.X, workspace.GlobalWind.Z)
 	local zForecast = zForecaster(pressure, utils.getWindDirection(windDirection), pressureTrend)
 	if zForecast == nil then
@@ -129,7 +114,8 @@ function dataHandler:_calculateNextPrecipData(
 	return precipData
 end
 
-function dataHandler:_nextData(
+function dataHandler._nextData(
+	self: types.dataHandler,
 	startingPressure: number,
 	startingTemperature: number,
 	startingHumidity: number,
@@ -187,7 +173,7 @@ function dataHandler:_nextData(
 	)
 end
 
-function dataHandler:heartbeat(deltaTime: number)
+function dataHandler.heartbeat(self: types.dataHandler, deltaTime: number)
 	if self.started == false then
 		return
 	end
@@ -221,7 +207,7 @@ function dataHandler:heartbeat(deltaTime: number)
 	end
 end
 
-function dataHandler:start()
+function dataHandler.start(self: types.dataHandler)
 	print("Data Handler initializing")
 	local pressureTrend = self.seed:NextInteger(-1, 1)
 	local startingPressure = dataHandler:_calculateNextPressure(pressureTrend)

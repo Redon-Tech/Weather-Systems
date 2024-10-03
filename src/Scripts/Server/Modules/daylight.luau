@@ -1,5 +1,3 @@
-local daylight = {}
-
 local RunService = game:GetService("RunService")
 local Lighting = game:GetService("Lighting")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -7,6 +5,9 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local configuration = wsShared:WaitForChild("Configuration")
 local dayCycle = configuration:WaitForChild("dayCycle")
+local types = require(script.Parent.Parent.types)
+
+local daylight = {} :: types.daylight
 
 local enabled = dayCycle:GetAttribute("enabled") or false
 local dayLength = dayCycle:GetAttribute("dayLength") or 24
@@ -24,13 +25,13 @@ if realTime == true then
 	dayLength = 86400
 end
 
-function daylight:getSyncedTime()
+function daylight.getSyncedTime(self: types.daylight)
 	local currentTime = DateTime.now():ToUniversalTime()
 	local currentHour = (currentTime.Hour + realTimeZone) % 24
 	return (currentHour * 3600) + (currentTime.Minute * 60) + currentTime.Second
 end
 
-function daylight:start()
+function daylight.start(self: types.daylight)
 	if enabled == false then
 		RunService.Heartbeat:Connect(function(deltaTime)
 			self.dataHandler:heartbeat(deltaTime)

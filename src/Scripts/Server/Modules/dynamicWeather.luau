@@ -1,9 +1,3 @@
-local dynamicWeather = {
-	lastAnimateOffset = Vector2.new(),
-	animateOffset = Vector2.new(),
-	timeElapsed = 0,
-}
-
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -13,6 +7,7 @@ local dynamicWeatherShared = require(modules:WaitForChild("dynamicWeatherShared"
 local EvLightning = require(modules:WaitForChild("EvLightning"))
 local configuration = wsShared:WaitForChild("Configuration")
 local data = wsShared:WaitForChild("Data")
+local types = require(script.Parent.Parent.types)
 
 local isDebug = configuration:GetAttribute("debug")
 local print = function(...)
@@ -26,7 +21,13 @@ end
 -- 	end
 -- end
 
-function dynamicWeather:_loop(deltaTime)
+local dynamicWeather = {
+	lastAnimateOffset = Vector2.new(),
+	animateOffset = Vector2.new(),
+	timeElapsed = 0,
+} :: types.dynamicWeather
+
+function dynamicWeather._loop(self: types.dynamicWeather, deltaTime: number)
 	self.timeElapsed += deltaTime
 	if (self.lastAnimateOffset - self.animateOffset).Magnitude > 1 or self.currentWind ~= workspace.GlobalWind then
 		self.events.noiseAnimation:fireAll(self:getAnimationData())
@@ -70,11 +71,11 @@ function dynamicWeather:_loop(deltaTime)
 	end
 end
 
-function dynamicWeather:getAnimationData()
+function dynamicWeather.getAnimationData(self: types.dynamicWeather)
 	return self.lastAnimateOffset, self.animateOffset
 end
 
-function dynamicWeather:start()
+function dynamicWeather.start(self: types.dynamicWeather)
 	print("Initializing Dynamic Weather")
 	self.mapSize = configuration:GetAttribute("MapSize")
 	self.mapSizeMin = Vector2.new((100 - self.mapSize.X) / 2 + 1, (100 - self.mapSize.Y) / 2 + 1)

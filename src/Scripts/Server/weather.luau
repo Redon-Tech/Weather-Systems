@@ -1,7 +1,3 @@
-local weather = {
-	modules = {},
-}
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
@@ -12,6 +8,7 @@ local dayCycleConfig = configuration:WaitForChild("dayCycle")
 local serverModules = script.Parent:WaitForChild("Modules")
 local sharedModules = wsShared:WaitForChild("Modules")
 local comm = require(sharedModules:WaitForChild("comm"))
+local types = require(script.Parent.types)
 
 local isDebug = configuration:GetAttribute("debug")
 local truePrint = print
@@ -26,7 +23,11 @@ local warn = function(...)
 	end
 end
 
-function weather:_newDay(dayNum: number)
+local weather = {
+	modules = {},
+} :: types.weather
+
+function weather._newDay(self: types.weather, dayNum: number)
 	for i = 1, #globalData.months do
 		local data = globalData.months[i]
 		if dayNum > data.MinDays and dayNum <= data.MaxDays then
@@ -61,7 +62,7 @@ function weather:_newDay(dayNum: number)
 	print(self.day, self.month.Name, self.season)
 end
 
-function weather:_timeOfDay()
+function weather._timeOfDay(self: types.weather)
 	local time = game.Lighting:GetMinutesAfterMidnight()
 
 	if time == 0 then
@@ -100,7 +101,7 @@ function weather:_timeOfDay()
 	end
 end
 
-function weather:_initValues()
+function weather._initValues(self: types.weather)
 	self.dataHandler:start()
 
 	local lowestPressure = 1000
@@ -118,7 +119,7 @@ function weather:_initValues()
 	configuration:SetAttribute("HighestPressure", highestPressure)
 end
 
-function weather:_initModule(module: ModuleScript)
+function weather._initModule(self: types.weather, module: ModuleScript)
 	local tbl = require(module)
 	assert(type(tbl) == "table", `invalid return from module {module.Name} (table expected, got {type(tbl)})`)
 	if table.find(self.modules, module.Name) then
@@ -135,7 +136,7 @@ function weather:_initModule(module: ModuleScript)
 	assert(success, `failed to set metatable for module {module.Name}: {err}`)
 end
 
-function weather:start()
+function weather.start(self: types.weather)
 	truePrint(`Starting Server\n		Version: {configuration:GetAttribute("version")}\n		Debug: {isDebug}`)
 	setmetatable(weather, { __index = weather })
 
