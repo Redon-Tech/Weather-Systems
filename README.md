@@ -6,16 +6,16 @@ Work In Progress
 
 https://openweathermap.org/current
 
-- ~~Basic dynamic weather~~
-- ~~Daycycle config~~
-- Implement Types
-- zForecaster weather
-- Realtime weather
-- Day/Night Ambience
-- Readd Detailed UI
-- Wind
-- Lighting changing configurable
-- Freeze Time
-- Screen rain (configurable)
-- Basic natural disasters (bilzzard, windstorm, strong thunderstorm, hail)
-- Implementation for user-customized natural disasters
+[x] Basic dynamic weather
+[x] Daycycle config
+[x] Implement Types
+[ ] zForecaster weather
+[ ] Realtime weather
+[ ] Day/Night Ambience
+[ ] Readd Detailed UI
+[ ] Wind
+[ ] Lighting changing configurable
+[ ] Freeze Time
+[ ] Screen rain (configurable)
+[ ] Basic natural disasters (bilzzard, windstorm, strong thunderstorm, hail)
+[ ] Implementation for user-customized natural disasters
