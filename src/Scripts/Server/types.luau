@@ -43,6 +43,7 @@ export type weather = {
 	dataHandler: dataHandler,
 	daylight: daylight,
 	dynamicWeather: dynamicWeather,
+	zWeather: zWeather,
 }
 
 export type conversions = weather & {
@@ -64,6 +65,7 @@ export type dataHandler = weather & {
 	goalPrecipChance: number,
 	startingPrecipIntensity: number,
 	goalPrecipIntensity: number,
+	currentzForecast: number,
 
 	currentDataIsDayToNight: boolean,
 
@@ -75,7 +77,7 @@ export type dataHandler = weather & {
 		self: dataHandler,
 		pressure: number,
 		pressureTrend: number
-	) -> typeof(globalData.conditionData.precipIntensityAndChance[1]),
+	) -> typeof(globalData.conditionData.precipIntensityAndChance[1]) & { value: number },
 	_nextData: (
 		self: dataHandler,
 		startingPressure: number,
@@ -106,10 +108,20 @@ export type dynamicWeather = weather & {
 	mapSizeMin: Vector2,
 	mapSizeMax: Vector2,
 	currentWind: Vector3,
+	loop: RBXScriptConnection | false,
 
 	_loop: (self: dynamicWeather, deltaTime: number) -> (),
 	getAnimationData: (self: dynamicWeather) -> (Vector2, Vector2),
+	startLoop: (self: dynamicWeather) -> (),
 	start: (self: dynamicWeather) -> (),
+}
+
+export type zWeather = weather & {
+	enabled: boolean,
+	task: thread | false,
+
+	weatherChanged: (self: zWeather) -> (),
+	start: (self: zWeather) -> (),
 }
 
 return nil

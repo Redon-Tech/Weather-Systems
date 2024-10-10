@@ -100,17 +100,18 @@ function dataHandler._calculateNextPrecipData(self: types.dataHandler, pressure:
 	local windDirection = Vector2.new(workspace.GlobalWind.X, workspace.GlobalWind.Z)
 	local zForecast = zForecaster(pressure, utils.getWindDirection(windDirection), pressureTrend)
 	if zForecast == nil then
-		return { chance = 1, intensity = 1 }
+		return { chance = 1, intensity = 1, value = 32 }
 	end
 
 	print(zForecast, globalData.conditionData.names[zForecast])
 	local precipData = globalData.conditionData.precipIntensityAndChance[zForecast]
 	if precipData == nil then
-		return { chance = 1, intensity = 1 }
+		return { chance = 1, intensity = 1, value = 32 }
 	end
 
 	precipData.intensity = 1 - precipData.intensity
 	precipData.chance = 1 - precipData.chance
+	precipData.value = zForecast
 	return precipData
 end
 
@@ -120,7 +121,7 @@ function dataHandler._nextData(
 	startingTemperature: number,
 	startingHumidity: number,
 	pressureTrend: number,
-	startingPrecipData: { chance: number, intensity: number }
+	startingPrecipData: typeof(globalData.conditionData.precipIntensityAndChance[1]) & { value: number }
 )
 	local goalPressure = self:_calculateNextPressure(pressureTrend)
 	data.pressure.Value = startingPressure
@@ -147,6 +148,8 @@ function dataHandler._nextData(
 	data.intensity.Value = startingPrecipData.intensity
 	self.startingPrecipIntensity = startingPrecipData.intensity
 	self.goalPrecipIntensity = goalPrecipData.intensity
+	data.zForecast.Value = goalPrecipData.value
+	self.currentzForecast = goalPrecipData.value
 	data.precipChance:SetAttribute("start", startingPrecipData.chance)
 	data.intensity:SetAttribute("start", startingPrecipData.intensity)
 	data.precipChance:SetAttribute("goal", goalPrecipData.chance)
@@ -193,7 +196,7 @@ function dataHandler.heartbeat(self: types.dataHandler, deltaTime: number)
 			self.goalTemperature,
 			self.goalHumidity,
 			dataHandler:getPressureTrend(),
-			{ chance = self.goalPrecipChance, intensity = self.goalPrecipIntensity }
+			{ chance = self.goalPrecipChance, intensity = self.goalPrecipIntensity, value = self.currentzForecast }
 		)
 	elseif self.currentDataIsDayToNight == true and self.daylight.isPastHalf == false then
 		self.currentDataIsDayToNight = false
@@ -202,7 +205,7 @@ function dataHandler.heartbeat(self: types.dataHandler, deltaTime: number)
 			self.goalTemperature,
 			self.goalHumidity,
 			self.seed:NextInteger(-1, 1), -- We generate a new pressure trend every day
-			{ chance = self.goalPrecipChance, intensity = self.goalPrecipIntensity }
+			{ chance = self.goalPrecipChance, intensity = self.goalPrecipIntensity, value = self.currentzForecast }
 		)
 	end
 end

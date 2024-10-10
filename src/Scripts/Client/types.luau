@@ -20,6 +20,7 @@ export type client = {
 	-- Modules
 	dynamicWeather: dynamicWeather,
 	rainHandler: rainHandler,
+	setWeather: setWeather,
 }
 
 export type dynamicWeather = client & {
@@ -47,18 +48,29 @@ export type dynamicWeather = client & {
 	_adjustValues: (self: dynamicWeather) -> (),
 	_loop: (self: dynamicWeather, deltaTime: number) -> (),
 	_adjustAnimation: (self: dynamicWeather, lastAnimateOffset: Vector2, animateOffset: Vector2) -> (),
+	startLoop: (self: dynamicWeather) -> (),
 	start: (self: dynamicWeather) -> (),
 }
 
 export type rainHandler = client & {
 	rainMode: "rain" | "snow",
 	rainEnabled: boolean,
+	clouds: Clouds?,
 
 	setSnow: (self: rainHandler) -> (),
 	setRain: (self: rainHandler) -> (),
 	setIntensity: (self: rainHandler, intensity: number) -> (),
 	enable: (self: rainHandler) -> (),
 	disable: (self: rainHandler) -> (),
+	setCloud: (self: rainHandler, cover: number, density: number, noTween: boolean?) -> (),
+	start: (self: rainHandler) -> (),
+}
+
+export type setWeather = client & {
+	enabled: boolean,
+
+	weatherChanged: (self: setWeather) -> (),
+	start: (self: setWeather) -> (),
 }
 
 return nil

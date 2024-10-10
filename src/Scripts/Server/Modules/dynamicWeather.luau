@@ -25,6 +25,7 @@ local dynamicWeather = {
 	lastAnimateOffset = Vector2.new(),
 	animateOffset = Vector2.new(),
 	timeElapsed = 0,
+	loop = false,
 } :: types.dynamicWeather
 
 function dynamicWeather._loop(self: types.dynamicWeather, deltaTime: number)
@@ -75,6 +76,12 @@ function dynamicWeather.getAnimationData(self: types.dynamicWeather)
 	return self.lastAnimateOffset, self.animateOffset
 end
 
+function dynamicWeather.startLoop(self: types.dynamicWeather)
+	self.loop = RunService.Heartbeat:Connect(function(deltaTime)
+		self:_loop(deltaTime)
+	end)
+end
+
 function dynamicWeather.start(self: types.dynamicWeather)
 	print("Initializing Dynamic Weather")
 	self.mapSize = configuration:GetAttribute("MapSize")
@@ -86,9 +93,16 @@ function dynamicWeather.start(self: types.dynamicWeather)
 
 	self.comm:remoteFunction("getAnimationData", self, "getAnimationData")
 
-	RunService.Heartbeat:Connect(function(deltaTime)
-		self:_loop(deltaTime)
-	end)
+	local function onWeatherChanged()
+		if configuration.weather:GetAttribute("WeatherMode") == "dynamic" then
+			self:startLoop()
+		elseif self.loop ~= false then
+			self.loop:Disconnect()
+			self.loop = false
+		end
+	end
+	onWeatherChanged()
+	configuration.weather:GetAttributeChangedSignal("WeatherMode"):Connect(onWeatherChanged)
 
 	print("Dynamic Weather Initialized")
 end

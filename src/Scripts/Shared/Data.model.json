@@ -36,6 +36,14 @@
         {
             "ClassName": "NumberValue",
             "Name": "randomSeed"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "zForecast"
+        },
+        {
+            "ClassName": "StringValue",
+            "Name": "setWeather"
         }
     ]
 }

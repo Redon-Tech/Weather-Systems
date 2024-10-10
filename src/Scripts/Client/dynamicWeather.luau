@@ -2,7 +2,6 @@ local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local localPlayer = Players.LocalPlayer
-local Terrain = workspace:WaitForChild("Terrain")
 
 local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local modules = wsShared:WaitForChild("Modules")
@@ -82,7 +81,7 @@ function dynamicWeather._loop(self: types.dynamicWeather, deltaTime: number)
 			self.animateOffset
 		)
 
-		self.cloudIntensity = math.clamp((-3 * (elevation ^ 2)) + 1, 0, 1)
+		self.cloudIntensity = math.clamp((-3 * (elevation ^ 3)) + 1, 0, 1)
 		self.precipIntensity = math.clamp((-3 * elevation) + 1, 0, 1)
 
 		-- According to the national snow and ice data center
@@ -100,8 +99,9 @@ function dynamicWeather._loop(self: types.dynamicWeather, deltaTime: number)
 	if self.currentCloudIntensity ~= self.cloudIntensity then
 		self.currentCloudIntensity = self.currentCloudIntensity
 			+ ((self.cloudIntensity - self.currentCloudIntensity) * deltaTime * 2)
-		self.clouds.Cover = self.currentCloudIntensity
-		self.clouds.Density = self.currentCloudIntensity * 0.86
+		-- self.clouds.Cover = self.currentCloudIntensity
+		-- self.clouds.Density = self.currentCloudIntensity * 0.86
+		self.rainHandler:setCloud(self.currentCloudIntensity, self.currentCloudIntensity * 0.86, true)
 	end
 
 	if self.currentPrecipIntensity ~= self.precipIntensity then
@@ -124,6 +124,15 @@ end
 function dynamicWeather._adjustAnimation(self: types.dynamicWeather, lastAnimateOffset: Vector2, animateOffset: Vector2)
 	self.serverLastAnimateOffset = lastAnimateOffset
 	self.serverAnimateOffset = animateOffset
+end
+
+function dynamicWeather.startLoop(self: types.dynamicWeather)
+	RunService:BindToRenderStep("DynamicWeather", Enum.RenderPriority.Last.Value, function(deltaTime)
+		if self.rootPart == nil or self.rainHandler.clouds == nil then
+			return
+		end
+		self:_loop(deltaTime)
+	end)
 end
 
 function dynamicWeather.start(self: types.dynamicWeather)
@@ -151,13 +160,6 @@ function dynamicWeather.start(self: types.dynamicWeather)
 		self.rootPart = rootPart
 	end
 
-	local clouds = Terrain:FindFirstChildOfClass("Clouds")
-	if clouds == nil then
-		clouds = Instance.new("Clouds")
-		clouds.Parent = Terrain
-	end
-	self.clouds = clouds
-
 	localPlayer.CharacterAdded:Connect(function(character: Model)
 		rootPart = localPlayer.Character:WaitForChild("HumanoidRootPart")
 		self.rootPart = rootPart
@@ -183,29 +185,16 @@ function dynamicWeather.start(self: types.dynamicWeather)
 		self:_adjustAnimation(lastAnimateOffset, animateOffset)
 	end)
 
-	RunService:BindToRenderStep("DynamicWeather", Enum.RenderPriority.Last.Value, function(deltaTime)
-		if rootPart == nil or clouds == nil then
-			return
-		end
-		self:_loop(deltaTime)
-	end)
-
-	local cloudConnection: RBXScriptConnection? = nil
-	local function onCloudsChanged()
-		if clouds.Parent == nil then
-			print("Clouds got destroyed, recreating")
-			clouds = Instance.new("Clouds")
-			clouds.Parent = Terrain
-			self.clouds = clouds
-
-			if cloudConnection then
-				cloudConnection:Disconnect()
-			end
-
-			cloudConnection = clouds:GetPropertyChangedSignal("Parent"):Connect(onCloudsChanged)
+	configuration:WaitForChild("weather")
+	local function onWeatherChanged()
+		if configuration.weather:GetAttribute("WeatherMode") == "dynamic" then
+			self:startLoop()
+		else
+			RunService:UnbindFromRenderStep("DynamicWeather")
 		end
 	end
-	cloudConnection = clouds:GetPropertyChangedSignal("Parent"):Connect(onCloudsChanged)
+	onWeatherChanged()
+	configuration.weather:GetAttributeChangedSignal("WeatherMode"):Connect(onWeatherChanged)
 
 	print("Dynamic Weather Initialized")
 end

@@ -1,4 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+local Terrain = workspace:WaitForChild("Terrain")
 
 local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
 local modules = wsShared:WaitForChild("Modules")
@@ -44,6 +46,48 @@ end
 function rainHandler.disable(self: types.rainHandler)
 	self.rainEnabled = false
 	rain:Disable()
+end
+
+function rainHandler.setCloud(self: types.rainHandler, cover: number, density: number, noTween: boolean?)
+	if self.clouds == nil then
+		return
+	end
+	local ti: TweenInfo
+	if noTween == true then
+		ti = TweenInfo.new(0)
+	else
+		ti = TweenInfo.new(30)
+	end
+
+	-- self.clouds.Cover = cover
+	-- self.clouds.Density = density
+	TweenService:Create(self.clouds, ti, { Cover = cover, Density = density }):Play()
+end
+
+function rainHandler.start(self: types.rainHandler)
+	local clouds = Terrain:FindFirstChildOfClass("Clouds")
+	if clouds == nil then
+		clouds = Instance.new("Clouds")
+		clouds.Parent = Terrain
+	end
+	self.clouds = clouds
+
+	local cloudConnection: RBXScriptConnection? = nil
+	local function onCloudsChanged()
+		if clouds.Parent == nil then
+			print("Clouds got destroyed, recreating")
+			clouds = Instance.new("Clouds")
+			clouds.Parent = Terrain
+			self.clouds = clouds
+
+			if cloudConnection then
+				cloudConnection:Disconnect()
+			end
+
+			cloudConnection = clouds:GetPropertyChangedSignal("Parent"):Connect(onCloudsChanged)
+		end
+	end
+	cloudConnection = clouds:GetPropertyChangedSignal("Parent"):Connect(onCloudsChanged)
 end
 
 return rainHandler

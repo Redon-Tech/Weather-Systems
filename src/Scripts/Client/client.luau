@@ -8,6 +8,7 @@ local comm = require(sharedModules:WaitForChild("comm"))
 local types = require(script.Parent:WaitForChild("types"))
 local dynamicWeather = script.Parent:WaitForChild("dynamicWeather")
 local rainHandler = script.Parent:WaitForChild("rainHandler")
+local setWeather = script.Parent:WaitForChild("setWeather")
 
 local client = {
 	modules = {},
@@ -55,7 +56,10 @@ function client.start(self: types.client)
 
 	self:_initModule(dynamicWeather)
 	self:_initModule(rainHandler)
+	self:_initModule(setWeather)
 
+	self.rainHandler:start()
+	self.setWeather:start()
 	self.dynamicWeather:start()
 	print("Client Started")
 end

@@ -799,7 +799,7 @@ function Rain:Enable(tweenInfo)
 		GlobalModifier.Value = 0
 	end
 
-	if not Sound.Playing then
+	if not Sound.Playing and Sound.SoundId ~= "rbxassetid://0" then
 		Sound:Play()
 		Sound.TimePosition = math.random() * Sound.TimeLength
 	end
