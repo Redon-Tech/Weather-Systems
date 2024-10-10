@@ -35,7 +35,7 @@ function rainHandler.setRain(self: types.rainHandler)
 end
 
 function rainHandler.setIntensity(self: types.rainHandler, intensity: number)
-	rain:SetIntensityRatio(intensity)
+	rain:SetIntensityRatio(intensity, TweenInfo.new(30))
 end
 
 function rainHandler.enable(self: types.rainHandler)

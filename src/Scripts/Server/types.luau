@@ -61,6 +61,8 @@ export type dataHandler = weather & {
 	goalTemperature: number,
 	startingHumidity: number,
 	goalHumidity: number,
+	startingWind: Vector3,
+	goalWind: Vector3,
 	startingPrecipChance: number,
 	goalPrecipChance: number,
 	startingPrecipIntensity: number,
@@ -73,10 +75,12 @@ export type dataHandler = weather & {
 	_calculateNextTemperature: (self: dataHandler, getCurrent: boolean?) -> number,
 	_calculateNextHumidity: (self: dataHandler, getCurrent: boolean?) -> number,
 	getPressureTrend: (self: dataHandler) -> number,
+	_calculateNextWind: (self: dataHandler) -> Vector3,
 	_calculateNextPrecipData: (
 		self: dataHandler,
 		pressure: number,
-		pressureTrend: number
+		pressureTrend: number,
+		newWind: Vector3
 	) -> typeof(globalData.conditionData.precipIntensityAndChance[1]) & { value: number },
 	_nextData: (
 		self: dataHandler,

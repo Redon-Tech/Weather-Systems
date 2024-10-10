@@ -18,4 +18,12 @@ function utils.lerp(start: number, goal: number, alpha: number): number
 	return start + (goal - start) * alpha
 end
 
+function utils.lerpVector3(start: Vector3, goal: Vector3, alpha: number): Vector3
+	return Vector3.new(
+		utils.lerp(start.X, goal.X, alpha),
+		utils.lerp(start.Y, goal.Y, alpha),
+		utils.lerp(start.Z, goal.Z, alpha)
+	)
+end
+
 return utils

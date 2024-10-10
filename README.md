@@ -10,7 +10,7 @@ https://openweathermap.org/current
 - [x] Daycycle config
 - [x] Implement Types
 - [x] zForecaster weather
-- [ ] Wind
+- [x] Wind
 - [ ] Realtime weather
 - [ ] Day/Night Ambience
 - [ ] Readd Detailed UI

@@ -96,8 +96,27 @@ function dataHandler.getPressureTrend(self: types.dataHandler)
 	end
 end
 
-function dataHandler._calculateNextPrecipData(self: types.dataHandler, pressure: number, pressureTrend: number)
-	local windDirection = Vector2.new(workspace.GlobalWind.X, workspace.GlobalWind.Z)
+function dataHandler._calculateNextWind(self: types.dataHandler)
+	local currentWind = Vector2.new(workspace.GlobalWind.X, workspace.GlobalWind.Z)
+	local currentWindSpeed = currentWind.Magnitude
+	local currentWindDirection = currentWind.Unit
+	local newWindDirection = Vector2.new(
+		currentWindDirection.X + self.seed:NextNumber(-1, 1),
+		currentWindDirection.Y + self.seed:NextNumber(-1, 1)
+	)
+	local newWindSpeed = math.clamp(self.seed:NextNumber(currentWindSpeed - 5, currentWindSpeed + 5), -10, 10)
+	print(newWindDirection.Unit * newWindSpeed)
+
+	return Vector3.new(newWindDirection.X, 0, newWindDirection.Y).Unit * newWindSpeed
+end
+
+function dataHandler._calculateNextPrecipData(
+	self: types.dataHandler,
+	pressure: number,
+	pressureTrend: number,
+	newWind: Vector3
+)
+	local windDirection = Vector2.new(newWind.X, newWind.Z)
 	local zForecast = zForecaster(pressure, utils.getWindDirection(windDirection), pressureTrend)
 	if zForecast == nil then
 		return { chance = 1, intensity = 1, value = 32 }
@@ -123,25 +142,37 @@ function dataHandler._nextData(
 	pressureTrend: number,
 	startingPrecipData: typeof(globalData.conditionData.precipIntensityAndChance[1]) & { value: number }
 )
+	-- Pressure
 	local goalPressure = self:_calculateNextPressure(pressureTrend)
 	data.pressure.Value = startingPressure
 	self.startingPressure = startingPressure
 	self.goalPressure = goalPressure
 	data.pressure:SetAttribute("start", startingPressure)
 	data.pressure:SetAttribute("goal", goalPressure)
+
+	-- Temperature
 	local goalTemperature = self:_calculateNextTemperature()
 	data.temperature.Value = startingTemperature
 	self.startingTemperature = startingTemperature
 	self.goalTemperature = goalTemperature
 	data.temperature:SetAttribute("start", startingTemperature)
 	data.temperature:SetAttribute("goal", goalTemperature)
+
+	-- Humidity
 	local goalHumidity = self:_calculateNextHumidity()
 	data.humidity.Value = startingHumidity
 	self.startingHumidity = startingHumidity
 	self.goalHumidity = goalHumidity
 	data.humidity:SetAttribute("start", startingHumidity)
 	data.humidity:SetAttribute("goal", goalHumidity)
-	local goalPrecipData = self:_calculateNextPrecipData(goalPressure, pressureTrend)
+
+	-- Wind
+	local goalWind = self:_calculateNextWind()
+	self.startingWind = workspace.GlobalWind
+	self.goalWind = goalWind
+
+	-- Precipitation
+	local goalPrecipData = self:_calculateNextPrecipData(goalPressure, pressureTrend, self.goalWind)
 	data.precipChance.Value = startingPrecipData.chance
 	self.startingPrecipChance = startingPrecipData.chance
 	self.goalPrecipChance = goalPrecipData.chance
@@ -186,6 +217,7 @@ function dataHandler.heartbeat(self: types.dataHandler, deltaTime: number)
 	data.pressure.Value = utils.lerp(self.startingPressure, self.goalPressure, currentTime)
 	data.temperature.Value = utils.lerp(self.startingTemperature, self.goalTemperature, currentTime)
 	data.humidity.Value = utils.lerp(self.startingHumidity, self.goalHumidity, currentTime)
+	workspace.GlobalWind = utils.lerpVector3(self.startingWind, self.goalWind, currentTime)
 	data.precipChance.Value = utils.lerp(self.startingPrecipChance, self.goalPrecipChance, currentTime)
 	data.intensity.Value = utils.lerp(self.startingPrecipIntensity, self.goalPrecipIntensity, currentTime)
 
@@ -216,7 +248,10 @@ function dataHandler.start(self: types.dataHandler)
 	local startingPressure = dataHandler:_calculateNextPressure(pressureTrend)
 	local startingTemperature = dataHandler:_calculateNextTemperature(true)
 	local startingHumidity = dataHandler:_calculateNextHumidity(true)
-	local startingPrecipData = dataHandler:_calculateNextPrecipData(startingPressure, pressureTrend)
+	workspace.GlobalWind =
+		Vector3.new(math.clamp(self.seed:NextNumber(), -10, 10), 0, math.clamp(self.seed:NextNumber(), -10, 10))
+	local startingPrecipData =
+		dataHandler:_calculateNextPrecipData(startingPressure, pressureTrend, workspace.GlobalWind)
 	self.currentDataIsDayToNight = false
 
 	self:_nextData(startingPressure, startingTemperature, startingHumidity, pressureTrend, startingPrecipData)

@@ -319,6 +319,7 @@ do
 	straight.EmissionDirection = Enum.NormalId.Bottom
 	straight.Parent = Emitter
 	straight.Orientation = Enum.ParticleOrientation.FacingCameraWorldUp
+	straight.WindAffectsDrag = true
 
 	local topdown = Instance.new("ParticleEmitter")
 	topdown.Name = "RainTopDown"
@@ -334,6 +335,7 @@ do
 	topdown.Speed = NumberRange.new(RAIN_TOPDOWN_MAX_SPEED)
 	topdown.EmissionDirection = Enum.NormalId.Bottom
 	topdown.Parent = Emitter
+	topdown.WindAffectsDrag = true
 end
 
 local splashAttachments, rainAttachments
