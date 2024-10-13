@@ -68,6 +68,7 @@ export type rainHandler = client & {
 
 export type setWeather = client & {
 	enabled: boolean,
+	cloudServerControlled: boolean,
 
 	weatherChanged: (self: setWeather) -> (),
 	start: (self: setWeather) -> (),

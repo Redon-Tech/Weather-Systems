@@ -4,6 +4,12 @@
         "Attributes": {
             "WeatherMode": {
                 "String": "dynamic"
+            },
+            "Latitude": {
+                "Float64": 40.76078
+            },
+            "Longitude": {
+                "Float64": -111.89105
             }
         }
     }

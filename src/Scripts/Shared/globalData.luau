@@ -6,6 +6,7 @@ export type weatherTypes =
 	| "Drizzle"
 	| "Showers"
 	| "Rain"
+	| "Heavy Rain"
 	| "Thunderstorms"
 	| "Strong Thunderstorms"
 
@@ -16,6 +17,9 @@ local globalData: {
 		weatherDetermined: {
 			number: weatherTypes,
 		},
+	},
+	wmoWeatherCodes: {
+		number: weatherTypes,
 	},
 	conditionOptions: {
 		rising: { number },
@@ -136,6 +140,36 @@ local globalData: {
 				[31] = "Thunderstorms", --"Stormy,possibly improving",
 				[32] = "Strong Thunderstorms", --"Stormy, much rain",
 			},
+		},
+		wmoWeatherCodes = {
+			[0] = "Clear", -- Clear sky
+			[1] = "Partly Cloudy", -- Mainly Clear
+			[2] = "Mostly Cloudy", -- Partly Cloudy
+			[3] = "Cloudy", -- Overcast
+			[45] = "Cloudy", -- Fog
+			[48] = "Cloudy", -- Depositing rim fog
+			[51] = "Drizzle", -- Light Drizzle
+			[53] = "Showers", -- Moderate Drizzle
+			[55] = "Rain", -- Dense Drizzle
+			[56] = "Drizzle", -- Light Freezing Drizzle
+			[57] = "Rain", -- Dense Freezing Drizzle
+			[61] = "Drizzle", -- Slight Rain
+			[63] = "Showers", -- Moderate Rain
+			[65] = "Rain", -- Heavy Rain
+			[66] = "Showers", -- Light Freezing Rain
+			[67] = "Rain", -- Heavy Freezing Rain
+			[71] = "Drizzle", -- Slight Snow Fall
+			[73] = "Rain", -- Moderate Snow Fall
+			[75] = "Heavy Rain", -- Heavy Snow Fall
+			[77] = "Rain", -- Snow Grains
+			[80] = "Showers", -- Slight Rain Showers
+			[81] = "Rain", -- Moderate Rain Showers
+			[82] = "Heavy Rain", -- Violant Rain Showers
+			[85] = "Rain", -- Slight Snow Showers
+			[86] = "Heavy Rain", -- Heavy Snow Showers
+			[95] = "Thunderstorms", -- Slight or Moderate Thunderstorms
+			[96] = "Strong Thunderstorms", -- Thunderstorm slight hail
+			[99] = "Strong Thunderstorms", -- Thunderstorm strong hail
 		},
 		conditionOptions = {
 			rising = { 25, 25, 25, 24, 24, 19, 16, 12, 11, 9, 8, 6, 5, 2, 1, 1, 0, 0, 0, 0, 0, 0 },

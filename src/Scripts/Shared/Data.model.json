@@ -44,6 +44,10 @@
         {
             "ClassName": "StringValue",
             "Name": "setWeather"
+        },
+        {
+            "ClassName": "NumberValue",
+            "Name": "cloudCover"
         }
     ]
 }

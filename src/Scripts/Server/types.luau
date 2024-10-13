@@ -44,6 +44,7 @@ export type weather = {
 	daylight: daylight,
 	dynamicWeather: dynamicWeather,
 	zWeather: zWeather,
+	realTime: realTime,
 }
 
 export type conversions = weather & {
@@ -125,6 +126,14 @@ export type zWeather = weather & {
 	task: thread | false,
 
 	weatherChanged: (self: zWeather) -> (),
+	start: (self: zWeather) -> (),
+}
+
+export type realTime = weather & {
+	enabled: boolean,
+	task: thread | false,
+
+	startLoop: (self: realTime) -> (),
 	start: (self: zWeather) -> (),
 }
 

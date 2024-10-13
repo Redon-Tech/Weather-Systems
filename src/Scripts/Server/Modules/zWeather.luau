@@ -70,6 +70,11 @@ function zWeather.start(self: types.zWeather)
 			self.enabled = true
 		else
 			self.enabled = false
+
+			if self.task ~= false then
+				task.cancel(self.task)
+				self.task = false
+			end
 		end
 	end
 	onWeatherChanged()

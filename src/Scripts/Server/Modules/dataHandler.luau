@@ -258,6 +258,16 @@ function dataHandler.start(self: types.dataHandler)
 
 	self.started = true
 
+	local function onWeatherChanged()
+		if configuration.weather:GetAttribute("WeatherMode") == "realTime" then
+			self.started = false
+		else
+			self.started = true
+		end
+	end
+	onWeatherChanged()
+	configuration.weather:GetAttributeChangedSignal("WeatherMode"):Connect(onWeatherChanged)
+
 	print("Data Handler initialized")
 end
 

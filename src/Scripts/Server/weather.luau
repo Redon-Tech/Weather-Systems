@@ -181,6 +181,7 @@ function weather.start(self: types.weather)
 	self.conversions:convertMapSize()
 	self.daylight:start()
 	self.zWeather:start()
+	self.realTime:start()
 	self.dynamicWeather:start()
 	self:_newDay(self.currentDay)
 
