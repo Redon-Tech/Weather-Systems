@@ -31,66 +31,67 @@ function setWeather.weatherChanged(self: types.setWeather)
 	end
 
 	if weather == "Clear" then
-		self.rainHandler:disable()
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0, 0)
 		end
 	elseif weather == "Partly Cloudy" then
-		self.rainHandler:disable()
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.5, 0.4)
 		end
 	elseif weather == "Mostly Cloudy" then
-		self.rainHandler:disable()
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.65, 0.6)
 		end
 	elseif weather == "Cloudy" then
-		self.rainHandler:disable()
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.8, 0.8)
 		end
 	elseif weather == "Drizzle" then
-		self.rainHandler:enable()
 		self.rainHandler:setIntensity(0.05)
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.8, 1)
 		end
 	elseif weather == "Showers" then
-		self.rainHandler:enable()
 		self.rainHandler:setIntensity(0.3)
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.82, 1)
 		end
 	elseif weather == "Rain" then
-		self.rainHandler:enable()
 		self.rainHandler:setIntensity(0.5)
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.9, 1)
 		end
 	elseif weather == "Heavy Rain" then
-		self.rainHandler:enable()
 		self.rainHandler:setIntensity(0.5)
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.9, 1)
 		end
 	elseif weather == "Thunderstorms" then
-		self.rainHandler:enable()
 		self.rainHandler:setIntensity(0.7)
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(0.95, 1)
 		end
 	elseif weather == "Strong Thunderstorms" then
-		self.rainHandler:enable()
 		self.rainHandler:setIntensity(1)
 		if self.cloudServerControlled == false then
 			self.rainHandler:setCloud(1, 1)
 		end
 	end
 
-	if data.temperature.Value < 4.5 then
+	if
+		weather == "Clear"
+		or weather == "Partly Cloudy"
+		or weather == "Mostly Cloudy"
+		or weather == "Cloudy" and self.rainHandler.rainEnabled == true
+	then
+		self.rainHandler:disable()
+	elseif self.rainHandler.rainEnabled == false then
+		self.rainHandler:enable()
+	end
+
+	if data.temperature.Value < 4.5 and self.rainHandler.rainMode == "rain" then
 		self.rainHandler:setSnow()
-	else
+	elseif self.rainHandler.rainMode == "snow" then
 		self.rainHandler:setRain()
 	end
 end

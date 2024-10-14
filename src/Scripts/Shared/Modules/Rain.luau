@@ -338,54 +338,62 @@ do
 	topdown.WindAffectsDrag = true
 end
 
-local splashAttachments, rainAttachments
-do
-	splashAttachments = {}
-	rainAttachments = {}
+local splashAttachments, rainAttachments = {}, {}
 
-	for i = 1, RAIN_SPLASH_NUM do
-		-- splashes on ground
-		local splashAttachment = Instance.new("Attachment")
-		splashAttachment.Name = "__RainSplashAttachment"
-		local splash = Instance.new("ParticleEmitter")
-		splash.LightEmission = RAIN_DEFAULT_LIGHTEMISSION
-		splash.LightInfluence = RAIN_DEFAULT_LIGHTINFLUENCE
-		splash.Size = RAIN_SPLASH_SIZE
-		splash.Texture = RAIN_SPLASH_ASSET
-		splash.Rotation = RAIN_SPLASH_ROTATION
-		splash.Lifetime = RAIN_SPLASH_LIFETIME
-		splash.Transparency = NumberSequence.new({
-			NSK010,
-			NumberSequenceKeypoint.new(RAIN_TRANSPARENCY_T1, RAIN_SPLASH_ALPHA_LOW, 0),
-			NumberSequenceKeypoint.new(RAIN_TRANSPARENCY_T2, RAIN_SPLASH_ALPHA_LOW, 0),
-			NSK110,
-		})
-		splash.Enabled = false
-		splash.Rate = 0
-		splash.Speed = NumberRange.new(0)
-		splash.Name = "RainSplash"
-		splash.Parent = splashAttachment
-		splashAttachment.Archivable = false
-		table.insert(splashAttachments, splashAttachment)
+local function createSplashAttachment()
+	local splashAttachment = Instance.new("Attachment")
+	splashAttachment.Name = "__RainSplashAttachment"
+	local splash = Instance.new("ParticleEmitter")
+	splash.LightEmission = RAIN_DEFAULT_LIGHTEMISSION
+	splash.LightInfluence = RAIN_DEFAULT_LIGHTINFLUENCE
+	splash.Size = RAIN_SPLASH_SIZE
+	splash.Texture = RAIN_SPLASH_ASSET
+	splash.Rotation = RAIN_SPLASH_ROTATION
+	splash.Lifetime = RAIN_SPLASH_LIFETIME
+	splash.Transparency = NumberSequence.new({
+		NSK010,
+		NumberSequenceKeypoint.new(RAIN_TRANSPARENCY_T1, RAIN_SPLASH_ALPHA_LOW, 0),
+		NumberSequenceKeypoint.new(RAIN_TRANSPARENCY_T2, RAIN_SPLASH_ALPHA_LOW, 0),
+		NSK110,
+	})
+	splash.Enabled = false
+	splash.Rate = 0
+	splash.Speed = NumberRange.new(0)
+	splash.Name = "RainSplash"
+	splash.Parent = splashAttachment
+	splashAttachment.Archivable = false
+	splashAttachment.Parent = workspace.Terrain
+	table.insert(splashAttachments, splashAttachment)
+	return splashAttachment
+end
 
-		-- occluded rain particle generation
-		local rainAttachment = Instance.new("Attachment")
-		rainAttachment.Name = "__RainOccludedAttachment"
-		local straightOccluded = Emitter.RainStraight:Clone()
-		straightOccluded.Speed = NumberRange.new(RAIN_OCCLUDED_MINSPEED, RAIN_OCCLUDED_MAXSPEED)
-		straightOccluded.SpreadAngle = RAIN_OCCLUDED_SPREAD
-		straightOccluded.LockedToPart = false
-		straightOccluded.Enabled = false
-		straightOccluded.Parent = rainAttachment
-		local topdownOccluded = Emitter.RainTopDown:Clone()
-		topdownOccluded.Speed = NumberRange.new(RAIN_OCCLUDED_MINSPEED, RAIN_OCCLUDED_MAXSPEED)
-		topdownOccluded.SpreadAngle = RAIN_OCCLUDED_SPREAD
-		topdownOccluded.LockedToPart = false
-		topdownOccluded.Enabled = false
-		topdownOccluded.Parent = rainAttachment
-		rainAttachment.Archivable = false
-		table.insert(rainAttachments, rainAttachment)
-	end
+local function createRainAttachment()
+	local rainAttachment = Instance.new("Attachment")
+	rainAttachment.Name = "__RainOccludedAttachment"
+	local straightOccluded = Emitter.RainStraight:Clone()
+	straightOccluded.Speed = NumberRange.new(RAIN_OCCLUDED_MINSPEED, RAIN_OCCLUDED_MAXSPEED)
+	straightOccluded.SpreadAngle = RAIN_OCCLUDED_SPREAD
+	straightOccluded.LockedToPart = false
+	straightOccluded.Enabled = false
+	straightOccluded.Parent = rainAttachment
+	local topdownOccluded = Emitter.RainTopDown:Clone()
+	topdownOccluded.Speed = NumberRange.new(RAIN_OCCLUDED_MINSPEED, RAIN_OCCLUDED_MAXSPEED)
+	topdownOccluded.SpreadAngle = RAIN_OCCLUDED_SPREAD
+	topdownOccluded.LockedToPart = false
+	topdownOccluded.Enabled = false
+	topdownOccluded.Parent = rainAttachment
+	rainAttachment.Archivable = false
+	rainAttachment.Parent = workspace.Terrain
+	table.insert(rainAttachments, rainAttachment)
+	return rainAttachment
+end
+
+for i = 1, RAIN_SPLASH_NUM do
+	-- splashes on ground
+	createSplashAttachment()
+
+	-- occluded rain particle generation
+	createRainAttachment()
 end
 
 -- Helper methods:
@@ -522,7 +530,7 @@ local function connectLoop()
 
 				if inside then
 					-- Update emitter properties
-					for _, v in pairs(rainAttachments) do
+					for _, v in ipairs(rainAttachments) do
 						v.RainStraight.Transparency = straightSequence
 						v.RainStraight.Rotation = straightRotation
 						v.RainTopDown.Transparency = topdownSequence
@@ -596,6 +604,9 @@ local function connectLoop()
 			for i = 1, numSplashes do
 				local splashAttachment = splashAttachments[i]
 				local rainAttachment = rainAttachments[i]
+				if splashAttachment.Parent == nil or rainAttachment.Parent == nil then
+					continue
+				end
 
 				-- Sample random splash position
 				local x = rand:NextNumber(RAIN_OCCLUDECHECK_OFFSET_XZ_MIN, RAIN_OCCLUDECHECK_OFFSET_XZ_MAX)
@@ -773,6 +784,19 @@ local Rain = {}
 
 Rain.CollisionMode = CollisionMode
 
+function Rain:TerrainCleared()
+	table.clear(rainAttachments)
+	table.clear(splashAttachments)
+
+	for i = 1, RAIN_SPLASH_NUM do
+		-- splashes on ground
+		table.insert(splashAttachments, createSplashAttachment())
+
+		-- occluded rain particle generation
+		table.insert(rainAttachments, createRainAttachment())
+	end
+end
+
 function Rain:Enable(tweenInfo)
 	if tweenInfo ~= nil and typeof(tweenInfo) ~= "TweenInfo" then
 		error("bad argument #1 to 'Enable' (TweenInfo expected, got " .. typeof(tweenInfo) .. ")", 2)
@@ -784,10 +808,10 @@ function Rain:Enable(tweenInfo)
 	Emitter.RainTopDown.Enabled = true
 	Emitter.Parent = workspace.CurrentCamera
 
-	for i = 1, RAIN_SPLASH_NUM do
-		splashAttachments[i].Parent = workspace.Terrain
-		rainAttachments[i].Parent = workspace.Terrain
-	end
+	-- for i = 1, RAIN_SPLASH_NUM do
+	-- 	splashAttachments[i].Parent = workspace.Terrain
+	-- 	rainAttachments[i].Parent = workspace.Terrain
+	-- end
 
 	if RunService:IsRunning() then -- don't need sound in studio preview, it won't work anyway
 		SoundGroup.Parent = game:GetService("SoundService")

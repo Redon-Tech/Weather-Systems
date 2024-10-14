@@ -55,7 +55,12 @@ export type dynamicWeather = client & {
 export type rainHandler = client & {
 	rainMode: "rain" | "snow",
 	rainEnabled: boolean,
+	cloudsSetup: boolean,
 	clouds: Clouds?,
+	cloudData: {
+		cover: number,
+		density: number,
+	},
 
 	setSnow: (self: rainHandler) -> (),
 	setRain: (self: rainHandler) -> (),
