@@ -5,10 +5,23 @@ local globalData = require(wsShared:WaitForChild("globalData"))
 local configuration = wsShared:WaitForChild("Configuration")
 local data = wsShared:WaitForChild("Data")
 local dayCycleConfig = configuration:WaitForChild("dayCycle")
+local sounds = configuration:WaitForChild("sounds")
 local serverModules = script.Parent:WaitForChild("Modules")
 local sharedModules = wsShared:WaitForChild("Modules")
 local comm = require(sharedModules:WaitForChild("comm"))
 local types = require(script.Parent.types)
+
+local dayAmbience = Instance.new("Sound")
+dayAmbience.Name = "DayAmbience"
+dayAmbience.SoundId = sounds:GetAttribute("DayAmbience") or "rbxassetid://0"
+dayAmbience.Looped = true
+dayAmbience.Parent = workspace
+dayAmbience:Play()
+local nightAmbience = Instance.new("Sound")
+nightAmbience.Name = "NightAmbience"
+nightAmbience.SoundId = sounds:GetAttribute("NightAmbience") or "rbxassetid://0"
+nightAmbience.Looped = true
+nightAmbience.Parent = workspace
 
 local isDebug = configuration:GetAttribute("debug")
 local truePrint = print
@@ -86,12 +99,16 @@ function weather._timeOfDay(self: types.weather)
 		and (time >= dayCycleConfig:GetAttribute("sunset") or time <= dayCycleConfig:GetAttribute("sunrise"))
 	then
 		self.isNight = true
+		dayAmbience:Stop()
+		nightAmbience:Play()
 		print("Night", self.isNight)
 	elseif
 		self.isNight == true
 		and (time >= dayCycleConfig:GetAttribute("sunrise") and time <= dayCycleConfig:GetAttribute("sunset"))
 	then
 		self.isNight = false
+		dayAmbience:Play()
+		nightAmbience:Stop()
 		print("Day", self.isNight)
 	end
 

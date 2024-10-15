@@ -1,0 +1,13 @@
+{
+    "ClassName": "Configuration",
+    "Properties": {
+        "Attributes": {
+            "DayAmbience": {
+                "String": "rbxassetid://6189453706"
+            },
+            "NightAmbience": {
+                "String": "rbxassetid://6189441072"
+            }
+        }
+    }
+}
