@@ -91,7 +91,7 @@ function setWeather.weatherChanged(self: types.setWeather)
 
 	if data.temperature.Value < 4.5 and self.rainHandler.rainMode == "rain" then
 		self.rainHandler:setSnow()
-	elseif self.rainHandler.rainMode == "snow" then
+	elseif data.temperature.Value >= 4.5 and self.rainHandler.rainMode == "snow" then
 		self.rainHandler:setRain()
 	end
 end

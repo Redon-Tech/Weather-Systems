@@ -43,7 +43,7 @@ function dynamicWeather._loop(self: types.dynamicWeather, deltaTime: number)
 	if self.timeElapsed >= 10 and data.temperature.Value > 4.5 then
 		local randomPosition = Vector3.new(
 			math.random((self.mapSizeMin.X - 50) * 640, (self.mapSizeMax.X - 50) * 640),
-			400,
+			0,
 			math.random((self.mapSizeMin.Y - 50) * 640, (self.mapSizeMax.Y - 50) * 640)
 		)
 		local chunk =
@@ -61,12 +61,7 @@ function dynamicWeather._loop(self: types.dynamicWeather, deltaTime: number)
 		)
 		print("Lightning", self.timeElapsed, randomPosition, chunk, elevation)
 		if elevation < 0.15 then
-			local bolt = EvLightning.new(
-				randomPosition,
-				randomPosition - Vector3.new(0, 400, 0),
-				{ decay = 0.15, tween_time = 0.15 }
-			)
-			bolt:Draw()
+			self.lightning:castLightning(randomPosition)
 		end
 		self.timeElapsed = 0
 	end

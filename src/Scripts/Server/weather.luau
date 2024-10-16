@@ -174,6 +174,7 @@ function weather.start(self: types.weather)
 	self.comm = weatherEvents
 	self.events = {
 		noiseAnimation = weatherEvents:remoteEvent("noiseAnimation"),
+		lightningEvent = weatherEvents:remoteEvent("lightningEvent"),
 	}
 
 	self.month, self.day, self.season, self.hasChanged, self.isNight =
@@ -197,6 +198,7 @@ function weather.start(self: types.weather)
 	self.conversions:convertAllMonthData()
 	self.conversions:convertMapSize()
 	self.daylight:start()
+	self.lightning:start()
 	self.zWeather:start()
 	self.realTime:start()
 	self.dynamicWeather:start()

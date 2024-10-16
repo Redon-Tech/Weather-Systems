@@ -10,6 +10,7 @@ export type client = {
 	comm: comm.comm,
 	events: {
 		noiseAnimation: comm.remoteEvent,
+		lightningEvent: comm.remoteEvent,
 	},
 	randomSeed: number,
 	random: Random,

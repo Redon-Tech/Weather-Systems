@@ -8,6 +8,27 @@ local modules = wsShared:WaitForChild("Modules")
 local rain = require(modules:WaitForChild("Rain"))
 local types = require(script.Parent:WaitForChild("types"))
 
+local lightningSounds = {
+	close = {
+		167060276,
+		236328564,
+		236328533,
+	},
+	medium = {
+		167060296,
+		236328809,
+		236328781,
+		236328758,
+	},
+	far = {
+		167060366,
+		236328734,
+		236328715,
+		236328669,
+		236328595,
+	},
+}
+
 local rainHandler = {
 	rainMode = "rain",
 	rainEnabled = false,
@@ -104,6 +125,32 @@ function rainHandler.start(self: types.rainHandler)
 		end
 	end
 	cloudConnection = clouds:GetPropertyChangedSignal("Parent"):Connect(onCloudsChanged)
+
+	self.events.lightningEvent:connect(function(model: Model?)
+		if model == nil then
+			return
+		end
+
+		local cameraPosition = workspace.CurrentCamera.CFrame.Position
+		local distance = (model:GetPivot().Position - cameraPosition).Magnitude
+
+		local soundId: number
+		if distance < 1000 then
+			soundId = lightningSounds.close[math.random(1, #lightningSounds.close)]
+		elseif distance < 3000 then
+			soundId = lightningSounds.medium[math.random(1, #lightningSounds.medium)]
+		else
+			soundId = lightningSounds.far[math.random(1, #lightningSounds.far)]
+		end
+
+		local sound = Instance.new("Sound")
+		sound.SoundId = "rbxassetid://" .. soundId
+		sound.Parent = workspace
+		sound.PlaybackSpeed = 1 + math.random(-0.2, 0.2)
+		sound.Volume = 1
+		sound.PlayOnRemove = true
+		sound:Destroy()
+	end)
 end
 
 return rainHandler

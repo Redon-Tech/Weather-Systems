@@ -49,6 +49,7 @@ function client.start(self: types.client)
 	self.comm = weatherEvents
 	self.events = {
 		noiseAnimation = weatherEvents:remoteEvent("noiseAnimation"),
+		lightningEvent = weatherEvents:remoteEvent("lightningEvent"),
 	}
 
 	self.randomSeed = data.randomSeed.Value

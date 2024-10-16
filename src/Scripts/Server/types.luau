@@ -31,6 +31,7 @@ export type weather = {
 	comm: comm.comm,
 	events: {
 		noiseAnimation: comm.remoteEventServer,
+		lightningEvent: comm.remoteEventServer,
 	},
 
 	_newDay: (self: weather, dayNum: number) -> (),
@@ -45,6 +46,7 @@ export type weather = {
 	dynamicWeather: dynamicWeather,
 	zWeather: zWeather,
 	realTime: realTime,
+	lightning: lightning,
 }
 
 export type conversions = weather & {
@@ -123,7 +125,6 @@ export type dynamicWeather = weather & {
 
 export type zWeather = weather & {
 	enabled: boolean,
-	task: thread | false,
 
 	weatherChanged: (self: zWeather) -> (),
 	start: (self: zWeather) -> (),
@@ -131,10 +132,18 @@ export type zWeather = weather & {
 
 export type realTime = weather & {
 	enabled: boolean,
-	task: thread | false,
 
 	startLoop: (self: realTime) -> (),
 	start: (self: zWeather) -> (),
+}
+
+export type lightning = weather & {
+	enabled: boolean,
+	task: thread | false,
+
+	castLightning: (self: lightning, position: Vector3) -> (),
+	weatherChanged: (self: lightning) -> (),
+	start: (self: lightning) -> (),
 }
 
 return nil

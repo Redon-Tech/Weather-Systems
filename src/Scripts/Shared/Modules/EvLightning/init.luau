@@ -62,6 +62,10 @@ SOFTWARE.
 local Debris = game:GetService("Debris")
 local class = require(script.Class)
 local TweenService = game:GetService("TweenService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local wsShared = ReplicatedStorage:WaitForChild("WeatherSystem_Shared")
+local event =
+	wsShared:WaitForChild("commEvents"):WaitForChild("weatherEvents"):WaitForChild("lightningEvent") :: RemoteEvent
 
 local LightningBoltPropertyTable = { --Set tweening info here
 	Transparency = 1,
@@ -255,6 +259,7 @@ do
 		end
 
 		model.Parent = parent or workspace
+		event:FireAllClients(model)
 		self.drew = true
 
 		if self.options.decay then
