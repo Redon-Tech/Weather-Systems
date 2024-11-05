@@ -52,7 +52,6 @@ function lightning.weatherChanged(self: types.lightning)
 							(self.dynamicWeather.mapSizeMax.Y - 50) * 640
 						)
 					)
-					randomPosition = Vector3.zero
 					self:castLightning(randomPosition)
 				end
 			end

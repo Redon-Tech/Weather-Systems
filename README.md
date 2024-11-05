@@ -6,6 +6,9 @@ Work In Progress
 
 https://ip-api.com/docs (get realtime location based off current location)
 
+https://icons.qweather.com/en/install/
+(new icons?)
+
 get UTC offset using zoneinfo on future API
 
 - [x] Basic dynamic weather
