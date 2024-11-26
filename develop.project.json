@@ -15,7 +15,10 @@
         "StarterPlayer": {
             "StarterPlayerScripts": {
                 "WeatherSystem_Client": {
-                    "$path": "src/Scripts/Client"
+                    "$path": "src/Scripts/Client",
+                    "Packages": {
+                        "$path": "Packages"
+                    }
                 }
             }
         },
